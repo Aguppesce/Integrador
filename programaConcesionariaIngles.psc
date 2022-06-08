@@ -416,33 +416,33 @@ subproceso concretarVenta(cliente, auto, empleado, venta, planesDePago)
 	//cargamos cliente
 	Repetir
 		Escribir '_____________________________________________';
-		escribir "Ingrese el DNI del cliente: ";
+		escribir "Enter the customer´s ID number: ";
 		leer dniCliente;     
 		indiceCliente <- busquedaPorId(cliente,dniCliente);
 		si indiceCliente <> -1 entonces
 			existeCliente <- verdadero;
-			Escribir 'Se encontro el cliente con id: ', dniCliente;
+			Escribir 'Customer found with id: ', dniCliente;
 		FinSi
 	Hasta Que indiceCliente = -1 o existeCliente;
 	
 	// Sino encuentra al cliente ingresado, Cargamos un nuevo cliente..
 	si no existeCliente entonces
 		Escribir '_____________________________________________';
-		escribir "No se encontro al Cliente ";
+		escribir "Customer not found ";
 		cargarNuevoCliente(dniCliente,cliente);
 		indiceCliente <- busquedaPorId(cliente,dniCliente);
 	FinSi
 	
 	//cargamos el auto
 	Escribir '_____________________________________________';
-	escribir sin saltar "Ingrese el id del auto: ";
+	escribir sin saltar "Enter the car´s id: ";
 	leer idAuto;     
 	indiceAuto <- busquedaPorId(auto, idAuto);
 	autoDisponible <- falso;
 	Mientras indiceAuto = -1 o no(autoDisponible) Hacer
 		sI indiceAuto = -1 Entonces
-			Escribir 'Auto no encontrado. Vuelva a intentarlo.';
-			escribir sin saltar "Ingrese el id del auto: ";
+			Escribir 'Auto not found. Please try again.';
+			escribir sin saltar "Enter the car´s id: ";
 			leer idAuto;
 			indiceAuto <- busquedaPorId(auto, idAuto);
 		FinSi
@@ -450,7 +450,7 @@ subproceso concretarVenta(cliente, auto, empleado, venta, planesDePago)
 			estadoAuto <- auto[indiceAuto,7];
 			// Un estado igual a 'false' quiere decir que el auto se vendio o esta alquilado
 			si estadoAuto = 'false' Entonces
-				Escribir  Sin Saltar'El auto no esta disponible. Ingrese Otro.';
+				Escribir  Sin Saltar'The car is not available. Enter Other.';
 				leer idAuto;  
 				indiceAuto <- busquedaPorId(auto, idAuto);
 			SiNo
@@ -461,18 +461,18 @@ subproceso concretarVenta(cliente, auto, empleado, venta, planesDePago)
 	
 	//cargamos legajo de vendedor
 	Escribir '_____________________________________________';
-	escribir sin saltar "Ingrese su número de legajo: ";
+	escribir sin saltar "Enter your file number: ";
 	leer numLegajo;     
 	indiceEmpleado <- busquedaPorId(empleado, numLegajo);
 	Mientras indiceEmpleado = -1 Hacer
-		Escribir 'Empleado no encontrado. Vuelva a intentarlo.';
-		escribir sin saltar "Ingrese su número de legajo: ";
+		Escribir 'Employee not found. Please try again.';
+		escribir sin saltar "Enter your file number: ";
 		leer numLegajo;   
 		indiceEmpleado <- busquedaPorId(empleado,numLegajo);
 	FinMientras
 	
 	Escribir '_____________________________________________';
-	escribir sin saltar "Ingrese fecha actual: ";
+	escribir sin saltar "Enter current date: ";
 	leer fechaActual;
 	Escribir '_____________________________________________';
 	
@@ -480,8 +480,8 @@ subproceso concretarVenta(cliente, auto, empleado, venta, planesDePago)
 	
 	rtaPlan <- '0';
 	Repetir
-		Escribir '¿Quiere incluir un plan de pago? si/no';
-		Escribir '1 . Si';
+		Escribir '¿Do you want to include a payment plan? yes/no';
+		Escribir '1 . Yes';
 		Escribir '2 . No';
 		Leer rtaPlan;
 		rtaPlan <- Minusculas(rtaPlan);
@@ -493,8 +493,8 @@ subproceso concretarVenta(cliente, auto, empleado, venta, planesDePago)
 		planId <- planesDePago[planPago,0];
 	FinSi
 	Escribir '---------------------------------------';
-	Escribir '¿Confirmar la Venta?';
-	Escribir  '1. Si';
+	Escribir '¿Confirm the Sale?';
+	Escribir  '1. Yes';
 	Escribir  '2. No';
 	Leer rtaConfirmacion;
 	
@@ -505,14 +505,14 @@ subproceso concretarVenta(cliente, auto, empleado, venta, planesDePago)
 			// Guardamos la venta: N° Legajo, Dni, Nombre y Apellido, fecha,  Id (Auto), planPago.
 			cargarVenta(auto, venta,cliente,ultimaVenta, numLegajo,dniCliente, indiceCliente,fechaActual,indiceAuto, planId);
 			Escribir '_____________________________________________';
-			Escribir 'Venta Realizada con exito.... ';
+			Escribir 'Successful sale.... ';
 			mostrarVentaporId(venta, cliente, planesDePago, ultimaVenta);
 		SiNo
-			Escribir 'No se pudo concretar la venta, la matriz Venta esta llena.';
+			Escribir 'The sale could not be completed, the Sale matrix is full.';
 		FinSi
 		
 	SiNo
-		Escribir 'Venta cancelada. Presione cualquier tecla para salir ... ';
+		Escribir 'Sale cancelled. Press any key to exit ... ';
 		Leer rtaConfirmacion;
 	FinSi
 FinSubProceso
