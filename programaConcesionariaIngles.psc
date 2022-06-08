@@ -508,7 +508,7 @@ subproceso concretarVenta(cliente, auto, empleado, venta, planesDePago)
 			Escribir 'Successful sale.... ';
 			mostrarVentaporId(venta, cliente, planesDePago, ultimaVenta);
 		SiNo
-			Escribir 'The sale could not be completed, the Sale matrix is full.';
+			Escribir 'The sale could not be completed, the Sale array is full.';
 		FinSi
 		
 	SiNo
@@ -828,11 +828,11 @@ SubProceso menuVehiculos(auto)
 	definir option como entero;
 	Repetir
 		Limpiar Pantalla;
-		Escribir '         BUSCAR VEHICULO';
+		Escribir '         SEARCH VEHICLE';
 		Escribir '___________________________________';
-		escribir "0-Ver vehiculos disponibles.";
-		escribir "1-Buscar vehiculo por id.";
-		escribir "2-Salir.";
+		escribir "0-See available vehicles.";
+		escribir "1-Search vehicle by id.";
+		escribir "2-Exit.";
 		leer option;
 		Segun option Hacer
 			0:
@@ -842,7 +842,7 @@ SubProceso menuVehiculos(auto)
 			2:
 				
 			De Otro Modo:
-				escribir "Dato no válido, intente nuevamente.";
+				escribir "Invalid data, please try again.";
 		FinSegun
 		Hasta Que	option = 2;
 		limpiar pantalla;
@@ -853,11 +853,11 @@ subproceso menuRepuestos(repuestos)
 	definir option como entero;
 	Repetir
 		Limpiar Pantalla;
-		Escribir '         BUSCAR REPUESTO';
+		Escribir '         SEARCH FOR SPARE PARTS';
 		Escribir '___________________________________';
-		escribir "0-Ver todos los repuestos.";
-		escribir "1-Buscar repuestos por id.";
-		escribir "2-Salir.";
+		escribir "0-See all the spare parts.";
+		escribir "1-Search for spare parts by id.";
+		escribir "2-Exit.";
 		leer option;
 		Segun option Hacer
 			0:
@@ -867,7 +867,7 @@ subproceso menuRepuestos(repuestos)
 			2:
 				
 			De Otro Modo:
-				escribir "Dato no válido, intente nuevamente.";
+				escribir "Invalid data, please try again.";
 		FinSegun
 		Hasta Que	option = 2;
 		limpiar pantalla;
@@ -878,11 +878,11 @@ SubProceso menuVentas(venta, planes, empleado)
 	definir option como entero;
 	Repetir
 		Limpiar Pantalla;
-		Escribir '         BUSCAR VENTA';
+		Escribir '         SEARCH FOR SALE';
 		Escribir '___________________________________';
-		escribir "0-Ver todas las ventas.";
-		escribir "1-Buscar venta por vendedor.";
-		escribir "2-Salir.";
+		escribir "0-See all sales.";
+		escribir "1-Search for sale by seller.";
+		escribir "2-Exit.";
 		leer option;
 		Segun option Hacer
 			0:
@@ -892,7 +892,7 @@ SubProceso menuVentas(venta, planes, empleado)
 			2:
 				
 			De Otro Modo:
-				escribir "Dato no válido, intente nuevamente.";
+				escribir "Invalid data, please try again.";
 		FinSegun
 		Hasta Que	option = 2;
 		limpiar pantalla;
@@ -905,16 +905,16 @@ subproceso busquedaCliente(cliente)
 	definir posicion como entero;
 	
 	Limpiar Pantalla;
-	escribir "Ingrese el id de cliente que desea buscar.";
+	escribir "Enter the customer id you wish to search for.";
 	leer idCliente;
 	posicion <- busquedaPorId(cliente,idCliente );
 	si posicion <> -1 entonces 
 		Escribir "___________________________";
-		Escribir "| DNI | Nombre y Apellido |";
+		Escribir "| ID CARD | First and Last Name |";
 		Escribir "___________________________";
 		Escribir '| ',cliente[posicion,0], ' |  ', cliente[posicion,1] ,' | ';
 	SiNo
-		Escribir 'Cliente no encontrado';
+		Escribir 'Customer not found';
 	FinSi
 	leer posicion;
 FinSubProceso
@@ -925,21 +925,21 @@ subproceso cargaAuto(auto)
 	definir id, year, marca,modelo, km,precio, precioHora como cadena;
 	definir indice como entero;
 	Limpiar Pantalla;
-	Escribir '      Alta de Nuevo Auto';
+	Escribir '      New Car Registration';
 	Escribir '________________________________';
-	escribir sin saltar"Ingrese id de auto: ";
+	escribir sin saltar"Enter car id: ";
 	leer id;
-	escribir sin saltar"Ingrese año de fabricación: ";
+	escribir sin saltar"Enter year of manufacture: ";
 	leer year;
-	escribir sin saltar"Ingrese marca: ";
+	escribir sin saltar"Enter brand: ";
 	leer marca;
-	escribir sin saltar"Ingrese modelo: ";
+	escribir sin saltar"Enter model: ";
 	leer modelo;
-	escribir sin saltar"Ingrese km: ";
+	escribir sin saltar"Enter km: ";
 	leer km;
-	escribir sin saltar"Ingrese precio: ";
+	escribir sin saltar"Enter price: ";
 	leer precio;
-	escribir sin saltar"Ingrese precio de alquiler por hora: ";
+	escribir sin saltar"Enter hourly rental rate: ";
 	leer precioHora;
 	
 	indice <- obtenerUltimoIndice(auto);
@@ -952,7 +952,7 @@ subproceso cargaAuto(auto)
 	auto[indice,6] <- precioHora;
 	// Te ponemeos la disponibilidad a true / disponible 
 	auto[indice,7] <- "true";
-	escribir "Se agregó un nuevo auto.";
+	escribir "A new car was added.";
 	leer id;
 FinSubProceso
 
