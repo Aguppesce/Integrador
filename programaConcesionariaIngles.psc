@@ -672,19 +672,19 @@ SubProceso posicionPlan <- incluirPlan(planesDePago)
 	
 	mostrarPlanesDePago(planesDePago);
 	
-	Escribir Sin Saltar'Ingresar Plan de Pago: ';
+	Escribir Sin Saltar'Enter Payment Plan: ';
 	Leer idPlan;
 	posicionPlan <- busquedaPorId(planesDePago, idPlan);
 	Mientras posicionPlan = -1 Hacer
 		Escribir '____________________________________________'; 
-		Escribir 'Plan No encontrado.Vuelva a intentar. ';
-		Escribir Sin Saltar'Ingresar Plan de Pago: ';
+		Escribir 'Plan not found.try again. ';
+		Escribir Sin Saltar'Enter Payment Plan: ';
 		Leer idPlan;
 		posicionPlan <- busquedaPorId(planesDePago, idPlan);
 	FinMientras
 	
-	Escribir 'Plan encontrado con id: ', idPlan;
-	Escribir 'Descripcion plan, Entrega: ', planesDePago[posicionPlan,1], ' , Cuotas: ',planesDePago[posicionPlan,2]; 
+	Escribir 'Plan found with id: ', idPlan;
+	Escribir 'Plan description, Delivery: ', planesDePago[posicionPlan,1], ' , Dues: ',planesDePago[posicionPlan,2]; 
 FinSubProceso
 
 subproceso menuBusquedaEmpleados(empleado)
