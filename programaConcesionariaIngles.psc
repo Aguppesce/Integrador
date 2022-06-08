@@ -241,7 +241,7 @@ subproceso realizarServiciosAlquiler(cliente, auto, empleado)
 			FinSi
 		FinSi
 		Repetir
-			Escribir '¿Wants to find another car?';
+			Escribir 'Wants to find another car?';
 			Escribir '1. Yes';
 			Escribir '2. No';
 			Escribir sin saltar 'Enter option: ';
