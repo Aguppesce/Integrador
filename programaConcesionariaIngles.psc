@@ -121,7 +121,7 @@ subproceso realizarVenta(cliente,auto,empleado,venta,planesDePago, repuesto) //0
 		Escribir '___________________________________';
 		escribir "0-Vehicle by brand.";
 		escribir "1-Payment plans.";
-		escribir "2-Auto Sales.";
+		escribir "2-Car Sales.";
 		escribir "3-Sale Spare Parts.";
 		escribir "4-Exit.";
 		leer option;
@@ -230,7 +230,7 @@ subproceso realizarServiciosAlquiler(cliente, auto, empleado)
 	
 	Mientras indiceAuto = -1 o (autoDisponible = 'false' y rta = '1') Hacer
 		Si autoDisponible = 'false' y indiceAuto <> -1 Entonces
-			Escribir 'Auto not available';
+			Escribir 'Car not available';
 		FinSI
 		sI indiceAuto = -1  o rta = '1' Entonces
 			Escribir Sin Saltar 'Please try again. Enter the car id: ';
@@ -282,7 +282,7 @@ subproceso realizarServiciosAlquiler(cliente, auto, empleado)
 	
 	
 	Escribir '_____________________________________________________________________';
-	Escribir '| Salesperson |  Auto Id |    ID CARD   | Hourly Rate |  Withdrawal Date  | ';
+	Escribir '| Salesperson |  Car Id |    ID CARD   | Hourly Rate |  Withdrawal Date  | ';
 	Escribir '_____________________________________________________________________';
 	Escribir '|    ', numLegajo , '   |  ', idAuto , '   |  ', dniCliente ,' |      $', precioHora , '       |   ', fechaActual, '   |';  
 	Escribir '_____________________________________________________________________';
@@ -304,7 +304,7 @@ subproceso menuCargaDeDatos(auto,empleado,repuestos,cliente,planesDePago) //3
 		escribir "2- Spare parts.";
 		escribir "3- New Customer.";
 		escribir "4- Load new payment plan.";
-		escribir "5- Load Auto";
+		escribir "5- Load Car";
 		escribir "6- Exit.";
 		leer option;
 		Segun option Hacer
@@ -441,7 +441,7 @@ subproceso concretarVenta(cliente, auto, empleado, venta, planesDePago)
 	autoDisponible <- falso;
 	Mientras indiceAuto = -1 o no(autoDisponible) Hacer
 		sI indiceAuto = -1 Entonces
-			Escribir 'Auto not found. Please try again.';
+			Escribir 'Car not found. Please try again.';
 			escribir sin saltar "Enter the car´s id: ";
 			leer idAuto;
 			indiceAuto <- busquedaPorId(auto, idAuto);
