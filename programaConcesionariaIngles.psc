@@ -298,14 +298,14 @@ subproceso menuCargaDeDatos(auto,empleado,repuestos,cliente,planesDePago) //3
 	Definir dni como cadena; 
 	Repetir 
 		Limpiar Pantalla;
-		Escribir '      REALIZAR CARGA';
+		Escribir '      CARRY OUT LOADING';
 		Escribir '_______________________________';
-		escribir "1- Empleados.";
-		escribir "2- Repuestos.";
-		escribir "3- Nuevo Cliente.";
-		escribir "4- Cargar nuevo plan de pago.";
-		escribir "5- Cargar Auto";
-		escribir "6- Salír.";
+		escribir "1- Employees.";
+		escribir "2- Spare parts.";
+		escribir "3- New Customer.";
+		escribir "4- Load new payment plan.";
+		escribir "5- Load Auto";
+		escribir "6- Exit.";
 		leer option;
 		Segun option Hacer
 			0:
@@ -322,7 +322,7 @@ subproceso menuCargaDeDatos(auto,empleado,repuestos,cliente,planesDePago) //3
 				cargaAuto(auto);
 			6:
 			De Otro Modo:
-				escribir "Dato no válido, intente nuevamente.";
+				escribir "Invalid data, please try again.";
 		FinSegun
 	Hasta Que option = 6;
 FinSubProceso
