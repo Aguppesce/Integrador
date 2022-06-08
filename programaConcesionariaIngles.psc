@@ -230,10 +230,10 @@ subproceso realizarServiciosAlquiler(cliente, auto, empleado)
 	
 	Mientras indiceAuto = -1 o (autoDisponible = 'false' y rta = '1') Hacer
 		Si autoDisponible = 'false' y indiceAuto <> -1 Entonces
-			Escribir 'Auto no disponible';
+			Escribir 'Auto not available';
 		FinSI
 		sI indiceAuto = -1  o rta = '1' Entonces
-			Escribir Sin Saltar 'Vuelva a intentarlo. Ingrese el id del auto: ';
+			Escribir Sin Saltar 'Please try again. Enter the car id: ';
 			leer idAuto;
 			indiceAuto <- busquedaPorId(auto, idAuto);
 			si indiceAuto <> -1 Entonces
@@ -241,10 +241,10 @@ subproceso realizarServiciosAlquiler(cliente, auto, empleado)
 			FinSi
 		FinSi
 		Repetir
-			Escribir '¿Quiere buscar otro auto?';
-			Escribir '1. Si';
+			Escribir '¿Wants to find another car?';
+			Escribir '1. Yes';
 			Escribir '2. No';
-			Escribir sin saltar 'Ingrese opcion: ';
+			Escribir sin saltar 'Enter option: ';
 			Leer rta;
 		Hasta Que rta = '1' o rta = '2'
 	FinMientras
