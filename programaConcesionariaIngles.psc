@@ -1039,17 +1039,17 @@ SubProceso cargaRepuestos(repuestos)
 	Definir id, categoria, marca, modelo, precio, stock Como Cadena;
 	Definir indice Como Entero;
 	Limpiar Pantalla;
-	Escribir Sin Saltar "Ingrese id: ";
+	Escribir Sin Saltar "Enter id: ";
 	Leer id;
-	Escribir Sin Saltar "Ingrese categoría: ";
+	Escribir Sin Saltar "Enter category: ";
 	Leer categoria;
-	Escribir Sin Saltar "Ingrese marca: ";
+	Escribir Sin Saltar "Enter brand: ";
 	Leer marca;
-	Escribir Sin Saltar "Ingrese modelo: ";
+	Escribir Sin Saltar "Enter model: ";
 	Leer modelo;
-	Escribir Sin Saltar "Ingrese precio: ";
+	Escribir Sin Saltar "Enter price: ";
 	Leer precio;
-	Escribir Sin Saltar "Ingrese stock: ";
+	Escribir Sin Saltar "Enter stock: ";
 	Leer stock;
 	indice <- obtenerUltimoIndice(repuestos);
 	repuestos[indice,0] <- id;
@@ -1058,7 +1058,7 @@ SubProceso cargaRepuestos(repuestos)
 	repuestos[indice,3] <- modelo;
 	repuestos[indice,4] <- precio;
 	repuestos[indice,5] <- stock;
-	escribir "Un nuevo repuesto ha sido cargado con éxito.";
+	escribir "A new spare part has been successfully loaded.";
 	leer id;
 FinSubProceso
 
@@ -1066,19 +1066,19 @@ Subproceso cargarNuevoPlan(planesDePago)
 	definir idPlan,entrega,cuotas como cadena;
 	definir indice como entero;
 	Limpiar Pantalla;
-	Escribir '          CARGA NUEVO PLAN ';
+	Escribir '          LOAD NEW PLAN ';
 	Escribir '_____________________________________';
-	escribir sin saltar "Ingrese nuevo id de plan: ";
+	escribir sin saltar "Enter new plan id: ";
 	leer idPlan;
-	escribir sin saltar "Ingrese monto de la entrega: $";
+	escribir sin saltar "Enter amount of delivery: $";
 	leer entrega;
-	escribir sin saltar "Ingrese n° de cuotas: ";
+	escribir sin saltar "enter number of dues: ";
 	leer cuotas;
 	indice <- obtenerUltimoIndice(planesDePago);
 	planesDePago[indice,0] <- idPlan;
 	planesDePago[indice,1] <- entrega;
 	planesDePago[indice,2] <- cuotas;
-	escribir sin saltar "Un nuevo plan fue cargado con éxito.";
+	escribir sin saltar "A new plan was successfully uploaded.";
 	leer idPlan;
 FinSubProceso
 
