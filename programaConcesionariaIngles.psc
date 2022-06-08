@@ -1007,21 +1007,21 @@ subproceso cargaEmpleados(empleado)
 	definir indice como entero;
 	limpiar pantalla;
 	definir legajo,nombre,nombre2,apellido,direccion,edad,nacionalidad como cadena;
-	Escribir '           CARGA EMPLEADO';
+	Escribir '           LOAD EMPLOYEE';
 	Escribir '___________________________________';
-	escribir "Ingrese el n° de legajo: ";
+	escribir "Enter the file number: ";
 	leer legajo;
-	escribir "Ingrese el nombre: ";
+	escribir "Enter the name: ";
 	leer nombre;
-	escribir "Ingrese el segundo numbre: ";
+	escribir "Enter the middle name: ";
 	leer nombre2;
-	escribir "Ingrese el apellido: ";
+	escribir "Enter last name: ";
 	leer apellido;
-	escribir "Ingrese domicilio: ";
+	escribir "Enter your address: ";
 	leer direccion;
-	escribir "Ingrese edad: ";
+	escribir "Enter age: ";
 	leer edad;
-	escribir "Ingrese nacionalidad: ";
+	escribir "Enter your nationality: ";
 	leer nacionalidad;
 	indice <- obtenerUltimoIndice(empleado);
 	empleado[indice,0] <- legajo;
@@ -1031,7 +1031,7 @@ subproceso cargaEmpleados(empleado)
 	empleado[indice,4] <- direccion;
 	empleado[indice,5] <- edad;
 	empleado[indice,6] <- nacionalidad;
-	escribir "Un nuevo empleado ha sido cargado con éxito.";
+	escribir "A new employee has been successfully uploaded.";
 	leer legajo;
 FinSubProceso
 
