@@ -735,18 +735,18 @@ SubProceso buscarVehiculoPorId(auto)
 	definir idVehiculo como cadena;
 	definir posicion como entero;
 	Limpiar Pantalla;
-	escribir "Ingrese el id del vehiculo que desea buscar.";
+	escribir "Enter the id of the vehicle you wish to search for.";
 	leer idVehiculo;
 	posicion <- busquedaPorId(auto,idVehiculo );
 	Escribir '---------------------------------------------------------------------------------------';
-	Escribir '|   Id   |   Año  |  Marca  |  Modelo  |   Km   |  Precio  | Precio Alquiler | Estado |'; 
+	Escribir '|   Id   |   Year  |  Brand  |  Model  |   Km   |  Price  | Rental Price | Status |'; 
 	Escribir '---------------------------------------------------------------------------------------';
 	si posicion <> -1 entonces 
 		Escribir '|  ',auto[posicion,0], ' |  ',auto[posicion,1], '  |  ', auto[posicion,2], '  |   ', auto[posicion,3], '  |  ', auto[posicion,4], ' |  ', auto[posicion,5], ' |       $', auto[posicion,6], '      |  ' , auto[posicion,7],'  |' ; 
 		Escribir '---------------------------------------------------------------------------------------';
 	SiNo
 		
-		Escribir 'Vehiculo no encontrado';
+		Escribir 'Vehicle not found';
 		Escribir '---------------------------------------------------------------------------------------';
 	FinSi
 	leer posicion;
