@@ -192,19 +192,19 @@ subproceso realizarServiciosAlquiler(cliente, auto, empleado)
 	//Ingresamos los datos de un cliente existenete o uno nuevo
 	Repetir
 		Escribir '_____________________________________________________________________';
-		escribir "Ingrese el DNI del cliente: ";
+		escribir "Enter the customer´s ID number: ";
 		leer dniCliente;     
 		indiceCliente <- busquedaPorId(cliente,dniCliente);
 		si indiceCliente <> -1 entonces
 			existeCliente <- verdadero;
-			Escribir 'Se encontro el cliente con id: ', dniCliente;
+			Escribir 'Customer found with id: ', dniCliente;
 		FinSi
 	Hasta Que indiceCliente = -1 o existeCliente;
 	
 	// Sino encuentra al cliente ingresado, Cargamos un nuevo cliente..
 	si no existeCliente entonces
 		Escribir '_____________________________________________________________________';
-		escribir "No se encontro al Cliente ";
+		escribir "Customer not found ";
 		//Llamamis a l subproceso que carga un nuevo cliente
 		cargarNuevoCliente(dniCliente,cliente);
 		//obtenemos la posicion que ocupa este nuevo cliente en la matriz: para recuperar el nombre y apellido
@@ -214,7 +214,7 @@ subproceso realizarServiciosAlquiler(cliente, auto, empleado)
 	
 	// Seleccionamos el auto a alquilar
 	Escribir '_____________________________________________________________________';
-	escribir sin saltar "Ingrese el id del auto: ";
+	escribir sin saltar "Enter the car id: ";
 	leer idAuto;   
 	
 	//Bandera que controla si el auto solicitado esta disponible
