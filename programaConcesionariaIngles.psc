@@ -87,7 +87,7 @@ subproceso realizarVenta(cliente,auto,empleado,venta,planesDePago, repuesto) //0
 	definir option, i como entero;
 	Repetir
 		Limpiar Pantalla;
-		Escribir '         OPCIONES DE VENTA';
+		Escribir '         SALES OPTIONS';
 		Escribir '___________________________________';
 		escribir "0-Vehículo por marca.";
 		escribir "1-Planes de pago.";
