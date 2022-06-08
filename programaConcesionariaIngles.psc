@@ -253,13 +253,13 @@ subproceso realizarServiciosAlquiler(cliente, auto, empleado)
 	
 	
 	Escribir '_____________________________________________________________________';
-	escribir sin saltar "Ingrese su número de legajo : ";
+	escribir sin saltar "Enter your file number : ";
 	leer numLegajo;
 	//Obtenemos la posicion que ocupa el empleado en la matriz, si no lo encuentra retorna -1.
 	indiceEmpleado <- busquedaPorId(empleado, numLegajo);
 	Mientras indiceEmpleado = -1 Hacer
-		Escribir 'Empleado no encontrado. Vuelva a intentarlo.';
-		escribir sin saltar "Ingrese su número de legajo: ";
+		Escribir 'Employee not found. Please try again.';
+		escribir sin saltar "Enter your file number: ";
 		leer numLegajo;   
 		indiceEmpleado <- busquedaPorId(empleado,numLegajo);
 	FinMientras
