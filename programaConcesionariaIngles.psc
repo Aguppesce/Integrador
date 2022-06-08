@@ -1109,15 +1109,15 @@ SubProceso mostrarVentaporId(ventas, cliente, planesDePago, idVenta)
 		entrega <- planesDePago[posPlan, 1];
 		cuotas <- planesDePago[posPlan, 2];
 		Escribir '________________________________________________________________________________________';
-		Escribir '| N° Legajo |    DNI   | Nombre y Apellido |    Fecha   |  Id Auto  | Entrega | Cuotas |';
+		Escribir '| File Number |    ID CARD   | First and Last Name |    Date   |  Id Car  | Delivery | Dues |';
 		
 		Escribir '________________________________________________________________________________________';
 		Escribir  '|    ',legajo, '    | ', dni , ' |    ', nombreYapellido , '     | ', fecha, ' |   ', idAuto , '   |   ', entrega, '  |    ', cuotas, ' |';
 	SiNo
 		Escribir '________________________________________________________________________________________';
-		Escribir '| N° Legajo | DNI | Nombre y Apellido | Fecha | Id Auto | Id Plan |';
+		Escribir '| File Number | ID CARD | First and Last Name | Date | Id Car | Id Plan |';
 		Escribir '__________________________________________________________________________________';
-		Escribir  legajo, ' | ', dni , ' | ', nombreYapellido , ' | ', fecha, ' | ', idAuto , ' | Sin Plan';
+		Escribir  legajo, ' | ', dni , ' | ', nombreYapellido , ' | ', fecha, ' | ', idAuto , ' | No Plan';
 	FinSi
 	Escribir '________________________________________________________________________________________';
 	
@@ -1127,7 +1127,7 @@ FinSubProceso
 SubProceso mostrarClientePorId(cliente, idCliente)
 	Definir indiceCliente  como entero;
 	indiceCliente <- busquedaPorId(cliente, idCliente);
-	Escribir '|  DNI  | Nombre y Apellido |';
+	Escribir '|  ID CARD | First and Last Name |';
 	Escribir '|',cliente[indiceCliente,0],'|',cliente[indiceCliente,1],'|';
 	
 	Leer indiceCliente;
@@ -1139,7 +1139,7 @@ SubProceso mostrarRepuestoPorId(repuesto, idRepuesto)
 	indiceRepuesto <- busquedaPorId(repuesto, idRepuesto);
 	// Id, Categoría, Marca, Modelo, Precio, stock.
 	Escribir '_______________________________________________________________';
-	Escribir '|  Id Repuesto  | Categoria | Marca | Modelo | Precio | Stock |';
+	Escribir '|  Spare part Id | Category | Brand | Model | Price | Stock |';
 	Escribir '_______________________________________________________________';
 	Escribir '|   ',repuesto[indiceRepuesto,0],'   |    ',repuesto[indiceRepuesto,1],'   |  ',repuesto[indiceRepuesto,2],' |  ', repuesto[indiceRepuesto,3],'  |  ', repuesto[indiceRepuesto,4],' |   ',repuesto[indiceRepuesto,5],'  |';
 	Escribir '_______________________________________________________________';	
@@ -1150,7 +1150,7 @@ FinSubProceso
 subproceso vehiculosDisponibles(auto)
 	Definir i Como Entero;
 	Limpiar Pantalla;
-	Escribir '|   Id   |  Año  |  Marca |  Modelo |   Km   |  Precio  | Precio Alquiler |'; 
+	Escribir '|   Id   |  Year  |  Brand |  Model |   Km   |  Price  | Rental Price |'; 
 	Escribir '---------------------------------------------------------------------------';
 	Para i<-0 Hasta 99 Hacer
 		Si auto[i,7] = 'true' Entonces
@@ -1162,7 +1162,7 @@ FinSubProceso
 
 subproceso mostrarAutos(auto)
 	Definir i Como Entero;
-	Escribir '|   Id   |   Año  |  Marca | Modelo |    Km     | Precio  | Precio Alquiler |  Estado  |';
+	Escribir '|   Id   |   Year  |  Brand | Model |    Km     | Price  | Rental Price |  Status  |';
 	Escribir '-----------------------------------------------------------------------------------------';
 	Para i<-0 Hasta 99 Hacer
 		Si auto[i,0] <> '0' Entonces
@@ -1174,7 +1174,7 @@ FinSubProceso
 subproceso mostrarAllempleados(empleado)
 	definir i,j como entero;
 	Limpiar Pantalla;
-	escribir "| N° de legajo | Nombre | Nombre 2 | Apellido | Dirección | Edad | Nacionalidad |";
+	escribir "| File number | Name | Name 2 | Last name | Address | Age | Nationality |";
 	Para i <- 0 Hasta 99 Con Paso 1 Hacer
 		Para j <- 0 Hasta 6 Con Paso 1 Hacer
 			Si no (empleado[i,j]= '0') Entonces
@@ -1194,7 +1194,7 @@ SubProceso mostrarMatrizVentas(venta, planesDePago)
 	Definir idPlan, entrega, cuotas como cadena;
 	Limpiar Pantalla;
 	Escribir '______________________________________________________________________________________';
-	Escribir '| N° Legajo |    DNI   | Nombre y Apellido |    Fecha   | Id Auto | Entrega | Cuotas |';
+	Escribir '| File number |    ID Card   | Name and Last name |    Date   | Id Car | Delivery | Dues |';
 	
 	Para i<-0 Hasta 99 Hacer
 		Si No(venta[i,0] = '0') Entonces
@@ -1218,7 +1218,7 @@ FinSubProceso
 
 SubProceso mostrarMatrizRepuestos(repuestos)
 	Definir i, j Como Entero;
-	Escribir '|  Id  | Categoría | Marca | Modelo | Precio | Stock';
+	Escribir '|  Id  | Category | Brand | Model | Price | Stock';
 	Para i<-0 Hasta 99 Hacer
 		Si No(repuestos[i,0] = '0') Entonces
 			Para j<-0 Hasta 5 Hacer
@@ -1247,7 +1247,7 @@ FinSubProceso
 SubProceso mostrarPlanesDePago(planesDePago)
 	Definir i, j Como Entero;
 	Limpiar Pantalla;
-	Escribir '| IdPlan | Entrega | Cuotas |';
+	Escribir '| IdPlan | Delivery | Dues |';
 	Escribir '______________________________';
 	Para i<-0 Hasta 99 Hacer
 		Si No(planesDePago[i,0] = '0') Entonces
