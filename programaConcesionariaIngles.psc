@@ -690,12 +690,12 @@ FinSubProceso
 subproceso menuBusquedaEmpleados(empleado)
 	definir option como entero;
 	Limpiar Pantalla;
-	Escribir '           BUSCAR EMPLEADOS';
+	Escribir '           SEARCH EMPLOYEES';
 	Escribir '_______________________________________';
 	Repetir 
-		escribir "0-Mostrar todos los empleados.";
-		escribir "1-Buscar empleados por n° de legajo.";
-		escribir "2-Salír.";
+		escribir "0-Show all employees.";
+		escribir "1-Search for employees by file number.";
+		escribir "2-Exit.";
 		leer option;
 		Segun option Hacer
 			0:
@@ -705,7 +705,7 @@ subproceso menuBusquedaEmpleados(empleado)
 			2:
 				
 			De Otro Modo:
-				escribir "Dato no válido, intente nuevamente.";
+				escribir "Invalid data, please try again.";
 		FinSegun
 	Hasta Que option = 2;
 	limpiar pantalla;
