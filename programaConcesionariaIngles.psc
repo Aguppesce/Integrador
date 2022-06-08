@@ -758,7 +758,7 @@ SubProceso buscarVentaPorVendedor(venta, empleado, planesDePago)
 	Definir idPlan, entrega, cuotas, idVendedor,  nombreVendedor, nombre, apellido como cadena;
 	Limpiar Pantalla;
 	
-	Escribir sin saltar 'Ingrese Id Vendedor: ';
+	Escribir sin saltar 'Enter Seller Id: ';
 	Leer idVendedor;
 	posicion <- busquedaPorId(empleado, idVendedor);
 	
@@ -770,12 +770,12 @@ SubProceso buscarVentaPorVendedor(venta, empleado, planesDePago)
 	
 	Si posicion <> -1 Entonces
 		Escribir '_______________________________';
-		Escribir '| N° Legajo | Nombre Vendedor |';
+		Escribir '| File Number | Seller´s Name |';
 		Escribir '-------------------------------';
 		Escribir  '|    ', idVendedor,  '    |   ',  nombreVendedor, '  |';
 		Escribir '-------------------------------';
 		Escribir '_____________________________________________________________________________';
-		Escribir '|    DNI   |  Nombre y Apellido |     Fecha    | Id Auto | Entrega | Cuotas |';
+		Escribir '|    ID CARD   |  First and Last Name |     Date    | Id Auto | Delivery | Dues |';
 		Para i<-0 Hasta 99 Hacer
 			
 			Si No(venta[i,0] = '0')  y venta[i, 0] = idVendedor Entonces
@@ -788,14 +788,14 @@ SubProceso buscarVentaPorVendedor(venta, empleado, planesDePago)
 					Escribir  '| ', venta[i,1] , ' |     ', venta[i,2] , '    |   ', venta[i,3], ' |  ', venta[i,4] , '  | ', entrega, '   |   ', cuotas, '   |';
 				SiNo
 					Escribir '_____________________________________________________________________________';
-					Escribir  '| ', venta[i,1] , ' |   ', venta[i,2] , '      |  ', venta[i,3], ' |  ', venta[i,4] , '  | Sin Plan';
+					Escribir  '| ', venta[i,1] , ' |   ', venta[i,2] , '      |  ', venta[i,3], ' |  ', venta[i,4] , '  | No Plan';
 				FinSi
 				
 			FinSi
 		FinPara
 		Escribir '_____________________________________________________________________________';
 	SiNo
-		Escribir 'Vendedor no encontrado';
+		Escribir 'Seller not found';
 	FinSi
 	leer i;
 	
