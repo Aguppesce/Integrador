@@ -960,18 +960,18 @@ subproceso  cargaCliente(cliente Por Referencia)
 	definir j,i,indice,posicion como entero;
 	definir nombreYapellido, dni como cadena;
 	Limpiar Pantalla;
-	escribir "Ingrese dni del nuevo cliente: ";
+	escribir "Enter new customer´s ID: ";
 	leer dni;
 	posicion <- busquedaPorId(cliente, dni);
 	Si posicion = -1  entonces
 		indice <- obtenerUltimoIndice(cliente);
-		escribir "Ingrese nombre y apellido del nuevo Cliente: ";
+		escribir "Enter first and last name of new Customer: ";
 		leer nombreYapellido;
 		cliente[indice,0] <- dni;
 		cliente[indice,1] <- nombreYapellido;
 		mostrarClientePorId(cliente, dni);
 	sino
-		escribir "El cliente ya existente.";	
+		escribir "The customer already exists.";	
 	FinSi
 	
 	leer dni;
@@ -996,7 +996,7 @@ subproceso cargarNuevoCliente(dniCliente,cliente)
 	definir nombreYapellido como cadena;
 	Limpiar Pantalla;
 	indice <- obtenerUltimoIndice(cliente);
-	escribir "Ingrese nombre y apellido del nuevo Cliente: ";
+	escribir "Enter first and last name of new Customer: ";
 	leer nombreYapellido;
 	cliente[indice,0] <- dniCliente;
 	cliente[indice,1] <- nombreYapellido;
