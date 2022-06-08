@@ -336,7 +336,7 @@ subproceso realizarCompra(cliente, auto) //4
 	cargaCliente(cliente);
 	//Cargamos un nuevo auto
 	cargaAuto(auto);
-	escribir "Compra registrada con éxito.";
+	escribir "Purchase successfully registered.";
 	leer ok;
 FinSubProceso
 
@@ -352,7 +352,7 @@ Subproceso vehiculoPorMarca(auto)
 	
 	Limpiar Pantalla;
 	
-	Escribir Sin Saltar'Ingrese marca a buscar: ';
+	Escribir Sin Saltar'Enter brand to search: ';
 	Leer marca;
 	marca <- Minusculas(marca);
 	
@@ -372,11 +372,11 @@ Subproceso vehiculoPorMarca(auto)
 	FinPara
 	Si contador <> 0 Entonces
 		Limpiar Pantalla;
-		Escribir 'Resultados encontrados: ', contador, '.';
+		Escribir 'Results found: ', contador, '.';
 		Escribir '-----------------------------------------------------------------------------------------';
 		mostrarAutos(resultados);
 	SiNo
-		Escribir 'No se encontraron resultados con marca: ' , marca;
+		Escribir 'No results were found with brand: ' , marca;
 	FinSi
 	
 	Leer marca;
