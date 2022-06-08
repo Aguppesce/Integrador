@@ -717,16 +717,16 @@ subproceso buscarRepuestoId(repuestos)
 	definir idRepuesto como cadena;
 	definir posicion como entero;
 	Limpiar Pantalla;
-	escribir "Ingrese el id de repuesto que desea buscar.";
+	escribir "Enter the spare part id you wish to search for.";
 	leer idRepuesto;
 	posicion <- busquedaPorId(repuestos,idRepuesto );
 	Escribir '__________________________________________________________________________';
-	escribir '| Id de repuesto | Categoría |     Marca     |   Modelo | Precio | Stock |';
+	escribir '| Spare part ID | Category |     Brand     |   Model | Price | Stock |';
 	Escribir '__________________________________________________________________________';
 	si posicion <> -1 entonces 
 		escribir '|   ',repuestos[posicion,0], '    |    ', repuestos[posicion,1] ,'   |      ',repuestos[posicion,2],'     |   ',repuestos[posicion,3],'  |  ',repuestos[posicion,4], '  |   ',repuestos[posicion,5],'  | ';
 	SiNo
-		Escribir 'Repuesto no encontrado';
+		Escribir 'Spare part not found';
 	FinSi
 	leer posicion;
 FinSubProceso
