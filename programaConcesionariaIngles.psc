@@ -805,11 +805,11 @@ subproceso buscarEmpleadosLegajo(empleado)
 	definir numLegajo como cadena;
 	definir posicion como entero;
 	Limpiar Pantalla;
-	escribir Sin Saltar"Ingrese el n° de legajo que desea buscar.";
+	escribir Sin Saltar"Enter the file number you wish to search for.";
 	leer numlegajo;
 	posicion <- busquedaPorId(empleado, numLegajo);
 	Escribir '______________________________________________________________________________________';
-	escribir "| N° de legajo | Nombre | Nombre 2 | Apellido |    Dirección   | Edad | Nacionalidad |";
+	escribir "| File number | Name | Name 2 | Last name |    Address   | Age | Nationality |";
 	Escribir '______________________________________________________________________________________';
 	si posicion <> -1 entonces 
 		Si empleado[posicion,2]  = '' Entonces
@@ -819,7 +819,7 @@ subproceso buscarEmpleadosLegajo(empleado)
 		FinSi
 		Escribir '______________________________________________________________________________________';
 	Sino
-		Escribir 'Empleado no encontrado';
+		Escribir 'Employee not found';
 	FinSi
 	Leer numlegajo;
 FinSubProceso
