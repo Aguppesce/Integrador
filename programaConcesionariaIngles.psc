@@ -117,7 +117,7 @@ subproceso realizarVenta(cliente,auto,empleado,venta,planesDePago, repuesto) //0
 	definir option, i como entero;
 	Repetir
 		Limpiar Pantalla;
-		Escribir '         PUT OPTIONS';
+		Escribir '         SALES OPTIONS';
 		Escribir '___________________________________';
 		escribir "0-Vehicle by brand.";
 		escribir "1-Payment plans.";
@@ -137,7 +137,7 @@ subproceso realizarVenta(cliente,auto,empleado,venta,planesDePago, repuesto) //0
 				ventaRepuesto(repuesto, cliente, empleado);
 			4:
 			De Otro Modo:
-				escribir "Dato no válido, intente nuevamente.";
+				escribir "Invalid data, please try again.";
 		FinSegun
 		Hasta Que	option = 4;
 		limpiar pantalla;
@@ -149,14 +149,14 @@ subproceso menuBusqueda(empleado, auto, cliente, repuesto, venta, planes) //1
 	
 	Repetir
 		Limpiar Pantalla;
-		Escribir '       REALIZAR UNA BUSQUEDA';
+		Escribir '       PERFORM A SEARCH';
 		Escribir '____________________________________';
-		escribir "0-Vehículos";
-		escribir "1-Empleados.";
-		escribir "2-Repuestos.";
-		escribir "3-Cliente";
-		Escribir "4-Ventas";
-		escribir "5-Salír";
+		escribir "0-Vehicles";
+		escribir "1-Employees.";
+		escribir "2-Spare parts .";
+		escribir "3-Customer";
+		Escribir "4-Sales";
+		escribir "5-Exit";
 		leer option;
 		Segun option Hacer
 			0:
@@ -171,7 +171,7 @@ subproceso menuBusqueda(empleado, auto, cliente, repuesto, venta, planes) //1
 				menuVentas(venta, planes, empleado);
 			5:
 			De Otro Modo:
-				escribir "Dato no válido, intente nuevamente.";
+				escribir "Invalid data, please try again.";
 		FinSegun
 		
 	Hasta Que option = 5;
