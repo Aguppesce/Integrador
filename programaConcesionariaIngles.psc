@@ -604,25 +604,25 @@ SubProceso ventaRepuesto(repuesto, cliente, empleado)
 	//Cargamos legajo de vendedor
 	
 	Escribir '_____________________________________________';
-	escribir sin saltar "Ingrese su número de legajo: ";
+	escribir sin saltar "Enter your file number: ";
 	leer numLegajo;     
 	indiceEmpleado <- busquedaPorId(empleado, numLegajo);
 	Mientras indiceEmpleado = -1 Hacer
-		Escribir 'Empleado no encontrado. Vuelva a intentarlo.';
-		escribir sin saltar "Ingrese su número de legajo: ";
+		Escribir 'Employee not found. Please try again.';
+		escribir sin saltar "Enter your file number: ";
 		leer numLegajo;   
 		indiceEmpleado <- busquedaPorId(empleado,numLegajo);
 	FinMientras
 	
 	Escribir '_____________________________________________';
-	escribir sin saltar "Ingrese fecha actual: ";
+	escribir sin saltar "Enter current date: ";
 	leer fechaActual;
 	
 	total <- precioUnitario * cantidadRepuesto;
 	
 	Escribir '______________________________________________________________________________________________________________________';
 	
-	Escribir ' | Num Legajo |     DNI    | Nombre y apellido |  Id Repuesto  | Precio Unitario | Cantidad |     Fecha     |  Total  |';
+	Escribir ' | Num File |     ID CARD    | First and last name |  Id Spare part  | Unit Price | Amount |     Date     |  Total  |';
 	Escribir '_______________________________________________________________________________________________________________________';
 	Escribir '|     ', numLegajo , '     |  ', dniCliente, '  |   ', nombreYapellido, '    |   ' ,IdRepuesto , '   |      $',precioUnitario, '      |     ', cantidadRepuesto, '    |   ', fechaActual, '  |  $', total, '  |' ;
 	Escribir '_______________________________________________________________________________________________________________________';
