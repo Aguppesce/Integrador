@@ -530,26 +530,26 @@ SubProceso ventaRepuesto(repuesto, cliente, empleado)
 	//cargamos cliente
 	
 	Escribir '';
-	Escribir '       VENTA DE REPUESTO:';
+	Escribir '       SPARE PARTS SALES:';
 	Escribir '';
 	Escribir '';
 	
 	
 	Repetir
 		Escribir '_____________________________________________';
-		escribir  Sin Saltar"Ingrese el DNI del cliente: ";
+		escribir  Sin Saltar"Enter the customer´s ID number: ";
 		leer dniCliente;     
 		indiceCliente <- busquedaPorId(cliente,dniCliente);
 		si indiceCliente <> -1 entonces
 			existeCliente <- verdadero;
-			Escribir 'Se encontro el cliente con id: ', dniCliente;
+			Escribir 'Customer found with id: ', dniCliente;
 		FinSi
 	Hasta Que indiceCliente = -1 o existeCliente;
 	
 	// Sino encuentra al cliente ingresado, Cargamos un nuevo cliente..
 	si no existeCliente entonces
 		Escribir '_____________________________________________';
-		escribir "No se encontro al Cliente ";
+		escribir "Customer not found ";
 		cargarNuevoCliente(dniCliente,cliente);
 		indiceCliente <- busquedaPorId(cliente,dniCliente);
 	FinSi
@@ -559,14 +559,14 @@ SubProceso ventaRepuesto(repuesto, cliente, empleado)
 	
 	//elegir repuesto 
 	Escribir '_____________________________________________';
-	Escribir Sin Saltar'Ingrese Id repuesto: ';
+	Escribir Sin Saltar'Enter Spare part Id: ';
 	leer IdRepuesto;  
 	
 	indiceRepuesto <- busquedaPorId(repuesto, IdRepuesto);
 	
 	Mientras indiceRepuesto = -1 Hacer
-		Escribir 'Repuesto no encontrado. Vuelva a intentarlo.';
-		escribir sin saltar "Ingrese Id repuesto: ";
+		Escribir 'Spare part not found. Please try again.';
+		escribir sin saltar "Enter Spare part Id: ";
 		leer IdRepuesto;   
 		indiceRepuesto <- busquedaPorId(repuesto,IdRepuesto);
 	FinMientras
@@ -575,7 +575,7 @@ SubProceso ventaRepuesto(repuesto, cliente, empleado)
 	
 	//Ingresmos cantidad repuesto..
 	
-	Escribir Sin Saltar'Ingrese unidades de repuestos: '; 
+	Escribir Sin Saltar'Enter spare parts units: '; 
 	Leer cantidadRepuesto; 
 	
 	stock <- repuesto[indiceRepuesto, 5]; 
@@ -585,17 +585,17 @@ SubProceso ventaRepuesto(repuesto, cliente, empleado)
 	precioUnitario <- ConvertirANumero(repuesto[indiceRepuesto, 4]);
 	
 	Si stockNumero < 0 Entonces
-		Escribir 'No hay stock.';
-		Escribir 'Stock actual: ', repuesto[indiceRepuesto, 5]; 
+		Escribir 'No stock.';
+		Escribir 'Current stock: ', repuesto[indiceRepuesto, 5]; 
 	FinSi
 	Mientras stockNumero < 0 Hacer
-		Escribir 'Ingrese unidades de repuestos: '; 
+		Escribir 'Enter spare parts units: '; 
 		Leer cantidadRepuesto;   
 		stockNumero <- stockNumero - cantidadRepuesto; 
 	FinMientras
 	
 	repuesto[indiceRepuesto, 5] <- ConvertirATexto(stockNumero); 
-	Escribir 'Stock restante: ', repuesto[indiceRepuesto, 5]; 
+	Escribir 'Remaining stock: ', repuesto[indiceRepuesto, 5]; 
 	
 	
 	
