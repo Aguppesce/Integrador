@@ -107,7 +107,7 @@ subproceso realizarVenta(cliente,auto,empleado,venta,planesDePago, repuesto) //0
 				ventaRepuesto(repuesto, cliente, empleado);
 			4:
 			De Otro Modo:
-				escribir "Dato no válido, intente nuevamente.";
+				escribir "Invalid data, Please try again.";
 		FinSegun
 		Hasta Que	option = 4;
 		limpiar pantalla;
