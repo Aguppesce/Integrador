@@ -267,7 +267,7 @@ subproceso realizarServiciosAlquiler(cliente, auto, empleado)
 	
 	//	Fecha Actual
 	Escribir '_____________________________________________________________________';
-	escribir sin saltar "Ingrese fecha actual: ";
+	escribir sin saltar "Enter current date: ";
 	leer fechaActual;
 	
 	//Obtenemos el precio por hora del auto solicitado
@@ -282,7 +282,7 @@ subproceso realizarServiciosAlquiler(cliente, auto, empleado)
 	
 	
 	Escribir '_____________________________________________________________________';
-	Escribir '| Vendedor |  Id Auto |    DNI   | Precio por Hora |  Fecha Retiro  | ';
+	Escribir '| Salesperson |  Auto Id |    ID CARD   | Hourly Rate |  Withdrawal Date  | ';
 	Escribir '_____________________________________________________________________';
 	Escribir '|    ', numLegajo , '   |  ', idAuto , '   |  ', dniCliente ,' |      $', precioHora , '       |   ', fechaActual, '   |';  
 	Escribir '_____________________________________________________________________';
