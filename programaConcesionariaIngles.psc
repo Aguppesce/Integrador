@@ -1282,7 +1282,7 @@ SubProceso barra(operacion)
 	
 	Escribir '';	Escribir '';
 	
-	Escribir '                      CARGANDO ' , operacion ;
+	Escribir '                      LOADING ' , operacion ;
 	Escribir '---------------------------------------------------------------------';
 	
 	Para i<- 0 Hasta 69  Hacer 
@@ -1293,7 +1293,7 @@ SubProceso barra(operacion)
 	Escribir '';
 	Escribir '---------------------------------------------------------------------';
 	Escribir '';
-	Escribir 'OPERACIÓN FINALIZADA';
+	Escribir 'OPERATION COMPLETED';
 	
 FinSubProceso
 
