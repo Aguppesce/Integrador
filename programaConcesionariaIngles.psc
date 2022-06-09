@@ -12,7 +12,7 @@ Proceso Principal
 		1:
 			english();
 		De Otro Modo: 
-			escribir "Invalid option!";
+			escribir " Invalid option!";
 	FinSegun
 	
 FinProceso
