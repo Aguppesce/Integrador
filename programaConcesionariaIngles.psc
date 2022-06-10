@@ -26,17 +26,17 @@ SubProceso  english
 	
 	
 	//Llena con ceros todas la matrices 
-	preChargeCar(auto);
-	preChargeEmployee(empleado);
-	preChargeSpares(repuestos);
-	preChargePaymentPlan(planesDePago);
+	preSetCar(auto);
+	preSetEmployee(empleado);
+	preSetSpares(repuestos);
+	preSetPaymentPlan(planesDePago);
 	preSetSales(venta);
-	preChargeCustomers(cliente);
+	preSetCustomers(cliente);
 	
 	//Carga con datos de ejemplo las matrices 
-	cargaMatrizAuto(auto);
-	cargaMatrizEmpleado(empleado);
-	cargaMatrizRepuestos(repuestos);
+	setCarList(auto);
+	setEmployeeList(empleado);
+	setSpareList(repuestos);
 	cargaMatrizPlanesDePago(planesDePago);
 	cargaClientes(cliente);
 	cargaVentas(venta);
@@ -87,7 +87,7 @@ subproceso realizarVenta(cliente,auto,empleado,venta,planesDePago, repuesto) //0
 	definir option, i como entero;
 	Repetir
 		Limpiar Pantalla;
-		Escribir '         SALES OPTIONS';
+		Escribir '         OPCIONES DE VENTA';
 		Escribir '___________________________________';
 		escribir "0-Vehículo por marca.";
 		escribir "1-Planes de pago.";
@@ -347,7 +347,7 @@ Subproceso vehiculoPorMarca(auto)
 	Definir i,j , contador, indice Como Entero;
 	
 	Dimension resultados[100, 8];
-	preChargeCar(resultados);
+	preSetCar(resultados);
 	contador <- 0;
 	
 	Limpiar Pantalla;
@@ -1337,7 +1337,7 @@ FinSubProceso
 
 
 //Pre carga___________________________________________________________________________________________________
-subproceso preChargeEmployee(empleado)
+subproceso preSetEmployee(empleado)
 	definir i,j como entero;
 	Para i <- 0 Hasta 99 Hacer
 		Para j<-0 Hasta 6 Hacer
@@ -1346,7 +1346,7 @@ subproceso preChargeEmployee(empleado)
 	FinPara
 	
 FinSubProceso
-subproceso preChargeCar(auto)
+subproceso preSetCar(auto)
 	definir i,j como entero;
 	Para i <- 0 Hasta 99 Hacer
 		Para j <- 0 Hasta 7 Hacer
@@ -1355,7 +1355,7 @@ subproceso preChargeCar(auto)
 	FinPara
 FinSubProceso
 
-subproceso preChargeSpares(repuestos)
+subproceso preSetSpares(repuestos)
 	definir i,j como entero;
 	Para i<-0 Hasta 99 Hacer
 		Para j<-0 Hasta 5 Hacer
@@ -1373,7 +1373,7 @@ subproceso preSetSales(venta)
 	FinPara
 	
 FinSubProceso
-subproceso preChargeCustomers(cliente)
+subproceso preSetCustomers(cliente)
 	definir i,j como entero;
 	Para i <- 0 Hasta 99 Hacer
 		Para j <- 0 Hasta 1 Hacer
@@ -1383,7 +1383,7 @@ subproceso preChargeCustomers(cliente)
 	
 FinSubProceso
 
-subproceso preChargePaymentPlan(planesDePago)
+subproceso preSetPaymentPlan(planesDePago)
 	definir i,j como entero;
 	Para i <- 0 Hasta 99 Hacer
 		Para j <- 0 Hasta 2 Hacer
@@ -1436,7 +1436,7 @@ SubProceso cargaVentas(venta)
 	
 FinSubProceso
 
-subproceso cargaMatrizAuto(auto)
+subproceso setCarList(auto)
 	
 	
 	Definir i Como Entero;
@@ -1715,7 +1715,7 @@ subproceso cargaMatrizAuto(auto)
 FinSubProceso
 
 
-subproceso cargaMatrizEmpleado(empleado)
+subproceso setEmployeeList(empleado)
 	Definir i Como Entero;
 	
 	i<-0;        // i = 0
@@ -2005,7 +2005,7 @@ FinSubProceso
 
 // código grupo 2
 
-SubProceso  cargaMatrizRepuestos(repuestos) //Subproceso para cargar los repuestos
+SubProceso  setSpareList(repuestos) //Subproceso para cargar los repuestos
 	Definir i como Entero;
 	i<-0;        // i = 0
 	repuestos[i,0] <- '100123987'; repuestos[i,1] <-'optica';repuestos[i,2] <-'fiat';repuestos[i,3] <-'palio';
