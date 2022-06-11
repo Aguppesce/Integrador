@@ -131,7 +131,7 @@ FinSubProceso
 
 SubProceso serviceRental(cliente, auto, empleado)
 	
-	Definir customerDni, idCar, pricePerHour, fileNum, currentDare,answ,enableCar Como Cadena;
+	Definir customerDni, idCar, pricePerHour, fileNum, currentDate,answ,enableCar Como Cadena;
 	Definir customerIndex, carIndex, employeeIndex Como Entero;
 	Definir customerExist Como Logico;
 	
@@ -218,7 +218,7 @@ SubProceso serviceRental(cliente, auto, empleado)
 	//	Current date
 	Escribir '_____________________________________________________________________';
 	Escribir Sin Saltar "Ingrese fecha actual: ";
-	Leer currentDare;
+	Leer currentDate;
 	
 	// We get the price per hour of the requested car
 	pricePerHour <- auto[carIndex, 6];
@@ -228,13 +228,13 @@ SubProceso serviceRental(cliente, auto, empleado)
 	auto[carIndex,7] <- 'false';	
 	
 	
-	barra('Alquiler');	
+	bar('Alquiler');	
 	
 	
 	Escribir '_____________________________________________________________________';
 	Escribir '| Vendedor |  Id Auto |    DNI   | Precio por Hora |  Fecha Retiro  | ';
 	Escribir '_____________________________________________________________________';
-	Escribir '|    ', fileNum , '   |  ', idCar , '   |  ', customerDni ,' |      $', pricePerHour , '       |   ', currentDare, '   |';  
+	Escribir '|    ', fileNum , '   |  ', idCar , '   |  ', customerDni ,' |      $', pricePerHour , '       |   ', currentDate, '   |';  
 	Escribir '_____________________________________________________________________';
 	
 	
@@ -324,7 +324,7 @@ SubProceso carByBrand(auto)
 		Limpiar Pantalla;
 		Escribir 'Resultados encontrados: ', count, '.';
 		Escribir '-----------------------------------------------------------------------------------------';
-		mostrarAutos(results);
+		printCars(results);
 	SiNo
 		Escribir 'No se encontraron resultados con marca: ' , brand;
 	FinSi
@@ -900,36 +900,36 @@ SubProceso setCar(auto)
 	auto[index,4] <- km;
 	auto[index,5] <- price;
 	auto[index,6] <- pricePerHour;
-	// Te ponemeos la disponibilidad a true / disponible 
+	// Set the availability to true / available
 	auto[index,7] <- "true";
 	Escribir "Se agregó un nuevo auto.";
 	Leer id;
 FinSubProceso
 
-subproceso  setCustomer(cliente Por Referencia)
-	definir j,i,index,position como entero;
-	definir nameAndLastName, dni como cadena;
+SubProceso  setCustomer(cliente Por Referencia)
+	Definir j,i,index,position Como Entero;
+	Definir nameAndLastName, dni Como Cadena;
 	Limpiar Pantalla;
-	escribir "Ingrese dni del nuevo cliente: ";
-	leer dni;
+	Escribir "Ingrese dni del nuevo cliente: ";
+	Leer dni;
 	position <- findById(cliente, dni);
-	Si position = -1  entonces
+	Si position = -1  Entonces
 		index <- getLastIndex(cliente);
-		escribir "Ingrese nombre y apellido del nuevo Cliente: ";
-		leer nameAndLastName;
+		Escribir "Ingrese nombre y apellido del nuevo Cliente: ";
+		Leer nameAndLastName;
 		cliente[index,0] <- dni;
 		cliente[index,1] <- nameAndLastName;
-		mostrarClientePorId(cliente, dni);
-	sino
-		escribir "El cliente ya existente.";	
+		printCustomerById(cliente, dni);
+	SiNo
+		Escribir "El cliente ya existente.";	
 	FinSi
 	
 	leer dni;
 FinSubProceso
 
-subproceso setSale(auto,venta,cliente, lastSale, fileNum,customerDni,customerIndex, currentDate,carIndex, planPago)
-	definir nameAndLastName, carId como cadena;
-	//Cambiamnos el estado del auto vendido a 'false' -- Vendido
+SubProceso setSale(auto,venta,cliente, lastSale, fileNum,customerDni,customerIndex, currentDate,carIndex, planPago)
+	Definir nameAndLastName, carId Como Cadena;
+	//Change the status of the sold car to 'false' -- Sold
 	auto[carIndex, 7] <- 'false';
 	nameAndLastName <- cliente[customerIndex,1];
 	venta[lastSale,0] <- fileNum;
@@ -941,60 +941,60 @@ subproceso setSale(auto,venta,cliente, lastSale, fileNum,customerDni,customerInd
 	venta[lastSale,5] <- planPago;
 FinSubProceso
 
-subproceso loadNewCustomer(customerDni,cliente)
-	definir j,i,index como entero;
-	definir nameAndLastName como cadena;
+SubProceso loadNewCustomer(customerDni,cliente)
+	Definir j,i,index Como Entero;
+	Definir nameAndLastName Como Cadena;
 	Limpiar Pantalla;
 	index <- getLastIndex(cliente);
-	escribir "Ingrese nombre y apellido del nuevo Cliente: ";
-	leer nameAndLastName;
+	Escribir "Ingrese nombre y apellido del nuevo Cliente: ";
+	Leer nameAndLastName;
 	cliente[index,0] <- customerDni;
 	cliente[index,1] <- nameAndLastName;
-	mostrarClientePorId(cliente, customerDni);
+	printCustomerById(cliente, customerDni);
 FinSubProceso
 
-subproceso setEmployees(empleado)
-	definir index como entero;
-	limpiar pantalla;
-	definir legajo,name,name2,lastName,direccion,edad,nacionalidad como cadena;
+SubProceso setEmployees(empleado)
+	Definir index Como Entero;
+	Limpiar Pantalla;
+	Definir file,name,name2,lastName,address,age,nationality Como Cadena;
 	Escribir '           CARGA EMPLEADO';
 	Escribir '___________________________________';
-	escribir "Ingrese el n° de legajo: ";
-	leer legajo;
-	escribir "Ingrese el nombre: ";
-	leer name;
-	escribir "Ingrese el segundo numbre: ";
-	leer name2;
-	escribir "Ingrese el apellido: ";
-	leer lastName;
-	escribir "Ingrese domicilio: ";
-	leer direccion;
-	escribir "Ingrese edad: ";
-	leer edad;
-	escribir "Ingrese nacionalidad: ";
-	leer nacionalidad;
+	Escribir "Ingrese el n° de legajo: ";
+	Leer file;
+	Escribir "Ingrese el nombre: ";
+	Leer name;
+	Escribir "Ingrese el segundo numbre: ";
+	Leer name2;
+	Escribir "Ingrese el apellido: ";
+	Leer lastName;
+	Escribir "Ingrese domicilio: ";
+	Leer address;
+	Escribir "Ingrese edad: ";
+	Leer age;
+	Escribir "Ingrese nacionalidad: ";
+	Leer nationality;
 	index <- getLastIndex(empleado);
-	empleado[index,0] <- legajo;
+	empleado[index,0] <- file;
 	empleado[index,1] <- name;
 	empleado[index,2] <- name2;
 	empleado[index,3] <- lastName;
-	empleado[index,4] <- direccion;
-	empleado[index,5] <- edad;
-	empleado[index,6] <- nacionalidad;
-	escribir "Un nuevo empleado ha sido cargado con éxito.";
-	leer legajo;
+	empleado[index,4] <- address;
+	empleado[index,5] <- age;
+	empleado[index,6] <- nationality;
+	Escribir "Un nuevo empleado ha sido cargado con éxito.";
+	Leer file;
 FinSubProceso
 
 SubProceso setSpares(repuestos)
-	Definir id, categoria, brand, model, price, stock Como Cadena;
+	Definir id, category, brand, model, price, stock Como Cadena;
 	Definir index Como Entero;
 	Limpiar Pantalla;
 	Escribir Sin Saltar "Ingrese id: ";
 	Leer id;
 	Escribir Sin Saltar "Ingrese categoría: ";
-	Leer categoria;
+	Leer category;
 	Escribir Sin Saltar "Ingrese marca: ";
-	Leer marca;
+	Leer brand;
 	Escribir Sin Saltar "Ingrese modelo: ";
 	Leer model;
 	Escribir Sin Saltar "Ingrese precio: ";
@@ -1003,56 +1003,56 @@ SubProceso setSpares(repuestos)
 	Leer stock;
 	index <- getLastIndex(repuestos);
 	repuestos[index,0] <- id;
-	repuestos[index,1] <- categoria;
-	repuestos[index,2] <- marca;
+	repuestos[index,1] <- category;
+	repuestos[index,2] <- brand;
 	repuestos[index,3] <- model;
 	repuestos[index,4] <- price;
 	repuestos[index,5] <- stock;
-	escribir "Un nuevo repuesto ha sido cargado con éxito.";
-	leer id;
+	Escribir "Un nuevo repuesto ha sido cargado con éxito.";
+	Leer id;
 FinSubProceso
 
-Subproceso setNewPaymentPlan(paymentsPlan)
-	definir idPlan,delivery,dues como cadena;
-	definir index como entero;
+SubProceso setNewPaymentPlan(paymentsPlan)
+	Definir idPlan,delivery,dues Como Cadena;
+	Definir index Como Entero;
 	Limpiar Pantalla;
 	Escribir '          CARGA NUEVO PLAN ';
 	Escribir '_____________________________________';
-	escribir sin saltar "Ingrese nuevo id de plan: ";
-	leer idPlan;
-	escribir sin saltar "Ingrese monto de la entrega: $";
-	leer delivery;
-	escribir sin saltar "Ingrese n° de cuotas: ";
-	leer dues;
+	Escribir Sin Saltar "Ingrese nuevo id de plan: ";
+	Leer idPlan;
+	Escribir Sin Saltar "Ingrese monto de la entrega: $";
+	Leer delivery;
+	Escribir Sin Saltar "Ingrese n° de cuotas: ";
+	Leer dues;
 	index <- getLastIndex(paymentsPlan);
 	paymentsPlan[index,0] <- idPlan;
 	paymentsPlan[index,1] <- delivery;
 	paymentsPlan[index,2] <- dues;
-	escribir sin saltar "Un nuevo plan fue cargado con éxito.";
-	leer idPlan;
+	Escribir Sin Saltar "Un nuevo plan fue cargado con éxito.";
+	Leer idPlan;
 FinSubProceso
 
-//Mostrar por ID___________________________________________________________________________________________________
+//Print by ID___________________________________________________________________________________________________
 
 
-SubProceso printSaleById(ventas, cliente, paymentsPlan, idVenta)
+SubProceso printSaleById(ventas, cliente, paymentsPlan, idSale)
 	
-	Definir legajo , dni , nameAndLastName , fecha, IdAuto, infoPlan, idPlan, answ Como Cadena;
+	Definir file , dni , nameAndLastName , date, carId, planInfo, idPlan, answ Como Cadena;
 	Definir delivery, dues Como Cadena;
-	Definir posPaymentPlan, posCliente Como Entero;
+	Definir posPaymentPlan, posCustomer Como Entero;
 	
 	Limpiar Pantalla;
 	
-	legajo <- ventas[idVenta,0];
-	dni <- ventas[idVenta,1];
+	file <- ventas[idSale,0];
+	dni <- ventas[idSale,1];
 	
-	posCliente <- findById(cliente, dni);
-	nameAndLastName <- cliente[posCliente, 1];
+	posCustomer <- findById(cliente, dni);
+	nameAndLastName <- cliente[posCustomer, 1];
 	
-	fecha <- ventas[idVenta,3];
-	carId <- ventas[idVenta,4];
+	date <- ventas[idSale,3];
+	carId <- ventas[idSale,4];
 	
-	idPlan <- ventas[idVenta,5];
+	idPlan <- ventas[idSale,5];
 	
 	Si idPlan <> '0' Entonces
 		posPaymentPlan <- findById(paymentsPlan, idPlan);
@@ -1062,20 +1062,20 @@ SubProceso printSaleById(ventas, cliente, paymentsPlan, idVenta)
 		Escribir '| N° Legajo |    DNI   | Nombre y Apellido |    Fecha   |  Id Auto  | Entrega | Cuotas |';
 		
 		Escribir '________________________________________________________________________________________';
-		Escribir  '|    ',legajo, '    | ', dni , ' |    ', nameAndLastName , '     | ', fecha, ' |   ', carId , '   |   ', delivery, '  |    ', dues, ' |';
+		Escribir  '|    ',file, '    | ', dni , ' |    ', nameAndLastName , '     | ', date, ' |   ', carId , '   |   ', delivery, '  |    ', dues, ' |';
 	SiNo
 		Escribir '________________________________________________________________________________________';
 		Escribir '| N° Legajo | DNI | Nombre y Apellido | Fecha | Id Auto | Id Plan |';
 		Escribir '__________________________________________________________________________________';
-		Escribir  legajo, ' | ', dni , ' | ', nameAndLastName , ' | ', fecha, ' | ', carId , ' | Sin Plan';
+		Escribir  file, ' | ', dni , ' | ', nameAndLastName , ' | ', date, ' | ', carId , ' | Sin Plan';
 	FinSi
 	Escribir '________________________________________________________________________________________';
 	
 	Leer answ;
 FinSubProceso
 
-SubProceso mostrarClientePorId(cliente, idCustomer)
-	Definir customerIndex  como entero;
+SubProceso printCustomerById(cliente, idCustomer)
+	Definir customerIndex  Como Entero;
 	customerIndex <- findById(cliente, idCustomer);
 	Escribir '|  DNI  | Nombre y Apellido |';
 	Escribir '|',cliente[customerIndex,0],'|',cliente[customerIndex,1],'|';
@@ -1085,9 +1085,9 @@ SubProceso mostrarClientePorId(cliente, idCustomer)
 FinSubProceso
 
 SubProceso printSpareById(repuesto, idSpare)
-	Definir spareIndex  como entero;
+	Definir spareIndex  Como Entero;
 	spareIndex <- findById(repuesto, idSpare);
-	// Id, Categoría, Marca, Modelo, Precio, stock.
+	// Id, Category, Brand, Model, Price, stock.
 	Escribir '_______________________________________________________________';
 	Escribir '|  Id Repuesto  | Categoria | Marca | Modelo | Precio | Stock |';
 	Escribir '_______________________________________________________________';
@@ -1095,9 +1095,9 @@ SubProceso printSpareById(repuesto, idSpare)
 	Escribir '_______________________________________________________________';	
 FinSubProceso
 
-//Mostrar Todos___________________________________________________________________________________________________
+//Print all's___________________________________________________________________________________________________
 
-subproceso availableCar(auto)
+SubProceso availableCar(auto)
 	Definir i Como Entero;
 	Limpiar Pantalla;
 	Escribir '|   Id   |  Año  |  Marca |  Modelo |   Km   |  Precio  | Precio Alquiler |'; 
@@ -1110,7 +1110,7 @@ subproceso availableCar(auto)
 	Leer i;
 FinSubProceso
 
-subproceso mostrarAutos(auto)
+SubProceso printCars(auto)
 	Definir i Como Entero;
 	Escribir '|   Id   |   Año  |  Marca | Modelo |    Km     | Precio  | Precio Alquiler |  Estado  |';
 	Escribir '-----------------------------------------------------------------------------------------';
@@ -1122,17 +1122,17 @@ subproceso mostrarAutos(auto)
 FinSubProceso
 
 subproceso printAllEmployees(empleado)
-	definir i,j como entero;
+	Definir i,j Como Entero;
 	Limpiar Pantalla;
-	escribir "| N° de legajo | Nombre | Nombre 2 | Apellido | Dirección | Edad | Nacionalidad |";
+	Escribir "| N° de legajo | Nombre | Nombre 2 | Apellido | Dirección | Edad | Nacionalidad |";
 	Para i <- 0 Hasta 99 Con Paso 1 Hacer
 		Para j <- 0 Hasta 6 Con Paso 1 Hacer
-			Si no (empleado[i,j]= '0') Entonces
-				escribir sin saltar "| ",empleado[i,j];
+			Si No (empleado[i,j]= '0') Entonces
+				Escribir Sin Saltar "| ",empleado[i,j];
 			FinSi
 		FinPara
-		Si no (empleado[i,0]= '0') Entonces
-			escribir " |";
+		Si No (empleado[i,0]= '0') Entonces
+			Escribir " |";
 		FinSi
 	FinPara
 	Escribir '_____________________________________________________________________________________';
@@ -1141,7 +1141,7 @@ FinSubProceso
 SubProceso printSalesList(venta, paymentsPlan)
 	
 	Definir i, j, posPaymentPlan Como Entero;
-	Definir idPlan, delivery, dues como cadena;
+	Definir idPlan, delivery, dues Como Cadena;
 	Limpiar Pantalla;
 	Escribir '______________________________________________________________________________________';
 	Escribir '| N° Legajo |    DNI   | Nombre y Apellido |    Fecha   | Id Auto | Entrega | Cuotas |';
@@ -1162,7 +1162,7 @@ SubProceso printSalesList(venta, paymentsPlan)
 		FinSi
 	FinPara
 	Escribir '______________________________________________________________________________________';
-	leer i;
+	Leer i;
 	
 FinSubProceso
 
@@ -1177,10 +1177,10 @@ SubProceso printSpareList(repuestos)
 			Escribir '|';
 		FinSi
 	FinPara
-	leer i;
+	Leer i;
 FinSubProceso
 
-SubProceso mostrarClientes(cliente)
+SubProceso printCustomers(cliente)
 	Definir i,j Como Entero;
 	Limpiar Pantalla;
 	Para i<-0 Hasta 99 Hacer
@@ -1210,8 +1210,8 @@ SubProceso printPaymentsPlan(paymentsPlan)
 	Escribir '______________________________';
 FinSubProceso
 
-subproceso mostrarVentas(venta)
-	definir i, j como entero;
+SubProceso printSales(venta)
+	Definir i, j Como Entero;
 	Limpiar Pantalla;
 	Para i<-0 Hasta 99 Hacer
 		Si No(venta[i,0] = '0') Entonces
@@ -1224,15 +1224,15 @@ subproceso mostrarVentas(venta)
 	Leer i;
 FinSubProceso
 
-//Barra de carga______________________________________________________________________________________________
-SubProceso barra(operacion)
+// Loading bar______________________________________________________________________________________________
+SubProceso bar(operation)
 	
-	definir i Como Entero;
-	operacion<- Mayusculas(operacion);
+	Definir i Como Entero;
+	operation<- Mayusculas(operation);
 	
 	Escribir '';	Escribir '';
 	
-	Escribir '                      CARGANDO ' , operacion ;
+	Escribir '                      CARGANDO ' , operation ;
 	Escribir '---------------------------------------------------------------------';
 	
 	Para i<- 0 Hasta 69  Hacer 
@@ -1251,44 +1251,44 @@ FinSubProceso
 
 SubProceso baner()
 	Esperar 1 Segundos;
-	escribir "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXO------------OXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
-	esperar 200 milisegundos;
-	escribir "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|            |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
-	esperar 200 milisegundos;
-	escribir "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|Team pro_Utn|XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
-	esperar 200 milisegundos;
-	escribir "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|            |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
-	esperar 200 milisegundos;
-	escribir "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXO------------OXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+	Escribir "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXO------------OXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+	Esperar 200 Milisegundos;
+	Escribir "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|            |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+	Esperar 200 Milisegundos;
+	Escribir "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|Team pro_Utn|XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+	Esperar 200 Milisegundos;
+	Escribir "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|            |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+	Esperar 200 Milisegundos;
+	Escribir "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXO------------OXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
 	
 	
-	//escribir " ";
-	esperar 100 milisegundos;
+	//Write " ";
+	Esperar 100 Milisegundos;
 	Escribir "         		                                  _._";
-	esperar 100 milisegundos;
+	Esperar 100 Milisegundos;
 	Escribir "           		                           _.-=´´_-         _";
-	esperar 100 milisegundos;
+	Esperar 100 Milisegundos;
 	Escribir "            		                     _.-=´´   _-          | |´´´´´´´---._______     __..";
-	esperar 100 milisegundos;
+	Esperar 100 Milisegundos;
 	Escribir "            		         ___.===¨¨¨¨-.______-,,,,,,,,,,,,`-¨ ¨----´¨¨ ¨¨¨¨       ¨¨¨¨  __¨¨";
-	esperar 100 milisegundos;
+	Esperar 100 Milisegundos;
 	Escribir "            		  _.--¨¨¨     _        ,´                   o \           _        [_]|";
-	esperar 100 milisegundos;
+	Esperar 100 Milisegundos;
 	Escribir "        		 __-´´=======.--¨¨  ¨¨--.=================================.--¨¨  ¨¨--.=======:";
-	esperar 100 milisegundos;
+	Esperar 100 Milisegundos;
 	Escribir "        		]       [w] : /        \ : |========================|    : /        \ :  [w] :";
-	esperar 100 milisegundos;
+	Esperar 100 Milisegundos;
 	Escribir "        		V___________:|          |: |========================|    :|          |:   _-´";
-	esperar 100 milisegundos;
+	Esperar 100 Milisegundos;
 	Escribir "         		V__________: \        / :_|=======================/_____: \        / :__-´";
-	esperar 100 milisegundos;
+	Esperar 100 Milisegundos;
 	Escribir "         		-----------´  ¨¨____¨¨  `-------------------------------´  ¨¨____¨¨";
 FinSubProceso
 
 
-//Pre carga___________________________________________________________________________________________________
-subproceso preSetEmployeeList(empleado)
-	definir i,j como entero;
+//Pre load___________________________________________________________________________________________________
+SubProceso preSetEmployeeList(empleado)
+	Definir i,j Como Entero;
 	Para i <- 0 Hasta 99 Hacer
 		Para j<-0 Hasta 6 Hacer
 			empleado[i,j] <- '0';
@@ -1296,8 +1296,8 @@ subproceso preSetEmployeeList(empleado)
 	FinPara
 	
 FinSubProceso
-subproceso preSetCarList(auto)
-	definir i,j como entero;
+SubProceso preSetCarList(auto)
+	Definir i,j Como Entero;
 	Para i <- 0 Hasta 99 Hacer
 		Para j <- 0 Hasta 7 Hacer
 			auto[i,j] <- '0';
@@ -1305,8 +1305,8 @@ subproceso preSetCarList(auto)
 	FinPara
 FinSubProceso
 
-subproceso preSetSpareList(repuestos)
-	definir i,j como entero;
+SubProceso preSetSpareList(repuestos)
+	Definir i,j Como Entero;
 	Para i<-0 Hasta 99 Hacer
 		Para j<-0 Hasta 5 Hacer
 			repuestos[i,j] <- '0';
@@ -1314,8 +1314,8 @@ subproceso preSetSpareList(repuestos)
 	FinPara
 	
 FinSubProceso
-subproceso presetSalesListList(venta)
-	definir i,j como entero;
+SubProceso presetSalesListList(venta)
+	Definir i,j Como Entero;
 	Para i<-0 Hasta 99 Hacer
 		Para j<-0 Hasta 5 Hacer
 			venta[i,j] <- '0';
@@ -1323,8 +1323,8 @@ subproceso presetSalesListList(venta)
 	FinPara
 	
 FinSubProceso
-subproceso presetCustomersListList(cliente)
-	definir i,j como entero;
+SubProceso presetCustomersListList(cliente)
+	Definir i,j Como Entero;
 	Para i <- 0 Hasta 99 Hacer
 		Para j <- 0 Hasta 1 Hacer
 			cliente[i,j] <- '0';
@@ -1333,8 +1333,8 @@ subproceso presetCustomersListList(cliente)
 	
 FinSubProceso
 
-subproceso presetPaymentPlanListList(paymentsPlan)
-	definir i,j como entero;
+SubProceso presetPaymentPlanListList(paymentsPlan)
+	Definir i,j Como Entero;
 	Para i <- 0 Hasta 99 Hacer
 		Para j <- 0 Hasta 2 Hacer
 			paymentsPlan[i,j] <- '0';
@@ -1343,14 +1343,14 @@ subproceso presetPaymentPlanListList(paymentsPlan)
 	
 FinSubProceso
 
-//fín pre carga
+//End pre load
 
 
-//Carga de matrizes y bases de datos.
+//Load arrays and databases.
 
-// Carga de Matrices
+// Array Load
 // Auto
-// Repuestos
+// Spare parts
 // paymentsPlan
 
 
@@ -1358,12 +1358,12 @@ SubProceso setSalesList(venta)
 	
 	Definir i Como Entero;
 	
-	//	0: N° Legajo
+	//	0: N° file
 	//	1: DNI
-	//	2: Nombre y Apellido
-	//	3: Fecha
-	//	4: Id (Auto)
-	//	5: Id(plan).
+	//	2: Name and Last Name
+	//	3: Date
+	//	4: Id (Car)
+	//	5: Id (plan).
 	
 	i<-0;
 	venta[i,0] <- '100'; 
@@ -1386,7 +1386,7 @@ SubProceso setSalesList(venta)
 	
 FinSubProceso
 
-subproceso setCarList(auto)
+SubProceso setCarList(auto)
 	
 	
 	Definir i Como Entero;
@@ -1665,7 +1665,7 @@ subproceso setCarList(auto)
 FinSubProceso
 
 
-subproceso setEmployeeList(empleado)
+SubProceso setEmployeeList(empleado)
 	Definir i Como Entero;
 	
 	i<-0;        // i = 0
@@ -1941,7 +1941,7 @@ subproceso setEmployeeList(empleado)
 	
 FinSubProceso
 
-subproceso setPaymentPlanList(paymentsPlan)
+SubProceso setPaymentPlanList(paymentsPlan)
 	
 	Definir i Como Entero;
 	i<-0;
@@ -1956,7 +1956,7 @@ FinSubProceso
 // código grupo 2
 
 SubProceso  setSpareList(repuestos) //Subproceso para cargar los repuestos
-	Definir i como Entero;
+	Definir i Como Entero;
 	i<-0;        // i = 0
 	repuestos[i,0] <- '100123987'; repuestos[i,1] <-'optica';repuestos[i,2] <-'fiat';repuestos[i,3] <-'palio';
 	repuestos[i,4] <-'15000';repuestos[i,5] <-'5';
