@@ -63,7 +63,7 @@ FinProceso
 //SubProcess's____________________________________________________________________________________________________________________
 
 
-SubProceso doSale(customer,car,employee,sale,paymentsPlan, repuesto) //0
+SubProceso doSale(customer,car,employee,sale,paymentsPlan, spare) //0
 	Definir option, i Como Entero;
 	Repetir
 		Limpiar Pantalla;
@@ -84,7 +84,7 @@ SubProceso doSale(customer,car,employee,sale,paymentsPlan, repuesto) //0
 			2: 
 				finishSale(customer,car,employee,sale,paymentsPlan); 
 			3:
-				sellSpare(repuesto, customer, employee);
+				sellSpare(spare, customer, employee);
 			4:
 			De Otro Modo:
 				escribir "Dato no válido, intente nuevamente.";
@@ -94,7 +94,7 @@ SubProceso doSale(customer,car,employee,sale,paymentsPlan, repuesto) //0
 FinSubProceso
 
 
-SubProceso searchMenu(employee, car, customer, repuesto, sale, planes) //1
+SubProceso searchMenu(employee, car, customer, spare, sale, plans) //1
 	Definir option Como Entero;
 	
 	Repetir
@@ -114,11 +114,11 @@ SubProceso searchMenu(employee, car, customer, repuesto, sale, planes) //1
 			1:
 				searchEmployeeMenu(employee);
 			2:
-				sparesMenu(repuesto);
+				sparesMenu(spare);
 			3:
 				searchCustomer(customer);
 			4:
-				salesMenu(sale, planes, employee);
+				salesMenu(sale, plans, employee);
 			5:
 			De Otro Modo:
 				Escribir "Dato no válido, intente nuevamente.";
@@ -131,7 +131,7 @@ FinSubProceso
 
 SubProceso serviceRental(customer, car, employee)
 	
-	Definir customerDni, idCar, pricePerHour, fileNum, currentDate,answ,enableCar Como Cadena;
+	Definir customerDni, idCar, pricePerHour, fileNum, currentDate, answ, enableCar Como Cadena;
 	Definir customerIndex, carIndex, employeeIndex Como Entero;
 	Definir customerExist Como Logico;
 	
@@ -143,18 +143,18 @@ SubProceso serviceRental(customer, car, employee)
 	Repetir
 		Escribir '_____________________________________________________________________';
 		escribir "Ingrese el DNI del cliente: ";
-		leer customerDni;     
+		Leer customerDni;     
 		customerIndex <- findById(customer,customerDni);
-		si customerIndex <> -1 entonces
-			customerExist <- verdadero;
+		Si customerIndex <> -1 Entonces
+			customerExist <- Verdadero;
 			Escribir 'Se encontro el cliente con id: ', customerDni;
 		FinSi
-	Hasta Que customerIndex = -1 o customerExist;
+	Hasta Que customerIndex = -1 O customerExist;
 	
 	// If not find the customer that put in the system, we load a new customer....
-	si no customerExist entonces
+	Si No customerExist Entonces
 		Escribir '_____________________________________________________________________';
-		escribir "No se encontro al Cliente ";
+		Escribir "No se encontro al Cliente ";
 		// Call to the sub process that it allow load a new customer
 		loadNewCustomer(customerDni,customer);
 		// Get the new position that the new client will fill in the array: to retrieve the name and last name
@@ -204,7 +204,7 @@ SubProceso serviceRental(customer, car, employee)
 	
 	Escribir '_____________________________________________________________________';
 	Escribir Sin Saltar "Ingrese su número de legajo : ";
-	leer fileNum;
+	Leer fileNum;
 	// Obtain the position that the requested employee occupies in the list/array, if it doesn't find it, it returns -1.
 	employeeIndex <- findById(employee, fileNum);
 	Mientras employeeIndex = -1 Hacer
@@ -278,7 +278,7 @@ SubProceso loadDataMenu(car,employee,spares,customer,paymentsPlan) //3
 FinSubProceso
 
 
-SubProceso doBuyout(customer, auto) //4
+SubProceso doBuyout(customer, car) //4
 	//To make a purchase we need a client/supplier from whom we are going to buy
 	//and the information of the car we bought
 	Definir ok Como Cadena;
@@ -353,7 +353,7 @@ SubProceso finishSale(customer, car, employee, sale, paymentsPlan)
 	
 	
 	Definir customerDni, fileNum, carId, currentDate, answPlan, answConfirmation, idPlan, carStatus,dni Como Cadena;
-	Definir customerIndex, carIndex, employeeIndex, lastSale, planPago Como Entero;
+	Definir customerIndex, carIndex, employeeIndex, lastSale, paymentPlan Como Entero;
 	
 	
 	//Flags
@@ -439,8 +439,8 @@ SubProceso finishSale(customer, car, employee, sale, paymentsPlan)
 	
 	idPlan<-'0';
 	Si answPlan = '1' Entonces
-		planPago <- addPlan(paymentsPlan);
-		idPlan <- paymentsPlan[planPago,0];
+		paymentPlan <- addPlan(paymentsPlan);
+		idPlan <- paymentsPlan[paymentPlan,0];
 	FinSi
 	Escribir '---------------------------------------';
 	Escribir '¿Confirmar la Venta?';
@@ -451,9 +451,9 @@ SubProceso finishSale(customer, car, employee, sale, paymentsPlan)
 	Si answConfirmation = '1' Entonces
 		// We look for the index after the last sale made in order to enter the new sale.
 		lastSale <- getLastIndex(sale);
-		Si no (lastSale = -1) Entonces
+		Si No (lastSale = -1) Entonces
 			// We save the sale: File No., Dni, Name and Last name, date, Id (Car), payment plan.
-			setSale(car, sale,customer,lastSale, fileNum,customerDni, customerIndex,currentDate,carIndex, planId);
+			setSale(car, sale,customer,lastSale, fileNum,customerDni, customerIndex,currentDate,carIndex, idPlan);
 			Escribir '_____________________________________________';
 			Escribir 'Venta Realizada con exito.... ';
 			printSaleById(sale, customer, paymentsPlan, lastSale);
@@ -467,13 +467,13 @@ SubProceso finishSale(customer, car, employee, sale, paymentsPlan)
 	FinSi
 FinSubProceso
 
-SubProceso sellSpare(repuesto, customer, employee)
+SubProceso sellSpare(spare, customer, employee)
 	
 	Limpiar Pantalla;
 	Definir customerDni, fileNum, currentDate, dni, idSpare, stock, nameAndLastName Como Cadena;
 	Definir customerIndex, employeeIndex, spareIndex, spareQuantity, numberStock Como Entero;
 	Definir unitPrice, total Como Real;
-	Definir existeRepuesto, customerExist Como Logico;
+	Definir spareExist, customerExist Como Logico;
 	
 	customerExist <- falso;
 	
@@ -512,31 +512,31 @@ SubProceso sellSpare(repuesto, customer, employee)
 	Escribir Sin Saltar'Ingrese Id repuesto: ';
 	Leer idSpare;  
 	
-	spareIndex <- findById(repuesto, idSpare);
+	spareIndex <- findById(spare, idSpare);
 	
 	Mientras spareIndex = -1 Hacer
 		Escribir 'Repuesto no encontrado. Vuelva a intentarlo.';
 		escribir sin saltar "Ingrese Id repuesto: ";
 		leer idSpare;   
-		spareIndex <- findById(repuesto,idSpare);
+		spareIndex <- findById(spare,idSpare);
 	FinMientras
 	
-	printSpareById(repuesto,idSpare);
+	printSpareById(spare,idSpare);
 	
 	// Enter the spare quantity..
 	
 	Escribir Sin Saltar'Ingrese unidades de repuestos: '; 
 	Leer spareQuantity; 
 	
-	stock <- repuesto[spareIndex, 5]; 
+	stock <- spare[spareIndex, 5]; 
 	numberStock <- ConvertirANumero(stock); 
 	numberStock <- numberStock - spareQuantity;
 	
-	unitPrice <- ConvertirANumero(repuesto[spareIndex, 4]);
+	unitPrice <- ConvertirANumero(spare[spareIndex, 4]);
 	
 	Si numberStock < 0 Entonces
 		Escribir 'No hay stock.';
-		Escribir 'Stock actual: ', repuesto[spareIndex, 5]; 
+		Escribir 'Stock actual: ', spare[spareIndex, 5]; 
 	FinSi
 	Mientras numberStock < 0 Hacer
 		Escribir 'Ingrese unidades de repuestos: '; 
@@ -544,8 +544,8 @@ SubProceso sellSpare(repuesto, customer, employee)
 		numberStock <- numberStock - spareQuantity; 
 	FinMientras
 	
-	repuesto[spareIndex, 5] <- ConvertirATexto(numberStock); 
-	Escribir 'Stock restante: ', repuesto[spareIndex, 5]; 
+	spare[spareIndex, 5] <- ConvertirATexto(numberStock); 
+	Escribir 'Stock restante: ', spare[spareIndex, 5]; 
 	
 	
 	
@@ -705,7 +705,7 @@ FinSubProceso
 SubProceso findSaleByEmployee(sale, employee, paymentsPlan)
 	
 	Definir i, j, posPaymentPlan, position Como Entero;
-	Definir idPlan, delivery, dues, idEmployee,  employeeName, name, lastName Como Cadena;
+	Definir idPlan, delivery, dues, idEmployee, employeeName, name, lastName Como Cadena;
 	Limpiar Pantalla;
 	
 	Escribir sin saltar 'Ingrese Id Vendedor: ';
@@ -824,7 +824,7 @@ SubProceso servicesSpare(spares)
 FinSubProceso
 
 
-SubProceso serviceSales(sale, planes, employee)
+SubProceso serviceSales(sale, plans, employee)
 	Definir option Como Entero;
 	Repetir
 		Limpiar Pantalla;
@@ -836,9 +836,9 @@ SubProceso serviceSales(sale, planes, employee)
 		Leer option;
 		Segun option Hacer
 			0:
-				printSalesList(sale,planes);
+				printSalesList(sale,plans);
 			1:
-				findSaleByEmployee(sale, employee, planes);
+				findSaleByEmployee(sale, employee, plans);
 			2:
 				
 			De Otro Modo:
@@ -927,7 +927,7 @@ SubProceso  setCustomer(customer Por Referencia)
 	leer dni;
 FinSubProceso
 
-SubProceso setSale(car,sale,customer, lastSale, fileNum,customerDni,customerIndex, currentDate,carIndex, planPago)
+SubProceso setSale(car, sale, customer, lastSale, fileNum, customerDni, customerIndex, currentDate, carIndex, paymentPlan)
 	Definir nameAndLastName, carId Como Cadena;
 	//Change the status of the sold car to 'false' -- Sold
 	car[carIndex, 7] <- 'false';
@@ -938,7 +938,7 @@ SubProceso setSale(car,sale,customer, lastSale, fileNum,customerDni,customerInde
 	sale[lastSale,3] <- currentDate;
 	carId <- car[carIndex,0];
 	sale[lastSale,4] <- carId;
-	sale[lastSale,5] <- planPago;
+	sale[lastSale,5] <- paymentPlan;
 FinSubProceso
 
 SubProceso loadNewCustomer(customerDni,customer)
@@ -1035,7 +1035,7 @@ FinSubProceso
 //Print by ID___________________________________________________________________________________________________
 
 
-SubProceso printSaleById(ventas, customer, paymentsPlan, idSale)
+SubProceso printSaleById(sales, customer, paymentsPlan, idSale)
 	
 	Definir file , dni , nameAndLastName , date, carId, planInfo, idPlan, answ Como Cadena;
 	Definir delivery, dues Como Cadena;
@@ -1043,16 +1043,16 @@ SubProceso printSaleById(ventas, customer, paymentsPlan, idSale)
 	
 	Limpiar Pantalla;
 	
-	file <- ventas[idSale,0];
-	dni <- ventas[idSale,1];
+	file <- sales[idSale,0];
+	dni <- sales[idSale,1];
 	
 	posCustomer <- findById(customer, dni);
 	nameAndLastName <- customer[posCustomer, 1];
 	
-	date <- ventas[idSale,3];
-	carId <- ventas[idSale,4];
+	date <- sales[idSale,3];
+	carId <- sales[idSale,4];
 	
-	idPlan <- ventas[idSale,5];
+	idPlan <- sales[idSale,5];
 	
 	Si idPlan <> '0' Entonces
 		posPaymentPlan <- findById(paymentsPlan, idPlan);
@@ -1084,14 +1084,14 @@ SubProceso printCustomerById(customer, idCustomer)
 	
 FinSubProceso
 
-SubProceso printSpareById(repuesto, idSpare)
+SubProceso printSpareById(spare, idSpare)
 	Definir spareIndex  Como Entero;
-	spareIndex <- findById(repuesto, idSpare);
+	spareIndex <- findById(spare, idSpare);
 	// Id, Category, Brand, Model, Price, stock.
 	Escribir '_______________________________________________________________';
 	Escribir '|  Id Repuesto  | Categoria | Marca | Modelo | Precio | Stock |';
 	Escribir '_______________________________________________________________';
-	Escribir '|   ',repuesto[spareIndex,0],'   |    ',repuesto[spareIndex,1],'   |  ',repuesto[spareIndex,2],' |  ', repuesto[spareIndex,3],'  |  ', repuesto[spareIndex,4],' |   ',repuesto[spareIndex,5],'  |';
+	Escribir '|   ',spare[spareIndex,0],'   |    ',spare[spareIndex,1],'   |  ',spare[spareIndex,2],' |  ', spare[spareIndex,3],'  |  ', spare[spareIndex,4],' |   ',spare[spareIndex,5],'  |';
 	Escribir '_______________________________________________________________';	
 FinSubProceso
 
@@ -1314,7 +1314,7 @@ SubProceso preSetSpareList(spares)
 	FinPara
 	
 FinSubProceso
-SubProceso presetSalesListList(sale)
+SubProceso preSetSalesList(sale)
 	Definir i,j Como Entero;
 	Para i<-0 Hasta 99 Hacer
 		Para j<-0 Hasta 5 Hacer
@@ -1323,7 +1323,7 @@ SubProceso presetSalesListList(sale)
 	FinPara
 	
 FinSubProceso
-SubProceso presetCustomersListList(customer)
+SubProceso preSetCustomersList(customer)
 	Definir i,j Como Entero;
 	Para i <- 0 Hasta 99 Hacer
 		Para j <- 0 Hasta 1 Hacer
@@ -1333,7 +1333,7 @@ SubProceso presetCustomersListList(customer)
 	
 FinSubProceso
 
-SubProceso presetPaymentPlanListList(paymentsPlan)
+SubProceso preSetPaymentPlanList(paymentsPlan)
 	Definir i,j Como Entero;
 	Para i <- 0 Hasta 99 Hacer
 		Para j <- 0 Hasta 2 Hacer
