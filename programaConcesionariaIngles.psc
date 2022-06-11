@@ -1,23 +1,23 @@
 Proceso Main
-	Definir car, employee, spares, customer, sale, paymentsPlan Como Cadena;
+	Definir car, employee, spares, customer, sale, paymentOfPlan Como Cadena;
 	Definir option Como Entero;
 	Dimension car[100,8], employee[100,7], spares[100,6];
-	Dimension customer[100,2],sale[100,6],paymentsPlan[100,3];	
+	Dimension customer[100,2],sale[100,6],paymentOfPlan[100,3];	
 	
 	
 	//Fill all lists with zeros
 	preSetCarList(car);
 	preSetEmployeeList(employee);
 	preSetSpareList(spares);
-	preSetPaymentPlanList(paymentsPlan);
+	preSetPaymentPlanList(paymentOfPlan);
 	preSetSalesList(sale);
-	preSetCustomerList(customer);
+	preSetCustomersList(customer);
 	
 	//Fill lists with examples dates
 	setCarList(car);
 	setEmployeeList(employee);
 	setSparesList(spares);
-	setPaymenPlanList(paymentsPlan);
+	setPaymentsPlanList(paymentOfPlan);
 	setCustomersList(customer);
 	setSalesList(sale);	
 	
@@ -43,13 +43,13 @@ Proceso Main
 		Leer option;
 		Segun option Hacer
 			0:
-				doSale(customer,car,employee,sale,paymentsPlan, spares);
+				doSale(customer,car,employee,sale,paymentOfPlan, spares);
 			1:
-				searchMenu(employee, car, customer, spares, sale, paymentsPlan);
+				searchMenu(employee, car, customer, spares, sale, paymentOfPlan);
 			2:
 				serviceRental(customer, car, employee);
 			3:
-				loadDataMenu(car,employee,spares,customer,paymentsPlan);
+				loadDataMenu(car,employee,spares,customer,paymentOfPlan);
 			4:
 				doBuyout(customer,car);
 			5:	
@@ -63,7 +63,7 @@ FinProceso
 //SubProcess's____________________________________________________________________________________________________________________
 
 
-SubProceso doSale(customer,car,employee,sale,paymentsPlan, spare) //0
+SubProceso doSale(customer,car,employee,sale,paymentOfPlan, spare) //0
 	Definir option, i Como Entero;
 	Repetir
 		Limpiar Pantalla;
@@ -79,10 +79,10 @@ SubProceso doSale(customer,car,employee,sale,paymentsPlan, spare) //0
 			0:
 				carByBrand(car);
 			1:
-				paymentPlan(paymentsPlan);
+				paymentsPlan(paymentOfPlan);
 				Esperar Tecla;
 			2: 
-				finishSale(customer,car,employee,sale,paymentsPlan); 
+				finishSale(customer,car,employee,sale,paymentOfPlan); 
 			3:
 				sellSpare(spare, customer, employee);
 			4:
@@ -243,7 +243,7 @@ SubProceso serviceRental(customer, car, employee)
 	
 FinSubProceso
 
-SubProceso loadDataMenu(car,employee,spares,customer,paymentsPlan) //3
+SubProceso loadDataMenu(car,employee,spares,customer,paymentOfPlan) //3
 	Definir option Como Entero;
 	Definir dni Como Cadena; 
 	Repetir 
@@ -267,7 +267,7 @@ SubProceso loadDataMenu(car,employee,spares,customer,paymentsPlan) //3
 			3:
 				setCustomer(customer); 
 			4: 
-				setNewPaymentPlan(paymentsPlan); 
+				setNewPaymentPlan(paymentOfPlan); 
 			5:	
 				setCar(car);
 			6:
@@ -334,12 +334,12 @@ SubProceso carByBrand(car)
 FinSubProceso
 
 
-SubProceso paymentPlan(paymentsPlan)
+SubProceso paymentsPlan(paymentOfPlan)
 	Limpiar Pantalla;
-	printPaymentsPlan(paymentsPlan);
+	printPaymentsPlan(paymentOfPlan);
 FinSubProceso
 
-SubProceso finishSale(customer, car, employee, sale, paymentsPlan)
+SubProceso finishSale(customer, car, employee, sale, paymentOfPlan)
 	
 	// To make a sale we need:
 	
@@ -439,8 +439,8 @@ SubProceso finishSale(customer, car, employee, sale, paymentsPlan)
 	
 	idPlan<-'0';
 	Si answPlan = '1' Entonces
-		paymentPlan <- addPlan(paymentsPlan);
-		idPlan <- paymentsPlan[paymentPlan,0];
+		paymentPlan <- addPlan(paymentOfPlan);
+		idPlan <- paymentOfPlan[paymentPlan,0];
 	FinSi
 	Escribir '---------------------------------------';
 	Escribir '¿Confirmar la Venta?';
@@ -456,7 +456,7 @@ SubProceso finishSale(customer, car, employee, sale, paymentsPlan)
 			setSale(car, sale,customer,lastSale, fileNum,customerDni, customerIndex,currentDate,carIndex, idPlan);
 			Escribir '_____________________________________________';
 			Escribir 'Venta Realizada con exito.... ';
-			printSaleById(sale, customer, paymentsPlan, lastSale);
+			printSaleById(sale, customer, paymentOfPlan, lastSale);
 		SiNo
 			Escribir 'No se pudo concretar la venta, la matriz Venta esta llena.';
 		FinSi
@@ -616,28 +616,28 @@ FinSubProceso
 // ___________________________________________________________________________________________________
 
 
-SubProceso planPosition <- addPlan(paymentsPlan)
+SubProceso planPosition <- addPlan(paymentOfPlan)
 	Definir planPosition Como Entero;
 	Definir idPlan Como Cadena;
 	
-	printPaymentsPlan(paymentsPlan);
+	printPaymentsPlan(paymentOfPlan);
 	
 	Escribir Sin Saltar'Ingresar Plan de Pago: ';
 	Leer idPlan;
-	planPosition <- findById(paymentsPlan, idPlan);
+	planPosition <- findById(paymentOfPlan, idPlan);
 	Mientras planPosition = -1 Hacer
 		Escribir '____________________________________________'; 
 		Escribir 'Plan No encontrado.Vuelva a intentar. ';
 		Escribir Sin Saltar'Ingresar Plan de Pago: ';
 		Leer idPlan;
-		planPosition <- findById(paymentsPlan, idPlan);
+		planPosition <- findById(paymentOfPlan, idPlan);
 	FinMientras
 	
 	Escribir 'Plan encontrado con id: ', idPlan;
-	Escribir 'Descripcion plan, Entrega: ', paymentsPlan[planPosition,1], ' , Cuotas: ',paymentsPlan[planPosition,2]; 
+	Escribir 'Descripcion plan, Entrega: ', paymentOfPlan[planPosition,1], ' , Cuotas: ',paymentOfPlan[planPosition,2]; 
 FinSubProceso
 
-SubProceso findByEmployee(employee)
+SubProceso searchEmployeeMenu(employee)
 	Definir option Como Entero;
 	Limpiar Pantalla;
 	Escribir '           BUSCAR EMPLEADOS';
@@ -702,7 +702,7 @@ SubProceso findCarById(car)
 	Leer position;
 FinSubProceso
 
-SubProceso findSaleByEmployee(sale, employee, paymentsPlan)
+SubProceso findSaleByEmployee(sale, employee, paymentOfPlan)
 	
 	Definir i, j, posPaymentPlan, position Como Entero;
 	Definir idPlan, delivery, dues, idEmployee, employeeName, name, lastName Como Cadena;
@@ -731,9 +731,9 @@ SubProceso findSaleByEmployee(sale, employee, paymentsPlan)
 			Si No(sale[i,0] = '0')  y sale[i, 0] = idEmployee Entonces
 				idPlan <- sale[i,5];
 				Si idPlan <> '0' Entonces
-					posPaymentPlan <- findById(paymentsPlan, idPlan);
-					delivery <- paymentsPlan[posPaymentPlan, 1];
-					dues <- paymentsPlan[posPaymentPlan, 2];
+					posPaymentPlan <- findById(paymentOfPlan, idPlan);
+					delivery <- paymentOfPlan[posPaymentPlan, 1];
+					dues <- paymentOfPlan[posPaymentPlan, 2];
 					Escribir '_____________________________________________________________________________';
 					Escribir  '| ', sale[i,1] , ' |     ', sale[i,2] , '    |   ', sale[i,3], ' |  ', sale[i,4] , '  | ', delivery, '   |   ', dues, '   |';
 				SiNo
@@ -774,7 +774,7 @@ SubProceso findEmployeeFile(employee)
 	Leer filenum;
 FinSubProceso
 
-SubProceso serviceCar(car)
+SubProceso carMenu(car)
 	Definir option Como Entero;
 	Repetir
 		Limpiar Pantalla;
@@ -799,7 +799,7 @@ SubProceso serviceCar(car)
 		
 FinSubProceso
 
-SubProceso servicesSpare(spares)
+SubProceso sparesMenu(spares)
 	Definir option Como Entero;
 	Repetir
 		Limpiar Pantalla;
@@ -824,7 +824,7 @@ SubProceso servicesSpare(spares)
 FinSubProceso
 
 
-SubProceso serviceSales(sale, plans, employee)
+SubProceso salesMenu(sale, plans, employee)
 	Definir option Como Entero;
 	Repetir
 		Limpiar Pantalla;
@@ -849,7 +849,7 @@ SubProceso serviceSales(sale, plans, employee)
 FinSubProceso
 
 
-SubProceso findCustomer(customer)
+SubProceso searchCustomer(customer)
 	
 	Definir idCustomer Como Cadena;
 	Definir position Como Entero;
@@ -1012,7 +1012,7 @@ SubProceso setSpares(spares)
 	Leer id;
 FinSubProceso
 
-SubProceso setNewPaymentPlan(paymentsPlan)
+SubProceso setNewPaymentPlan(paymentOfPlan)
 	Definir idPlan,delivery,dues Como Cadena;
 	Definir index Como Entero;
 	Limpiar Pantalla;
@@ -1024,10 +1024,10 @@ SubProceso setNewPaymentPlan(paymentsPlan)
 	Leer delivery;
 	Escribir Sin Saltar "Ingrese n° de cuotas: ";
 	Leer dues;
-	index <- getLastIndex(paymentsPlan);
-	paymentsPlan[index,0] <- idPlan;
-	paymentsPlan[index,1] <- delivery;
-	paymentsPlan[index,2] <- dues;
+	index <- getLastIndex(paymentOfPlan);
+	paymentOfPlan[index,0] <- idPlan;
+	paymentOfPlan[index,1] <- delivery;
+	paymentOfPlan[index,2] <- dues;
 	Escribir Sin Saltar "Un nuevo plan fue cargado con éxito.";
 	Leer idPlan;
 FinSubProceso
@@ -1035,7 +1035,7 @@ FinSubProceso
 //Print by ID___________________________________________________________________________________________________
 
 
-SubProceso printSaleById(sales, customer, paymentsPlan, idSale)
+SubProceso printSaleById(sales, customer, paymentOfPlan, idSale)
 	
 	Definir file , dni , nameAndLastName , date, carId, planInfo, idPlan, answ Como Cadena;
 	Definir delivery, dues Como Cadena;
@@ -1055,9 +1055,9 @@ SubProceso printSaleById(sales, customer, paymentsPlan, idSale)
 	idPlan <- sales[idSale,5];
 	
 	Si idPlan <> '0' Entonces
-		posPaymentPlan <- findById(paymentsPlan, idPlan);
-		delivery <- paymentsPlan[posPaymentPlan, 1];
-		dues <- paymentsPlan[posPaymentPlan, 2];
+		posPaymentPlan <- findById(paymentOfPlan, idPlan);
+		delivery <- paymentOfPlan[posPaymentPlan, 1];
+		dues <- paymentOfPlan[posPaymentPlan, 2];
 		Escribir '________________________________________________________________________________________';
 		Escribir '| N° Legajo |    DNI   | Nombre y Apellido |    Fecha   |  Id Auto  | Entrega | Cuotas |';
 		
@@ -1138,7 +1138,7 @@ subproceso printAllEmployees(employee)
 	Escribir '_____________________________________________________________________________________';
 FinSubProceso
 
-SubProceso printSalesList(sale, paymentsPlan)
+SubProceso printSalesList(sale, paymentOfPlan)
 	
 	Definir i, j, posPaymentPlan Como Entero;
 	Definir idPlan, delivery, dues Como Cadena;
@@ -1151,9 +1151,9 @@ SubProceso printSalesList(sale, paymentsPlan)
 			idPlan <- sale[i,5];
 			Escribir '______________________________________________________________________________________';
 			Si idPlan <> '0' Entonces
-				posPaymentPlan <- findById(paymentsPlan, idPlan);
-				delivery <- paymentsPlan[posPaymentPlan, 1];
-				dues <- paymentsPlan[posPaymentPlan, 2];
+				posPaymentPlan <- findById(paymentOfPlan, idPlan);
+				delivery <- paymentOfPlan[posPaymentPlan, 1];
+				dues <- paymentOfPlan[posPaymentPlan, 2];
 				Escribir  '|    ',sale[i,0], '    | ', sale[i,1] , ' |    ', sale[i,2] , '    | ', sale[i,3], ' |   ', sale[i,4] , ' |  ', delivery, '  |    ', dues , '  |';
 			SiNo
 				Escribir  '|    ',sale[i,0], '    | ', sale[i,1] , ' |    ', sale[i,2] , '     | ', sale[i,3], ' |   ', sale[i,4] , ' | Sin Plan         |';
@@ -1194,15 +1194,15 @@ SubProceso printCustomers(customer)
 	Leer i;
 FinSubProceso
 
-SubProceso printPaymentsPlan(paymentsPlan)
+SubProceso printPaymentsPlan(paymentOfPlan)
 	Definir i, j Como Entero;
 	Limpiar Pantalla;
 	Escribir '| IdPlan | Entrega | Cuotas |';
 	Escribir '______________________________';
 	Para i<-0 Hasta 99 Hacer
-		Si No(paymentsPlan[i,0] = '0') Entonces
+		Si No(paymentOfPlan[i,0] = '0') Entonces
 			Para j<-0 Hasta 2 Hacer
-				Escribir Sin Saltar '|   ', paymentsPlan[i,j], '  ';
+				Escribir Sin Saltar '|   ', paymentOfPlan[i,j], '  ';
 			FinPara
 			Escribir '  |';
 		FinSi
@@ -1333,11 +1333,11 @@ SubProceso preSetCustomersList(customer)
 	
 FinSubProceso
 
-SubProceso preSetPaymentPlanList(paymentsPlan)
+SubProceso preSetPaymentPlanList(paymentOfPlan)
 	Definir i,j Como Entero;
 	Para i <- 0 Hasta 99 Hacer
 		Para j <- 0 Hasta 2 Hacer
-			paymentsPlan[i,j] <- '0';
+			paymentOfPlan[i,j] <- '0';
 		FinPara
 	FinPara
 	
@@ -1351,7 +1351,7 @@ FinSubProceso
 // Array Load
 // car
 // Spare parts
-// paymentsPlan
+// paymentOfPlan
 
 
 SubProceso setSalesList(sale)
@@ -1941,21 +1941,21 @@ SubProceso setEmployeeList(employee)
 	
 FinSubProceso
 
-SubProceso setPaymentPlanList(paymentsPlan)
+SubProceso setPaymentsPlanList(paymentOfPlan)
 	
 	Definir i Como Entero;
 	i<-0;
-	paymentsPlan[i,0] <- '101'; paymentsPlan[i,1] <-'5000';paymentsPlan[i,2] <-'18';
+	paymentOfPlan[i,0] <- '101'; paymentOfPlan[i,1] <-'5000';paymentOfPlan[i,2] <-'18';
 	i<-i+1;
-	paymentsPlan[i,0] <- '102'; paymentsPlan[i,1] <-'10000';paymentsPlan[i,2] <-'10';
+	paymentOfPlan[i,0] <- '102'; paymentOfPlan[i,1] <-'10000';paymentOfPlan[i,2] <-'10';
 	i<-i+1;
-	paymentsPlan[i,0] <- '103'; paymentsPlan[i,1] <-'8000';paymentsPlan[i,2] <-'16';
+	paymentOfPlan[i,0] <- '103'; paymentOfPlan[i,1] <-'8000';paymentOfPlan[i,2] <-'16';
 	
 FinSubProceso	
 
 // Group 2 code
 
-SubProceso  setSpareList(spares) // Subprocess to load spares
+SubProceso  setSparesList(spares) // Subprocess to load spares
 	Definir i Como Entero;
 	i<-0;        // i = 0
 	spares[i,0] <- '100123987'; spares[i,1] <-'optica';spares[i,2] <-'fiat';spares[i,3] <-'palio';
