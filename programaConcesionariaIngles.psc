@@ -549,7 +549,11 @@ SubProceso sellSpare(repuesto, cliente, empleado)
 	
 	
 	
+<<<<<<< HEAD
      // Read spareQuantity;
+=======
+	// Read spareQuantity;
+>>>>>>> RamaAgu
 	
 	// Load vendor file
 	
