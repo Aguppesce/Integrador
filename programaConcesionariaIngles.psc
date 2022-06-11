@@ -63,18 +63,64 @@ FinProceso
 //SubProcess's____________________________________________________________________________________________________________________
 
 
+<<<<<<< HEAD
 SubProceso doSale(cliente,auto,empleado,venta,paymentsPlan, repuesto) //0
 	Definir option, i Como Entero;
+=======
+//SubProcesos ____________________________________________________________________________________________________________________
+
+subproceso realizarVenta(cliente,auto,empleado,venta,planesDePago, repuesto) //0
+	definir option, i como entero;
 	Repetir
 		Limpiar Pantalla;
-		Escribir '         OPCIONES DE VENTA';
+		Escribir '         SALES OPTIONS';
 		Escribir '___________________________________';
+		escribir "0-Vehicles by brand.";
+		escribir "1-Payment plans.";
+		escribir "2-Car sale.";
+		escribir "3-Sale Spare.";
+		escribir "4-Exit.";
+		leer option;
+		Segun option Hacer
+			0:
+				vehiculoPorMarca(auto);
+			1:
+				planesPago(planesDePago);
+				Esperar Tecla;
+			2: 
+				concretarVenta(cliente,auto,empleado,venta,planesDePago); 
+			3:
+				ventaRepuesto(repuesto, cliente, empleado);
+			4:
+			De Otro Modo:
+				escribir "Invalid data, Please try again.";
+		FinSegun
+		Hasta Que	option = 4;
+		limpiar pantalla;
+FinSubProceso
+
+subproceso realizarVenta(cliente,auto,empleado,venta,planesDePago, repuesto) //0
+	definir option, i como entero;
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+	Repetir
+		Limpiar Pantalla;
+		Escribir '         SALES OPTIONS';
+		Escribir '___________________________________';
+<<<<<<< HEAD
 		Escribir "0-Vehículo por marca.";
 		Escribir "1-Planes de pago.";
 		Escribir "2-Venta Auto.";
 		Escribir "3-Venta Repuesto.";
 		Escribir "4-Salir.";
 		Leer option;
+=======
+		escribir "0-Vehicle by brand.";
+		escribir "1-Payment plans.";
+		escribir "2-Car Sales.";
+		escribir "3-Sale Spare Parts.";
+		escribir "4-Exit.";
+		leer option;
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		Segun option Hacer
 			0:
 				carByBrand(auto);
@@ -87,7 +133,7 @@ SubProceso doSale(cliente,auto,empleado,venta,paymentsPlan, repuesto) //0
 				sellSpare(repuesto, cliente, empleado);
 			4:
 			De Otro Modo:
-				escribir "Dato no válido, intente nuevamente.";
+				escribir "Invalid data, please try again.";
 		FinSegun
 		Hasta Que	option = 4;
 		Limpiar Pantalla;
@@ -99,8 +145,9 @@ SubProceso searchMenu(empleado, auto, cliente, repuesto, venta, planes) //1
 	
 	Repetir
 		Limpiar Pantalla;
-		Escribir '       REALIZAR UNA BUSQUEDA';
+		Escribir '       PERFORM A SEARCH';
 		Escribir '____________________________________';
+<<<<<<< HEAD
 		Escribir "0-Vehículos";
 		Escribir "1-Empleados.";
 		Escribir "2-Repuestos.";
@@ -108,6 +155,15 @@ SubProceso searchMenu(empleado, auto, cliente, repuesto, venta, planes) //1
 		Escribir "4-Ventas";
 		Escribir "5-Salír";
 		Leer option;
+=======
+		escribir "0-Vehicles";
+		escribir "1-Employees.";
+		escribir "2-Spare parts .";
+		escribir "3-Customer";
+		Escribir "4-Sales";
+		escribir "5-Exit";
+		leer option;
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		Segun option Hacer
 			0:
 				carMenu(auto);
@@ -121,7 +177,11 @@ SubProceso searchMenu(empleado, auto, cliente, repuesto, venta, planes) //1
 				salesMenu(venta, planes, empleado);
 			5:
 			De Otro Modo:
+<<<<<<< HEAD
 				Escribir "Dato no válido, intente nuevamente.";
+=======
+				escribir "Invalid data, please try again.";
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		FinSegun
 		
 	Hasta Que option = 5;
@@ -142,30 +202,52 @@ SubProceso serviceRental(cliente, auto, empleado)
 	//Put the data of one existent customer or a new customer 
 	Repetir
 		Escribir '_____________________________________________________________________';
+<<<<<<< HEAD
 		escribir "Ingrese el DNI del cliente: ";
 		leer customerDni;     
 		customerIndex <- findById(cliente,customerDni);
 		si customerIndex <> -1 entonces
 			customerExist <- verdadero;
 			Escribir 'Se encontro el cliente con id: ', customerDni;
+=======
+		escribir "Enter the customer´s ID number: ";
+		leer dniCliente;     
+		indiceCliente <- busquedaPorId(cliente,dniCliente);
+		si indiceCliente <> -1 entonces
+			existeCliente <- verdadero;
+			Escribir 'Customer found with id: ', dniCliente;
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		FinSi
 	Hasta Que customerIndex = -1 o customerExist;
 	
 	// If not find the customer that put in the system, we load a new customer....
 	si no customerExist entonces
 		Escribir '_____________________________________________________________________';
+<<<<<<< HEAD
 		escribir "No se encontro al Cliente ";
 		// Call to the sub process that it allow load a new customer
 		loadNewCustomer(customerDni,cliente);
 		// Get the new position that the new client will fill in the array: to retrieve the name and last name
 		customerIndex <- findById(cliente,customerDni);
+=======
+		escribir "Customer not found ";
+		//Llamamis a l subproceso que carga un nuevo cliente
+		cargarNuevoCliente(dniCliente,cliente);
+		//obtenemos la posicion que ocupa este nuevo cliente en la matriz: para recuperar el nombre y apellido
+		indiceCliente <- busquedaPorId(cliente,dniCliente);
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	FinSi
 	
 	
 	// Pick the car for rental
 	Escribir '_____________________________________________________________________';
+<<<<<<< HEAD
 	Escribir Sin Saltar "Ingrese el id del auto: ";
 	Leer idCar;   
+=======
+	escribir sin saltar "Enter the car id: ";
+	leer idAuto;   
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	
 	// Flag that controls if the car picked it's enable
 	enableCar <- 'true';
@@ -178,6 +260,7 @@ SubProceso serviceRental(cliente, auto, empleado)
 	
 	answ  <- '1';
 	
+<<<<<<< HEAD
 	Mientras carIndex = -1 o (enableCar = 'false' y answ = '1') Hacer
 		Si enableCar = 'false' y carIndex <> -1 Entonces
 			Escribir 'Auto no disponible';
@@ -188,21 +271,40 @@ SubProceso serviceRental(cliente, auto, empleado)
 			carIndex <- findById(auto, idCar);
 			Si carIndex <> -1 Entonces
 				enableCar <- auto[carIndex, 7];
+=======
+	Mientras indiceAuto = -1 o (autoDisponible = 'false' y rta = '1') Hacer
+		Si autoDisponible = 'false' y indiceAuto <> -1 Entonces
+			Escribir 'Car not available';
+		FinSI
+		sI indiceAuto = -1  o rta = '1' Entonces
+			Escribir Sin Saltar 'Please try again. Enter the car id: ';
+			leer idAuto;
+			indiceAuto <- busquedaPorId(auto, idAuto);
+			si indiceAuto <> -1 Entonces
+				autoDisponible <- auto[indiceAuto, 7];
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 			FinSi
 		FinSi
 		Repetir
-			Escribir '¿Quiere buscar otro auto?';
-			Escribir '1. Si';
+			Escribir 'Wants to find another car?';
+			Escribir '1. Yes';
 			Escribir '2. No';
+<<<<<<< HEAD
 			Escribir Sin Saltar 'Ingrese opcion: ';
 			Leer answ;
 		Hasta Que answ = '1' o answ = '2'
+=======
+			Escribir sin saltar 'Enter option: ';
+			Leer rta;
+		Hasta Que rta = '1' o rta = '2'
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	FinMientras
 	
 	//	Load the employee	
 	
 	
 	Escribir '_____________________________________________________________________';
+<<<<<<< HEAD
 	Escribir Sin Saltar "Ingrese su número de legajo : ";
 	leer fileNum;
 	// Obtain the position that the requested employee occupies in the list/array, if it doesn't find it, it returns -1.
@@ -213,12 +315,29 @@ SubProceso serviceRental(cliente, auto, empleado)
 		Leer fileNum;   
 		employeeIndex <- findById(empleado,fileNum);
 	FinMientras	
+=======
+	escribir sin saltar "Enter your file number : ";
+	leer numLegajo;
+	//Obtenemos la posicion que ocupa el empleado en la matriz, si no lo encuentra retorna -1.
+	indiceEmpleado <- busquedaPorId(empleado, numLegajo);
+	Mientras indiceEmpleado = -1 Hacer
+		Escribir 'Employee not found. Please try again.';
+		escribir sin saltar "Enter your file number: ";
+		leer numLegajo;   
+		indiceEmpleado <- busquedaPorId(empleado,numLegajo);
+	FinMientras
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	
 	
 	//	Current date
 	Escribir '_____________________________________________________________________';
+<<<<<<< HEAD
 	Escribir Sin Saltar "Ingrese fecha actual: ";
 	Leer currentDare;
+=======
+	escribir sin saltar "Enter current date: ";
+	leer fechaActual;
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	
 	// We get the price per hour of the requested car
 	pricePerHour <- auto[carIndex, 6];
@@ -232,7 +351,7 @@ SubProceso serviceRental(cliente, auto, empleado)
 	
 	
 	Escribir '_____________________________________________________________________';
-	Escribir '| Vendedor |  Id Auto |    DNI   | Precio por Hora |  Fecha Retiro  | ';
+	Escribir '| Salesperson |  Car Id |    ID CARD   | Hourly Rate |  Withdrawal Date  | ';
 	Escribir '_____________________________________________________________________';
 	Escribir '|    ', fileNum , '   |  ', idCar , '   |  ', customerDni ,' |      $', pricePerHour , '       |   ', currentDare, '   |';  
 	Escribir '_____________________________________________________________________';
@@ -248,8 +367,9 @@ SubProceso loadDataMenu(auto,empleado,repuestos,cliente,paymentsPlan) //3
 	Definir dni Como Cadena; 
 	Repetir 
 		Limpiar Pantalla;
-		Escribir '      REALIZAR CARGA';
+		Escribir '      CARRY OUT LOADING';
 		Escribir '_______________________________';
+<<<<<<< HEAD
 		Escribir "1- Empleados.";
 		Escribir "2- Repuestos.";
 		Escribir "3- Nuevo Cliente.";
@@ -257,6 +377,15 @@ SubProceso loadDataMenu(auto,empleado,repuestos,cliente,paymentsPlan) //3
 		Escribir "5- Cargar Auto";
 		Escribir "6- Salír.";
 		Leer option;
+=======
+		escribir "1- Employees.";
+		escribir "2- Spare parts.";
+		escribir "3- New Customer.";
+		escribir "4- Load new payment plan.";
+		escribir "5- Load Car";
+		escribir "6- Exit.";
+		leer option;
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		Segun option Hacer
 			0:
 				setCar(auto); 
@@ -272,12 +401,17 @@ SubProceso loadDataMenu(auto,empleado,repuestos,cliente,paymentsPlan) //3
 				setCar(auto);
 			6:
 			De Otro Modo:
+<<<<<<< HEAD
 				Escribir "Dato no válido, intente nuevamente.";
+=======
+				escribir "Invalid data, please try again.";
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		FinSegun
 	Hasta Que option = 6;
 FinSubProceso
 
 
+<<<<<<< HEAD
 SubProceso doBuyout(cliente, auto) //4
 	//To make a purchase we need a client/supplier from whom we are going to buy
 	//and the information of the car we bought
@@ -288,6 +422,18 @@ SubProceso doBuyout(cliente, auto) //4
 	setCar(auto);
 	Escribir "Compra registrada con éxito.";
 	Leer ok;
+=======
+subproceso realizarCompra(cliente, auto) //4
+	//Para realizar una compra necesitamos un cliente/proveedor al que le vamos a comprar
+	//y la informacion del auto que compramos 
+	definir ok como cadena;
+	//Cargamos el cliente, si existe tomamos sus datos
+	cargaCliente(cliente);
+	//Cargamos un nuevo auto
+	cargaAuto(auto);
+	escribir "Purchase successfully registered.";
+	leer ok;
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 FinSubProceso
 
 
@@ -302,9 +448,15 @@ SubProceso carByBrand(auto)
 	
 	Limpiar Pantalla;
 	
+<<<<<<< HEAD
 	Escribir Sin Saltar'Ingrese marca a buscar: ';
 	Leer brand;
 	brand <- Minusculas(brand);
+=======
+	Escribir Sin Saltar'Enter brand to search: ';
+	Leer marca;
+	marca <- Minusculas(marca);
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	
 	Para i<-0 Hasta 99 Hacer
 		
@@ -322,11 +474,19 @@ SubProceso carByBrand(auto)
 	FinPara
 	Si count <> 0 Entonces
 		Limpiar Pantalla;
+<<<<<<< HEAD
 		Escribir 'Resultados encontrados: ', count, '.';
+=======
+		Escribir 'Results found: ', contador, '.';
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		Escribir '-----------------------------------------------------------------------------------------';
 		mostrarAutos(results);
 	SiNo
+<<<<<<< HEAD
 		Escribir 'No se encontraron resultados con marca: ' , brand;
+=======
+		Escribir 'No results were found with brand: ' , marca;
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	FinSi
 	
 	Leer brand;
@@ -366,25 +526,41 @@ SubProceso finishSale(cliente, auto, empleado, venta, paymentsPlan)
 	// Load the client
 	Repetir
 		Escribir '_____________________________________________';
+<<<<<<< HEAD
 		Escribir "Ingrese el DNI del cliente: ";
 		Leer customerDni;     
 		customerIndex <- findById(cliente,customerDni);
 		Si customerIndex <> -1 Entonces
 			customerExist <- Verdadero;
 			Escribir 'Se encontro el cliente con id: ', customerDni;
+=======
+		escribir "Enter the customer´s ID number: ";
+		leer dniCliente;     
+		indiceCliente <- busquedaPorId(cliente,dniCliente);
+		si indiceCliente <> -1 entonces
+			existeCliente <- verdadero;
+			Escribir 'Customer found with id: ', dniCliente;
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		FinSi
 	Hasta Que customerIndex = -1 O customerExist;
 	
 	// If it does not find the client entered, we load a new client.
 	Si No customerExist Entonces
 		Escribir '_____________________________________________';
+<<<<<<< HEAD
 		Escribir "No se encontro al Cliente ";
 		loadNewCustomer(customerDni,cliente);
 		customerIndex <- findById(cliente,customerDni);
+=======
+		escribir "Customer not found ";
+		cargarNuevoCliente(dniCliente,cliente);
+		indiceCliente <- busquedaPorId(cliente,dniCliente);
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	FinSi
 	
 	// Load the car
 	Escribir '_____________________________________________';
+<<<<<<< HEAD
 	Escribir Sin Saltar "Ingrese el id del auto: ";
 	Leer carId;     
 	carIndex <- findById(auto, carId);
@@ -403,6 +579,26 @@ SubProceso finishSale(cliente, auto, empleado, venta, paymentsPlan)
 				Escribir  Sin Saltar'El auto no esta disponible. Ingrese Otro.';
 				Leer carId;  
 				carIndex <- findById(auto, carId);
+=======
+	escribir sin saltar "Enter the car´s id: ";
+	leer idAuto;     
+	indiceAuto <- busquedaPorId(auto, idAuto);
+	autoDisponible <- falso;
+	Mientras indiceAuto = -1 o no(autoDisponible) Hacer
+		sI indiceAuto = -1 Entonces
+			Escribir 'Car not found. Please try again.';
+			escribir sin saltar "Enter the car´s id: ";
+			leer idAuto;
+			indiceAuto <- busquedaPorId(auto, idAuto);
+		FinSi
+		sI indiceAuto <> -1 Entonces
+			estadoAuto <- auto[indiceAuto,7];
+			// Un estado igual a 'false' quiere decir que el auto se vendio o esta alquilado
+			si estadoAuto = 'false' Entonces
+				Escribir  Sin Saltar'The car is not available. Enter Other.';
+				leer idAuto;  
+				indiceAuto <- busquedaPorId(auto, idAuto);
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 			SiNo
 				carEnable <- Verdadero;
 			FinSi
@@ -411,6 +607,7 @@ SubProceso finishSale(cliente, auto, empleado, venta, paymentsPlan)
 	
 	// Load employee file
 	Escribir '_____________________________________________';
+<<<<<<< HEAD
 	Escribir Sin Saltar "Ingrese su número de legajo: ";
 	Leer fileNum;     
 	employeeIndex <- findById(empleado, fileNum);
@@ -424,14 +621,29 @@ SubProceso finishSale(cliente, auto, empleado, venta, paymentsPlan)
 	Escribir '_____________________________________________';
 	Escribir Sin Saltar "Ingrese fecha actual: ";
 	Leer currentDate;
+=======
+	escribir sin saltar "Enter your file number: ";
+	leer numLegajo;     
+	indiceEmpleado <- busquedaPorId(empleado, numLegajo);
+	Mientras indiceEmpleado = -1 Hacer
+		Escribir 'Employee not found. Please try again.';
+		escribir sin saltar "Enter your file number: ";
+		leer numLegajo;   
+		indiceEmpleado <- busquedaPorId(empleado,numLegajo);
+	FinMientras
+	
+	Escribir '_____________________________________________';
+	escribir sin saltar "Enter current date: ";
+	leer fechaActual;
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	Escribir '_____________________________________________';
 	
 	// Plan de Pago
 	
 	answPlan <- '0';
 	Repetir
-		Escribir '¿Quiere incluir un plan de pago? si/no';
-		Escribir '1 . Si';
+		Escribir '¿Do you want to include a payment plan? yes/no';
+		Escribir '1 . Yes';
 		Escribir '2 . No';
 		Leer answPlan;
 		answPlan <- Minusculas(answPlan);
@@ -443,8 +655,8 @@ SubProceso finishSale(cliente, auto, empleado, venta, paymentsPlan)
 		idPlan <- paymentsPlan[planPago,0];
 	FinSi
 	Escribir '---------------------------------------';
-	Escribir '¿Confirmar la Venta?';
-	Escribir  '1. Si';
+	Escribir '¿Confirm the Sale?';
+	Escribir  '1. Yes';
 	Escribir  '2. No';
 	Leer answConfirmation;
 	
@@ -455,15 +667,25 @@ SubProceso finishSale(cliente, auto, empleado, venta, paymentsPlan)
 			// We save the sale: File No., Dni, Name and Last name, date, Id (Car), payment plan.
 			setSale(auto, venta,cliente,lastSale, fileNum,customerDni, customerIndex,currentDate,carIndex, planId);
 			Escribir '_____________________________________________';
+<<<<<<< HEAD
 			Escribir 'Venta Realizada con exito.... ';
 			printSaleById(venta, cliente, paymentsPlan, lastSale);
+=======
+			Escribir 'Successful sale.... ';
+			mostrarVentaporId(venta, cliente, planesDePago, ultimaVenta);
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		SiNo
-			Escribir 'No se pudo concretar la venta, la matriz Venta esta llena.';
+			Escribir 'The sale could not be completed, the Sale array is full.';
 		FinSi
 		
 	SiNo
+<<<<<<< HEAD
 		Escribir 'Venta cancelada. Presione cualquier tecla para salir ... ';
 		Leer answConfirmation;
+=======
+		Escribir 'Sale cancelled. Press any key to exit ... ';
+		Leer rtaConfirmacion;
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	FinSi
 FinSubProceso
 
@@ -480,28 +702,43 @@ SubProceso sellSpare(repuesto, cliente, empleado)
 	// Load customer
 	
 	Escribir '';
-	Escribir '       VENTA DE REPUESTO:';
+	Escribir '       SPARE PARTS SALES:';
 	Escribir '';
 	Escribir '';
 	
 	
 	Repetir
 		Escribir '_____________________________________________';
+<<<<<<< HEAD
 		Escribir  Sin Saltar"Ingrese el DNI del cliente: ";
 		Leer customerDni;     
 		customerIndex <- findById(cliente,customerDni);
 		Si customerIndex <> -1 Entonces
 			customerExist <- Verdadero;
 			Escribir 'Se encontro el cliente con id: ', customerDni;
+=======
+		escribir  Sin Saltar"Enter the customer´s ID number: ";
+		leer dniCliente;     
+		indiceCliente <- busquedaPorId(cliente,dniCliente);
+		si indiceCliente <> -1 entonces
+			existeCliente <- verdadero;
+			Escribir 'Customer found with id: ', dniCliente;
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		FinSi
 	Hasta Que customerIndex = -1 o customerExist;
 	
 	// If it does not find the client entered, we load a new client..
 	Si No customerExist Entonces
 		Escribir '_____________________________________________';
+<<<<<<< HEAD
 		Escribir "No se encontro al Cliente ";
 		loadNewCustomer(customerDni,cliente);
 		customerIndex <- findById(cliente,customerDni);
+=======
+		escribir "Customer not found ";
+		cargarNuevoCliente(dniCliente,cliente);
+		indiceCliente <- busquedaPorId(cliente,dniCliente);
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	FinSi
 	
 	nameAndLastName <- cliente[customerIndex, 1];
@@ -509,24 +746,42 @@ SubProceso sellSpare(repuesto, cliente, empleado)
 	
 	// Choose spare
 	Escribir '_____________________________________________';
+<<<<<<< HEAD
 	Escribir Sin Saltar'Ingrese Id repuesto: ';
 	Leer idSpare;  
+=======
+	Escribir Sin Saltar'Enter Spare part Id: ';
+	leer IdRepuesto;  
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	
 	spareIndex <- findById(repuesto, idSpare);
 	
+<<<<<<< HEAD
 	Mientras spareIndex = -1 Hacer
 		Escribir 'Repuesto no encontrado. Vuelva a intentarlo.';
 		escribir sin saltar "Ingrese Id repuesto: ";
 		leer idSpare;   
 		spareIndex <- findById(repuesto,idSpare);
+=======
+	Mientras indiceRepuesto = -1 Hacer
+		Escribir 'Spare part not found. Please try again.';
+		escribir sin saltar "Enter Spare part Id: ";
+		leer IdRepuesto;   
+		indiceRepuesto <- busquedaPorId(repuesto,IdRepuesto);
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	FinMientras
 	
 	printSpareById(repuesto,idSpare);
 	
 	// Enter the spare quantity..
 	
+<<<<<<< HEAD
 	Escribir Sin Saltar'Ingrese unidades de repuestos: '; 
 	Leer spareQuantity; 
+=======
+	Escribir Sin Saltar'Enter spare parts units: '; 
+	Leer cantidadRepuesto; 
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	
 	stock <- repuesto[spareIndex, 5]; 
 	numberStock <- ConvertirANumero(stock); 
@@ -534,6 +789,7 @@ SubProceso sellSpare(repuesto, cliente, empleado)
 	
 	unitPrice <- ConvertirANumero(repuesto[spareIndex, 4]);
 	
+<<<<<<< HEAD
 	Si numberStock < 0 Entonces
 		Escribir 'No hay stock.';
 		Escribir 'Stock actual: ', repuesto[spareIndex, 5]; 
@@ -546,6 +802,20 @@ SubProceso sellSpare(repuesto, cliente, empleado)
 	
 	repuesto[spareIndex, 5] <- ConvertirATexto(numberStock); 
 	Escribir 'Stock restante: ', repuesto[spareIndex, 5]; 
+=======
+	Si stockNumero < 0 Entonces
+		Escribir 'No stock.';
+		Escribir 'Current stock: ', repuesto[indiceRepuesto, 5]; 
+	FinSi
+	Mientras stockNumero < 0 Hacer
+		Escribir 'Enter spare parts units: '; 
+		Leer cantidadRepuesto;   
+		stockNumero <- stockNumero - cantidadRepuesto; 
+	FinMientras
+	
+	repuesto[indiceRepuesto, 5] <- ConvertirATexto(stockNumero); 
+	Escribir 'Remaining stock: ', repuesto[indiceRepuesto, 5]; 
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	
 	
 	
@@ -554,6 +824,7 @@ SubProceso sellSpare(repuesto, cliente, empleado)
 	// Load vendor file
 	
 	Escribir '_____________________________________________';
+<<<<<<< HEAD
 	Escribir Sin Saltar "Ingrese su número de legajo: ";
 	Leer fileNum;     
 	employeeIndex <- findById(empleado, fileNum);
@@ -567,12 +838,27 @@ SubProceso sellSpare(repuesto, cliente, empleado)
 	Escribir '_____________________________________________';
 	Escribir Sin Saltar "Ingrese fecha actual: ";
 	Leer currentDate;
+=======
+	escribir sin saltar "Enter your file number: ";
+	leer numLegajo;     
+	indiceEmpleado <- busquedaPorId(empleado, numLegajo);
+	Mientras indiceEmpleado = -1 Hacer
+		Escribir 'Employee not found. Please try again.';
+		escribir sin saltar "Enter your file number: ";
+		leer numLegajo;   
+		indiceEmpleado <- busquedaPorId(empleado,numLegajo);
+	FinMientras
+	
+	Escribir '_____________________________________________';
+	escribir sin saltar "Enter current date: ";
+	leer fechaActual;
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	
 	total <- unitPrice * spareQuantity;
 	
 	Escribir '______________________________________________________________________________________________________________________';
 	
-	Escribir ' | Num Legajo |     DNI    | Nombre y apellido |  Id Repuesto  | Precio Unitario | Cantidad |     Fecha     |  Total  |';
+	Escribir ' | Num File |     ID CARD    | First and last name |  Id Spare part  | Unit Price | Amount |     Date     |  Total  |';
 	Escribir '_______________________________________________________________________________________________________________________';
 	Escribir '|     ', fileNum , '     |  ', customerDni, '  |   ', nameAndLastName, '    |   ' ,idSpare , '   |      $',unitPrice, '      |     ', spareQuantity, '    |   ', currentDate, '  |  $', total, '  |' ;
 	Escribir '_______________________________________________________________________________________________________________________';
@@ -622,31 +908,43 @@ SubProceso planPosition <- addPlan(paymentsPlan)
 	
 	printPaymentsPlan(paymentsPlan);
 	
-	Escribir Sin Saltar'Ingresar Plan de Pago: ';
+	Escribir Sin Saltar'Enter Payment Plan: ';
 	Leer idPlan;
 	planPosition <- findById(paymentsPlan, idPlan);
 	Mientras planPosition = -1 Hacer
 		Escribir '____________________________________________'; 
-		Escribir 'Plan No encontrado.Vuelva a intentar. ';
-		Escribir Sin Saltar'Ingresar Plan de Pago: ';
+		Escribir 'Plan not found.try again. ';
+		Escribir Sin Saltar'Enter Payment Plan: ';
 		Leer idPlan;
 		planPosition <- findById(paymentsPlan, idPlan);
 	FinMientras
 	
+<<<<<<< HEAD
 	Escribir 'Plan encontrado con id: ', idPlan;
 	Escribir 'Descripcion plan, Entrega: ', paymentsPlan[planPosition,1], ' , Cuotas: ',paymentsPlan[planPosition,2]; 
+=======
+	Escribir 'Plan found with id: ', idPlan;
+	Escribir 'Plan description, Delivery: ', planesDePago[posicionPlan,1], ' , Dues: ',planesDePago[posicionPlan,2]; 
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 FinSubProceso
 
 SubProceso findByEmployee(empleado)
 	Definir option Como Entero;
 	Limpiar Pantalla;
-	Escribir '           BUSCAR EMPLEADOS';
+	Escribir '           SEARCH EMPLOYEES';
 	Escribir '_______________________________________';
 	Repetir 
+<<<<<<< HEAD
 		Escribir "0-Mostrar todos los empleados.";
 		Escribir "1-Buscar empleados por n° de legajo.";
 		Escribir "2-Salír.";
 		Leer option;
+=======
+		escribir "0-Show all employees.";
+		escribir "1-Search for employees by file number.";
+		escribir "2-Exit.";
+		leer option;
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		Segun option Hacer
 			0:
 				printAllEmployees(empleado);
@@ -655,7 +953,11 @@ SubProceso findByEmployee(empleado)
 			2:
 				
 			De Otro Modo:
+<<<<<<< HEAD
 				Escribir "Dato no válido, intente nuevamente.";
+=======
+				escribir "Invalid data, please try again.";
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		FinSegun
 	Hasta Que option = 2;
 	Limpiar Pantalla;
@@ -667,16 +969,24 @@ SubProceso findSpareById(repuestos)
 	Definir idSpare Como Cadena;
 	Definir position Como Entero;
 	Limpiar Pantalla;
+<<<<<<< HEAD
 	Escribir "Ingrese el id de repuesto que desea buscar.";
 	Leer idSpare;
 	position <- findById(repuestos,idSpare );
 	Escribir '__________________________________________________________________________';
 	Escribir '| Id de repuesto | Categoría |     Marca     |   Modelo | Precio | Stock |';
+=======
+	escribir "Enter the spare part id you wish to search for.";
+	leer idRepuesto;
+	posicion <- busquedaPorId(repuestos,idRepuesto );
+	Escribir '__________________________________________________________________________';
+	escribir '| Spare part ID | Category |     Brand     |   Model | Price | Stock |';
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	Escribir '__________________________________________________________________________';
 	Si position <> -1 Entonces 
 		Escribir '|   ',repuestos[position,0], '    |    ', repuestos[position,1] ,'   |      ',repuestos[position,2],'     |   ',repuestos[position,3],'  |  ',repuestos[position,4], '  |   ',repuestos[position,5],'  | ';
 	SiNo
-		Escribir 'Repuesto no encontrado';
+		Escribir 'Spare part not found';
 	FinSi
 	Leer position;
 FinSubProceso
@@ -685,18 +995,24 @@ SubProceso findCarById(auto)
 	Definir idCar Como Cadena;
 	Definir position Como Entero;
 	Limpiar Pantalla;
+<<<<<<< HEAD
 	Escribir "Ingrese el id del vehiculo que desea buscar.";
 	Leer idCar;
 	position <- findById(auto,idCar );
+=======
+	escribir "Enter the id of the vehicle you wish to search for.";
+	leer idVehiculo;
+	posicion <- busquedaPorId(auto,idVehiculo );
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	Escribir '---------------------------------------------------------------------------------------';
-	Escribir '|   Id   |   Año  |  Marca  |  Modelo  |   Km   |  Precio  | Precio Alquiler | Estado |'; 
+	Escribir '|   Id   |   Year  |  Brand  |  Model  |   Km   |  Price  | Rental Price | Status |'; 
 	Escribir '---------------------------------------------------------------------------------------';
 	Si position <> -1 Entonces 
 		Escribir '|  ',auto[position,0], ' |  ',auto[position,1], '  |  ', auto[position,2], '  |   ', auto[position,3], '  |  ', auto[position,4], ' |  ', auto[position,5], ' |       $', auto[position,6], '      |  ' , auto[position,7],'  |' ; 
 		Escribir '---------------------------------------------------------------------------------------';
 	SiNo
 		
-		Escribir 'Vehiculo no encontrado';
+		Escribir 'Vehicle not found';
 		Escribir '---------------------------------------------------------------------------------------';
 	FinSi
 	Leer position;
@@ -708,9 +1024,15 @@ SubProceso findSaleByEmployee(venta, empleado, paymentsPlan)
 	Definir idPlan, delivery, dues, idEmployee,  employeeName, name, lastName Como Cadena;
 	Limpiar Pantalla;
 	
+<<<<<<< HEAD
 	Escribir sin saltar 'Ingrese Id Vendedor: ';
 	Leer idEmployee;
 	position <- findById(empleado, idEmployee);
+=======
+	Escribir sin saltar 'Enter Seller Id: ';
+	Leer idVendedor;
+	posicion <- busquedaPorId(empleado, idVendedor);
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	
 	name <- Concatenar(empleado[position,1], ' ');
 	
@@ -720,12 +1042,12 @@ SubProceso findSaleByEmployee(venta, empleado, paymentsPlan)
 	
 	Si position <> -1 Entonces
 		Escribir '_______________________________';
-		Escribir '| N° Legajo | Nombre Vendedor |';
+		Escribir '| File Number | Seller´s Name |';
 		Escribir '-------------------------------';
 		Escribir  '|    ', idEmployee,  '    |   ',  employeeName, '  |';
 		Escribir '-------------------------------';
 		Escribir '_____________________________________________________________________________';
-		Escribir '|    DNI   |  Nombre y Apellido |     Fecha    | Id Auto | Entrega | Cuotas |';
+		Escribir '|    ID CARD   |  First and Last Name |     Date    | Id Auto | Delivery | Dues |';
 		Para i<-0 Hasta 99 Hacer
 			
 			Si No(venta[i,0] = '0')  y venta[i, 0] = idEmployee Entonces
@@ -738,14 +1060,14 @@ SubProceso findSaleByEmployee(venta, empleado, paymentsPlan)
 					Escribir  '| ', venta[i,1] , ' |     ', venta[i,2] , '    |   ', venta[i,3], ' |  ', venta[i,4] , '  | ', delivery, '   |   ', dues, '   |';
 				SiNo
 					Escribir '_____________________________________________________________________________';
-					Escribir  '| ', venta[i,1] , ' |   ', venta[i,2] , '      |  ', venta[i,3], ' |  ', venta[i,4] , '  | Sin Plan';
+					Escribir  '| ', venta[i,1] , ' |   ', venta[i,2] , '      |  ', venta[i,3], ' |  ', venta[i,4] , '  | No Plan';
 				FinSi
 				
 			FinSi
 		FinPara
 		Escribir '_____________________________________________________________________________';
 	SiNo
-		Escribir 'Vendedor no encontrado';
+		Escribir 'Seller not found';
 	FinSi
 	leer i;
 	
@@ -755,11 +1077,19 @@ SubProceso findEmployeeFile(empleado)
 	Definir fileNum Como Cadena;
 	Definir position Como Entero;
 	Limpiar Pantalla;
+<<<<<<< HEAD
 	Escribir Sin Saltar"Ingrese el n° de legajo que desea buscar.";
 	Leer filenum;
 	position <- findById(empleado, fileNum);
 	Escribir '______________________________________________________________________________________';
 	Escribir "| N° de legajo | Nombre | Nombre 2 | Apellido |    Dirección   | Edad | Nacionalidad |";
+=======
+	escribir Sin Saltar"Enter the file number you wish to search for.";
+	leer numlegajo;
+	posicion <- busquedaPorId(empleado, numLegajo);
+	Escribir '______________________________________________________________________________________';
+	escribir "| File number | Name | Name 2 | Last name |    Address   | Age | Nationality |";
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	Escribir '______________________________________________________________________________________';
 	Si position <> -1 Entonces 
 		Si empleado[position,2]  = '' Entonces
@@ -769,7 +1099,7 @@ SubProceso findEmployeeFile(empleado)
 		FinSi
 		Escribir '______________________________________________________________________________________';
 	Sino
-		Escribir 'Empleado no encontrado';
+		Escribir 'Employee not found';
 	FinSi
 	Leer filenum;
 FinSubProceso
@@ -778,12 +1108,19 @@ SubProceso serviceCar(auto)
 	Definir option Como Entero;
 	Repetir
 		Limpiar Pantalla;
-		Escribir '         BUSCAR VEHICULO';
+		Escribir '         SEARCH VEHICLE';
 		Escribir '___________________________________';
+<<<<<<< HEAD
 		Escribir "0-Ver vehiculos disponibles.";
 		Escribir "1-Buscar vehiculo por id.";
 		Escribir "2-Salir.";
 		Leer option;
+=======
+		escribir "0-See available vehicles.";
+		escribir "1-Search vehicle by id.";
+		escribir "2-Exit.";
+		leer option;
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		Segun option Hacer
 			0:
 				availableCar(auto);
@@ -792,7 +1129,11 @@ SubProceso serviceCar(auto)
 			2:
 				
 			De Otro Modo:
+<<<<<<< HEAD
 				Escribir "Dato no válido, intente nuevamente.";
+=======
+				escribir "Invalid data, please try again.";
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		FinSegun
 		Hasta Que	option = 2;
 		Limpiar Pantalla;
@@ -803,12 +1144,19 @@ SubProceso servicesSpare(repuestos)
 	Definir option Como Entero;
 	Repetir
 		Limpiar Pantalla;
-		Escribir '         BUSCAR REPUESTO';
+		Escribir '         SEARCH FOR SPARE PARTS';
 		Escribir '___________________________________';
+<<<<<<< HEAD
 		Escribir "0-Ver todos los repuestos.";
 		Escribir "1-Buscar repuestos por id.";
 		Escribir "2-Salir.";
 		Leer option;
+=======
+		escribir "0-See all the spare parts.";
+		escribir "1-Search for spare parts by id.";
+		escribir "2-Exit.";
+		leer option;
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		Segun option Hacer
 			0:
 				printSpareList(repuestos);
@@ -817,7 +1165,11 @@ SubProceso servicesSpare(repuestos)
 			2:
 				
 			De Otro Modo:
+<<<<<<< HEAD
 				Escribir "Dato no válido, intente nuevamente.";
+=======
+				escribir "Invalid data, please try again.";
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		FinSegun
 		Hasta Que	option = 2;
 		Limpiar Pantalla;
@@ -828,12 +1180,19 @@ SubProceso serviceSales(venta, planes, empleado)
 	Definir option Como Entero;
 	Repetir
 		Limpiar Pantalla;
-		Escribir '         BUSCAR VENTA';
+		Escribir '         SEARCH FOR SALE';
 		Escribir '___________________________________';
+<<<<<<< HEAD
 		Escribir "0-Ver todas las ventas.";
 		Escribir "1-Buscar venta por vendedor.";
 		Escribir "2-Salir.";
 		Leer option;
+=======
+		escribir "0-See all sales.";
+		escribir "1-Search for sale by seller.";
+		escribir "2-Exit.";
+		leer option;
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		Segun option Hacer
 			0:
 				printSalesList(venta,planes);
@@ -842,7 +1201,11 @@ SubProceso serviceSales(venta, planes, empleado)
 			2:
 				
 			De Otro Modo:
+<<<<<<< HEAD
 				Escribir "Dato no válido, intente nuevamente.";
+=======
+				escribir "Invalid data, please try again.";
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		FinSegun
 		Hasta Que	option = 2;
 		Limpiar Pantalla;
@@ -855,16 +1218,23 @@ SubProceso findCustomer(cliente)
 	Definir position Como Entero;
 	
 	Limpiar Pantalla;
+<<<<<<< HEAD
 	Escribir "Ingrese el id de cliente que desea buscar.";
 	Leer idCustomer;
 	position <- findById(cliente,idCustomer );
 	Si position <> -1 Entonces 
+=======
+	escribir "Enter the customer id you wish to search for.";
+	leer idCliente;
+	posicion <- busquedaPorId(cliente,idCliente );
+	si posicion <> -1 entonces 
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		Escribir "___________________________";
-		Escribir "| DNI | Nombre y Apellido |";
+		Escribir "| ID CARD | First and Last Name |";
 		Escribir "___________________________";
 		Escribir '| ',cliente[position,0], ' |  ', cliente[position,1] ,' | ';
 	SiNo
-		Escribir 'Cliente no encontrado';
+		Escribir 'Customer not found';
 	FinSi
 	Leer position;
 FinSubProceso
@@ -875,8 +1245,9 @@ SubProceso setCar(auto)
 	Definir id, year, brand, model, km, price, pricePerHour Como Cadena;
 	Definir index Como Entero;
 	Limpiar Pantalla;
-	Escribir '      Alta de Nuevo Auto';
+	Escribir '      New Car Registration';
 	Escribir '________________________________';
+<<<<<<< HEAD
 	Escribir Sin Saltar"Ingrese id de auto: ";
 	Leer id;
 	Escribir Sin Saltar"Ingrese año de fabricación: ";
@@ -891,6 +1262,22 @@ SubProceso setCar(auto)
 	Leer price;
 	Escribir Sin Saltar"Ingrese precio de alquiler por hora: ";
 	Leer pricePerHour;
+=======
+	escribir sin saltar"Enter car id: ";
+	leer id;
+	escribir sin saltar"Enter year of manufacture: ";
+	leer year;
+	escribir sin saltar"Enter brand: ";
+	leer marca;
+	escribir sin saltar"Enter model: ";
+	leer modelo;
+	escribir sin saltar"Enter km: ";
+	leer km;
+	escribir sin saltar"Enter price: ";
+	leer precio;
+	escribir sin saltar"Enter hourly rental rate: ";
+	leer precioHora;
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	
 	index <- getLastIndex(auto);
 	auto[index,0] <- id;
@@ -901,15 +1288,22 @@ SubProceso setCar(auto)
 	auto[index,5] <- price;
 	auto[index,6] <- pricePerHour;
 	// Te ponemeos la disponibilidad a true / disponible 
+<<<<<<< HEAD
 	auto[index,7] <- "true";
 	Escribir "Se agregó un nuevo auto.";
 	Leer id;
+=======
+	auto[indice,7] <- "true";
+	escribir "A new car was added.";
+	leer id;
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 FinSubProceso
 
 SubProceso  setCustomer(cliente Por Referencia)
 	Definir j,i,index,position Como Entero;
 	Definir nameAndLastName, dni Como Cadena;
 	Limpiar Pantalla;
+<<<<<<< HEAD
 	Escribir "Ingrese dni del nuevo cliente: ";
 	Leer dni;
 	position <- findById(cliente, dni);
@@ -922,6 +1316,20 @@ SubProceso  setCustomer(cliente Por Referencia)
 		printCustomerById(cliente, dni);
 	SiNo
 		Escribir "El cliente ya existente.";	
+=======
+	escribir "Enter new customer´s ID: ";
+	leer dni;
+	posicion <- busquedaPorId(cliente, dni);
+	Si posicion = -1  entonces
+		indice <- obtenerUltimoIndice(cliente);
+		escribir "Enter first and last name of new Customer: ";
+		leer nombreYapellido;
+		cliente[indice,0] <- dni;
+		cliente[indice,1] <- nombreYapellido;
+		mostrarClientePorId(cliente, dni);
+	sino
+		escribir "The customer already exists.";	
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	FinSi
 	
 	Leer dni;
@@ -945,22 +1353,37 @@ subproceso loadNewCustomer(customerDni,cliente)
 	definir j,i,index como entero;
 	definir nameAndLastName como cadena;
 	Limpiar Pantalla;
+<<<<<<< HEAD
 	index <- getLastIndex(cliente);
 	escribir "Ingrese nombre y apellido del nuevo Cliente: ";
 	leer nameAndLastName;
 	cliente[index,0] <- customerDni;
 	cliente[index,1] <- nameAndLastName;
 	printCustomerById(cliente, customerDni);
+=======
+	indice <- obtenerUltimoIndice(cliente);
+	escribir "Enter first and last name of new Customer: ";
+	leer nombreYapellido;
+	cliente[indice,0] <- dniCliente;
+	cliente[indice,1] <- nombreYapellido;
+	mostrarClientePorId(cliente, dniCliente);
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 FinSubProceso
 
 subproceso setEmployees(empleado)
 	definir index como entero;
 	limpiar pantalla;
+<<<<<<< HEAD
 	definir legajo,name,name2,lastName,direccion,edad,nacionalidad como cadena;
 	Escribir '           CARGA EMPLEADO';
+=======
+	definir legajo,nombre,nombre2,apellido,direccion,edad,nacionalidad como cadena;
+	Escribir '           LOAD EMPLOYEE';
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	Escribir '___________________________________';
-	escribir "Ingrese el n° de legajo: ";
+	escribir "Enter the file number: ";
 	leer legajo;
+<<<<<<< HEAD
 	escribir "Ingrese el nombre: ";
 	leer name;
 	escribir "Ingrese el segundo numbre: ";
@@ -968,11 +1391,21 @@ subproceso setEmployees(empleado)
 	escribir "Ingrese el apellido: ";
 	leer lastName;
 	escribir "Ingrese domicilio: ";
+=======
+	escribir "Enter the name: ";
+	leer nombre;
+	escribir "Enter the middle name: ";
+	leer nombre2;
+	escribir "Enter last name: ";
+	leer apellido;
+	escribir "Enter your address: ";
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	leer direccion;
-	escribir "Ingrese edad: ";
+	escribir "Enter age: ";
 	leer edad;
-	escribir "Ingrese nacionalidad: ";
+	escribir "Enter your nationality: ";
 	leer nacionalidad;
+<<<<<<< HEAD
 	index <- getLastIndex(empleado);
 	empleado[index,0] <- legajo;
 	empleado[index,1] <- name;
@@ -982,6 +1415,17 @@ subproceso setEmployees(empleado)
 	empleado[index,5] <- edad;
 	empleado[index,6] <- nacionalidad;
 	escribir "Un nuevo empleado ha sido cargado con éxito.";
+=======
+	indice <- obtenerUltimoIndice(empleado);
+	empleado[indice,0] <- legajo;
+	empleado[indice,1] <- nombre;
+	empleado[indice,2] <- nombre2;
+	empleado[indice,3] <- apellido;
+	empleado[indice,4] <- direccion;
+	empleado[indice,5] <- edad;
+	empleado[indice,6] <- nacionalidad;
+	escribir "A new employee has been successfully uploaded.";
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	leer legajo;
 FinSubProceso
 
@@ -989,12 +1433,13 @@ SubProceso setSpares(repuestos)
 	Definir id, categoria, brand, model, price, stock Como Cadena;
 	Definir index Como Entero;
 	Limpiar Pantalla;
-	Escribir Sin Saltar "Ingrese id: ";
+	Escribir Sin Saltar "Enter id: ";
 	Leer id;
-	Escribir Sin Saltar "Ingrese categoría: ";
+	Escribir Sin Saltar "Enter category: ";
 	Leer categoria;
-	Escribir Sin Saltar "Ingrese marca: ";
+	Escribir Sin Saltar "Enter brand: ";
 	Leer marca;
+<<<<<<< HEAD
 	Escribir Sin Saltar "Ingrese modelo: ";
 	Leer model;
 	Escribir Sin Saltar "Ingrese precio: ";
@@ -1009,6 +1454,22 @@ SubProceso setSpares(repuestos)
 	repuestos[index,4] <- price;
 	repuestos[index,5] <- stock;
 	escribir "Un nuevo repuesto ha sido cargado con éxito.";
+=======
+	Escribir Sin Saltar "Enter model: ";
+	Leer modelo;
+	Escribir Sin Saltar "Enter price: ";
+	Leer precio;
+	Escribir Sin Saltar "Enter stock: ";
+	Leer stock;
+	indice <- obtenerUltimoIndice(repuestos);
+	repuestos[indice,0] <- id;
+	repuestos[indice,1] <- categoria;
+	repuestos[indice,2] <- marca;
+	repuestos[indice,3] <- modelo;
+	repuestos[indice,4] <- precio;
+	repuestos[indice,5] <- stock;
+	escribir "A new spare part has been successfully loaded.";
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	leer id;
 FinSubProceso
 
@@ -1016,10 +1477,11 @@ Subproceso setNewPaymentPlan(paymentsPlan)
 	definir idPlan,delivery,dues como cadena;
 	definir index como entero;
 	Limpiar Pantalla;
-	Escribir '          CARGA NUEVO PLAN ';
+	Escribir '          LOAD NEW PLAN ';
 	Escribir '_____________________________________';
-	escribir sin saltar "Ingrese nuevo id de plan: ";
+	escribir sin saltar "Enter new plan id: ";
 	leer idPlan;
+<<<<<<< HEAD
 	escribir sin saltar "Ingrese monto de la entrega: $";
 	leer delivery;
 	escribir sin saltar "Ingrese n° de cuotas: ";
@@ -1029,6 +1491,17 @@ Subproceso setNewPaymentPlan(paymentsPlan)
 	paymentsPlan[index,1] <- delivery;
 	paymentsPlan[index,2] <- dues;
 	escribir sin saltar "Un nuevo plan fue cargado con éxito.";
+=======
+	escribir sin saltar "Enter amount of delivery: $";
+	leer entrega;
+	escribir sin saltar "enter number of dues: ";
+	leer cuotas;
+	indice <- obtenerUltimoIndice(planesDePago);
+	planesDePago[indice,0] <- idPlan;
+	planesDePago[indice,1] <- entrega;
+	planesDePago[indice,2] <- cuotas;
+	escribir sin saltar "A new plan was successfully uploaded.";
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	leer idPlan;
 FinSubProceso
 
@@ -1059,26 +1532,38 @@ SubProceso printSaleById(ventas, cliente, paymentsPlan, idVenta)
 		delivery <- paymentsPlan[posPaymentPlan, 1];
 		dues <- paymentsPlan[posPaymentPlan, 2];
 		Escribir '________________________________________________________________________________________';
-		Escribir '| N° Legajo |    DNI   | Nombre y Apellido |    Fecha   |  Id Auto  | Entrega | Cuotas |';
+		Escribir '| File Number |    ID CARD   | First and Last Name |    Date   |  Id Car  | Delivery | Dues |';
 		
 		Escribir '________________________________________________________________________________________';
 		Escribir  '|    ',legajo, '    | ', dni , ' |    ', nameAndLastName , '     | ', fecha, ' |   ', carId , '   |   ', delivery, '  |    ', dues, ' |';
 	SiNo
 		Escribir '________________________________________________________________________________________';
-		Escribir '| N° Legajo | DNI | Nombre y Apellido | Fecha | Id Auto | Id Plan |';
+		Escribir '| File Number | ID CARD | First and Last Name | Date | Id Car | Id Plan |';
 		Escribir '__________________________________________________________________________________';
+<<<<<<< HEAD
 		Escribir  legajo, ' | ', dni , ' | ', nameAndLastName , ' | ', fecha, ' | ', carId , ' | Sin Plan';
+=======
+		Escribir  legajo, ' | ', dni , ' | ', nombreYapellido , ' | ', fecha, ' | ', idAuto , ' | No Plan';
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	FinSi
 	Escribir '________________________________________________________________________________________';
 	
 	Leer answ;
 FinSubProceso
 
+<<<<<<< HEAD
 SubProceso printCustomerById(cliente, idCustomer)
 	Definir customerIndex  como entero;
 	customerIndex <- findById(cliente, idCustomer);
 	Escribir '|  DNI  | Nombre y Apellido |';
 	Escribir '|',cliente[customerIndex,0],'|',cliente[customerIndex,1],'|';
+=======
+SubProceso mostrarClientePorId(cliente, idCliente)
+	Definir indiceCliente  como entero;
+	indiceCliente <- busquedaPorId(cliente, idCliente);
+	Escribir '|  ID CARD | First and Last Name |';
+	Escribir '|',cliente[indiceCliente,0],'|',cliente[indiceCliente,1],'|';
+>>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	
 	Leer customerIndex;
 	
@@ -1089,7 +1574,7 @@ SubProceso printSpareById(repuesto, idSpare)
 	spareIndex <- findById(repuesto, idSpare);
 	// Id, Categoría, Marca, Modelo, Precio, stock.
 	Escribir '_______________________________________________________________';
-	Escribir '|  Id Repuesto  | Categoria | Marca | Modelo | Precio | Stock |';
+	Escribir '|  Spare part Id | Category | Brand | Model | Price | Stock |';
 	Escribir '_______________________________________________________________';
 	Escribir '|   ',repuesto[spareIndex,0],'   |    ',repuesto[spareIndex,1],'   |  ',repuesto[spareIndex,2],' |  ', repuesto[spareIndex,3],'  |  ', repuesto[spareIndex,4],' |   ',repuesto[spareIndex,5],'  |';
 	Escribir '_______________________________________________________________';	
@@ -1100,7 +1585,7 @@ FinSubProceso
 subproceso availableCar(auto)
 	Definir i Como Entero;
 	Limpiar Pantalla;
-	Escribir '|   Id   |  Año  |  Marca |  Modelo |   Km   |  Precio  | Precio Alquiler |'; 
+	Escribir '|   Id   |  Year  |  Brand |  Model |   Km   |  Price  | Rental Price |'; 
 	Escribir '---------------------------------------------------------------------------';
 	Para i<-0 Hasta 99 Hacer
 		Si auto[i,7] = 'true' Entonces
@@ -1112,7 +1597,7 @@ FinSubProceso
 
 subproceso mostrarAutos(auto)
 	Definir i Como Entero;
-	Escribir '|   Id   |   Año  |  Marca | Modelo |    Km     | Precio  | Precio Alquiler |  Estado  |';
+	Escribir '|   Id   |   Year  |  Brand | Model |    Km     | Price  | Rental Price |  Status  |';
 	Escribir '-----------------------------------------------------------------------------------------';
 	Para i<-0 Hasta 99 Hacer
 		Si auto[i,0] <> '0' Entonces
@@ -1124,7 +1609,7 @@ FinSubProceso
 subproceso printAllEmployees(empleado)
 	definir i,j como entero;
 	Limpiar Pantalla;
-	escribir "| N° de legajo | Nombre | Nombre 2 | Apellido | Dirección | Edad | Nacionalidad |";
+	escribir "| File number | Name | Name 2 | Last name | Address | Age | Nationality |";
 	Para i <- 0 Hasta 99 Con Paso 1 Hacer
 		Para j <- 0 Hasta 6 Con Paso 1 Hacer
 			Si no (empleado[i,j]= '0') Entonces
@@ -1144,7 +1629,7 @@ SubProceso printSalesList(venta, paymentsPlan)
 	Definir idPlan, delivery, dues como cadena;
 	Limpiar Pantalla;
 	Escribir '______________________________________________________________________________________';
-	Escribir '| N° Legajo |    DNI   | Nombre y Apellido |    Fecha   | Id Auto | Entrega | Cuotas |';
+	Escribir '| File number |    ID Card   | Name and Last name |    Date   | Id Car | Delivery | Dues |';
 	
 	Para i<-0 Hasta 99 Hacer
 		Si No(venta[i,0] = '0') Entonces
@@ -1168,7 +1653,7 @@ FinSubProceso
 
 SubProceso printSpareList(repuestos)
 	Definir i, j Como Entero;
-	Escribir '|  Id  | Categoría | Marca | Modelo | Precio | Stock';
+	Escribir '|  Id  | Category | Brand | Model | Price | Stock';
 	Para i<-0 Hasta 99 Hacer
 		Si No(repuestos[i,0] = '0') Entonces
 			Para j<-0 Hasta 5 Hacer
@@ -1197,7 +1682,7 @@ FinSubProceso
 SubProceso printPaymentsPlan(paymentsPlan)
 	Definir i, j Como Entero;
 	Limpiar Pantalla;
-	Escribir '| IdPlan | Entrega | Cuotas |';
+	Escribir '| IdPlan | Delivery | Dues |';
 	Escribir '______________________________';
 	Para i<-0 Hasta 99 Hacer
 		Si No(paymentsPlan[i,0] = '0') Entonces
@@ -1232,7 +1717,7 @@ SubProceso barra(operacion)
 	
 	Escribir '';	Escribir '';
 	
-	Escribir '                      CARGANDO ' , operacion ;
+	Escribir '                      LOADING ' , operacion ;
 	Escribir '---------------------------------------------------------------------';
 	
 	Para i<- 0 Hasta 69  Hacer 
@@ -1243,7 +1728,7 @@ SubProceso barra(operacion)
 	Escribir '';
 	Escribir '---------------------------------------------------------------------';
 	Escribir '';
-	Escribir 'OPERACIÓN FINALIZADA';
+	Escribir 'OPERATION COMPLETED';
 	
 FinSubProceso
 
