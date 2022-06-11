@@ -549,11 +549,7 @@ SubProceso sellSpare(repuesto, cliente, empleado)
 	
 	
 	
-<<<<<<< HEAD
-     // Read spareQuantity;
-=======
 	// Read spareQuantity;
->>>>>>> RamaAgu
 	
 	// Load vendor file
 	
@@ -910,25 +906,25 @@ SubProceso setCar(auto)
 	Leer id;
 FinSubProceso
 
-subproceso  setCustomer(cliente Por Referencia)
-	definir j,i,index,position como entero;
-	definir nameAndLastName, dni como cadena;
+SubProceso  setCustomer(cliente Por Referencia)
+	Definir j,i,index,position Como Entero;
+	Definir nameAndLastName, dni Como Cadena;
 	Limpiar Pantalla;
-	escribir "Ingrese dni del nuevo cliente: ";
-	leer dni;
+	Escribir "Ingrese dni del nuevo cliente: ";
+	Leer dni;
 	position <- findById(cliente, dni);
-	Si position = -1  entonces
+	Si position = -1  Entonces
 		index <- getLastIndex(cliente);
-		escribir "Ingrese nombre y apellido del nuevo Cliente: ";
-		leer nameAndLastName;
+		Escribir "Ingrese nombre y apellido del nuevo Cliente: ";
+		Leer nameAndLastName;
 		cliente[index,0] <- dni;
 		cliente[index,1] <- nameAndLastName;
-		mostrarClientePorId(cliente, dni);
-	sino
-		escribir "El cliente ya existente.";	
+		printCustomerById(cliente, dni);
+	SiNo
+		Escribir "El cliente ya existente.";	
 	FinSi
 	
-	leer dni;
+	Leer dni;
 FinSubProceso
 
 subproceso setSale(auto,venta,cliente, lastSale, fileNum,customerDni,customerIndex, currentDate,carIndex, planPago)
@@ -954,7 +950,7 @@ subproceso loadNewCustomer(customerDni,cliente)
 	leer nameAndLastName;
 	cliente[index,0] <- customerDni;
 	cliente[index,1] <- nameAndLastName;
-	mostrarClientePorId(cliente, customerDni);
+	printCustomerById(cliente, customerDni);
 FinSubProceso
 
 subproceso setEmployees(empleado)
@@ -1078,7 +1074,7 @@ SubProceso printSaleById(ventas, cliente, paymentsPlan, idVenta)
 	Leer answ;
 FinSubProceso
 
-SubProceso mostrarClientePorId(cliente, idCustomer)
+SubProceso printCustomerById(cliente, idCustomer)
 	Definir customerIndex  como entero;
 	customerIndex <- findById(cliente, idCustomer);
 	Escribir '|  DNI  | Nombre y Apellido |';
