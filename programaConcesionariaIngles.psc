@@ -1,187 +1,127 @@
 Proceso Main
-	Definir auto, empleado, repuestos, cliente, venta, paymentsPlan Como Cadena;
+	Definir car, employee, spares, customer, sale, paymentOfPlan Como Cadena;
 	Definir option Como Entero;
-	Dimension auto[100,8], empleado[100,7], repuestos[100,6];
-	Dimension cliente[100,2],venta[100,6],paymentsPlan[100,3];	
+	Dimension car[100,8], employee[100,7], spares[100,6];
+	Dimension customer[100,2],sale[100,6],paymentOfPlan[100,3];	
 	
 	
 	//Fill all lists with zeros
-	preSetCarList(auto);
-	preSetEmployeeList(empleado);
-	preSetSpareList(repuestos);
-	preSetPaymentPlanList(paymentsPlan);
-	preSetSalesList(venta);
-	preSetCustomerList(cliente);
+	preSetCarList(car);
+	preSetEmployeeList(employee);
+	preSetSpareList(spares);
+	preSetPaymentPlanList(paymentOfPlan);
+	preSetSalesList(sale);
+	preSetCustomersList(customer);
 	
 	//Fill lists with examples dates
-	setCarList(auto);
-	setEmployeeList(empleado);
-	setSparesList(repuestos);
-	setPaymenPlanList(paymentsPlan);
-	setCustomersList(cliente);
-	setSalesList(venta);	
+	setCarList(car);
+	setEmployeeList(employee);
+	setSparesList(spares);
+	setPaymentsPlanList(paymentOfPlan);
+	setCustomersList(customer);
+	setSalesList(sale);	
 	
 	
 	//Main menu____________________________________________________________________________________________________________________
 	Repetir
 		Limpiar Pantalla;
 		baner();
-		Escribir " ";
-		Escribir "                    Bienvenido a Fast&will - Software de gestión de concesionarias";
-		Escribir "*****************************************************************************************************";
-		Escribir '';
-		Escribir "Elija una opción para operar: ";
-		Escribir '------------------------------';
-		Escribir "Opción 0: Ventas";
-		Escribir "Opción 1: Buscar";
-		Escribir "Opción 2: Servicios de alquiler";
-		Escribir "Opción 3: Carga de datos";
-		Escribir "Opción 4: Compras";
-		Escribir "Opción 5: Salír";
-		Escribir '';
-		Escribir Sin Saltar 'Ingrese opcion: '; 
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 		Leer option;
 		Segun option Hacer
 			0:
-				doSale(cliente,auto,empleado,venta,paymentsPlan, repuestos);
+				doSale(customer,car,employee,sale,paymentOfPlan, spares);
 			1:
-				searchMenu(empleado, auto, cliente, repuestos, venta, paymentsPlan);
+				searchMenu(employee, car, customer, spares, sale, paymentOfPlan);
 			2:
-				serviceRental(cliente, auto, empleado);
+				serviceRental(customer, car, employee);
 			3:
-				loadDataMenu(auto,empleado,repuestos,cliente,paymentsPlan);
+				loadDataMenu(car,employee,spares,customer,paymentOfPlan);
 			4:
-				doBuyout(cliente,auto);
+				doBuyout(customer,car);
 			5:	
 			De Otro Modo: 
-				Escribir "Ingrese una opción válida.";
+				
 		FinSegun
 	Hasta Que option = 5;
-	Escribir "Gracias por usar el software, regrese pronto.";
+	
 FinProceso
 
 //SubProcess's____________________________________________________________________________________________________________________
 
 
-<<<<<<< HEAD
-SubProceso doSale(cliente,auto,empleado,venta,paymentsPlan, repuesto) //0
+SubProceso doSale(customer,car,employee,sale,paymentOfPlan, spare) //0
 	Definir option, i Como Entero;
-=======
-//SubProcesos ____________________________________________________________________________________________________________________
-
-subproceso realizarVenta(cliente,auto,empleado,venta,planesDePago, repuesto) //0
-	definir option, i como entero;
 	Repetir
 		Limpiar Pantalla;
-		Escribir '         SALES OPTIONS';
-		Escribir '___________________________________';
-		escribir "0-Vehicles by brand.";
-		escribir "1-Payment plans.";
-		escribir "2-Car sale.";
-		escribir "3-Sale Spare.";
-		escribir "4-Exit.";
-		leer option;
+		
+		
+		
+		
+		
+		
+		
+		
 		Segun option Hacer
 			0:
-				vehiculoPorMarca(auto);
+				carByBrand(car);
 			1:
-				planesPago(planesDePago);
+				paymentsPlan(paymentOfPlan);
 				Esperar Tecla;
 			2: 
-				concretarVenta(cliente,auto,empleado,venta,planesDePago); 
+				finishSale(customer,car,employee,sale,paymentOfPlan); 
 			3:
-				ventaRepuesto(repuesto, cliente, empleado);
+				sellSpare(spare, customer, employee);
 			4:
 			De Otro Modo:
-				escribir "Invalid data, Please try again.";
-		FinSegun
-		Hasta Que	option = 4;
-		limpiar pantalla;
-FinSubProceso
-
-subproceso realizarVenta(cliente,auto,empleado,venta,planesDePago, repuesto) //0
-	definir option, i como entero;
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
-	Repetir
-		Limpiar Pantalla;
-		Escribir '         SALES OPTIONS';
-		Escribir '___________________________________';
-<<<<<<< HEAD
-		Escribir "0-Vehículo por marca.";
-		Escribir "1-Planes de pago.";
-		Escribir "2-Venta Auto.";
-		Escribir "3-Venta Repuesto.";
-		Escribir "4-Salir.";
-		Leer option;
-=======
-		escribir "0-Vehicle by brand.";
-		escribir "1-Payment plans.";
-		escribir "2-Car Sales.";
-		escribir "3-Sale Spare Parts.";
-		escribir "4-Exit.";
-		leer option;
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
-		Segun option Hacer
-			0:
-				carByBrand(auto);
-			1:
-				paymentPlan(paymentsPlan);
-				Esperar Tecla;
-			2: 
-				finishSale(cliente,auto,empleado,venta,paymentsPlan); 
-			3:
-				sellSpare(repuesto, cliente, empleado);
-			4:
-			De Otro Modo:
-				escribir "Invalid data, please try again.";
+				
 		FinSegun
 		Hasta Que	option = 4;
 		Limpiar Pantalla;
 FinSubProceso
 
 
-SubProceso searchMenu(empleado, auto, cliente, repuesto, venta, planes) //1
+SubProceso searchMenu(employee, car, customer, spare, sale, plans) //1
 	Definir option Como Entero;
 	
 	Repetir
 		Limpiar Pantalla;
-		Escribir '       PERFORM A SEARCH';
-		Escribir '____________________________________';
-<<<<<<< HEAD
-		Escribir "0-Vehículos";
-		Escribir "1-Empleados.";
-		Escribir "2-Repuestos.";
-		Escribir "3-Cliente";
-		Escribir "4-Ventas";
-		Escribir "5-Salír";
+		
+		
+		
+		
+		
+		
+		
+		
 		Leer option;
-=======
-		escribir "0-Vehicles";
-		escribir "1-Employees.";
-		escribir "2-Spare parts .";
-		escribir "3-Customer";
-		Escribir "4-Sales";
-		escribir "5-Exit";
-		leer option;
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		Segun option Hacer
 			0:
-				carMenu(auto);
+				carMenu(car);
 			1:
-				searchEmployeeMenu(empleado);
+				searchEmployeeMenu(employee);
 			2:
-				sparesMenu(repuesto);
+				sparesMenu(spare);
 			3:
-				searchCustomer(cliente);
+				searchCustomer(customer);
 			4:
-				salesMenu(venta, planes, empleado);
+				salesMenu(sale, plans, employee);
 			5:
 			De Otro Modo:
-<<<<<<< HEAD
-				Escribir "Dato no válido, intente nuevamente.";
-=======
-				escribir "Invalid data, please try again.";
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+				
 		FinSegun
 		
 	Hasta Que option = 5;
@@ -189,9 +129,9 @@ SubProceso searchMenu(empleado, auto, cliente, repuesto, venta, planes) //1
 FinSubProceso
 
 
-SubProceso serviceRental(cliente, auto, empleado)
+SubProceso serviceRental(customer, car, employee)
 	
-	Definir customerDni, idCar, pricePerHour, fileNum, currentDare,answ,enableCar Como Cadena;
+	Definir customerDni, idCar, pricePerHour, fileNum, currentDate, answ, enableCar Como Cadena;
 	Definir customerIndex, carIndex, employeeIndex Como Entero;
 	Definir customerExist Como Logico;
 	
@@ -201,160 +141,101 @@ SubProceso serviceRental(cliente, auto, empleado)
 	
 	//Put the data of one existent customer or a new customer 
 	Repetir
-		Escribir '_____________________________________________________________________';
-<<<<<<< HEAD
-		escribir "Ingrese el DNI del cliente: ";
-		leer customerDni;     
-		customerIndex <- findById(cliente,customerDni);
-		si customerIndex <> -1 entonces
-			customerExist <- verdadero;
-			Escribir 'Se encontro el cliente con id: ', customerDni;
-=======
-		escribir "Enter the customer´s ID number: ";
-		leer dniCliente;     
-		indiceCliente <- busquedaPorId(cliente,dniCliente);
-		si indiceCliente <> -1 entonces
-			existeCliente <- verdadero;
-			Escribir 'Customer found with id: ', dniCliente;
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+		
+		
+		Leer customerDni;     
+		customerIndex <- findById(customer,customerDni);
+		Si customerIndex <> -1 Entonces
+			customerExist <- Verdadero;
+			
 		FinSi
-	Hasta Que customerIndex = -1 o customerExist;
+	Hasta Que customerIndex = -1 O customerExist;
 	
 	// If not find the customer that put in the system, we load a new customer....
-	si no customerExist entonces
-		Escribir '_____________________________________________________________________';
-<<<<<<< HEAD
-		escribir "No se encontro al Cliente ";
+	Si No customerExist Entonces
+		
+		
 		// Call to the sub process that it allow load a new customer
-		loadNewCustomer(customerDni,cliente);
+		loadNewCustomer(customerDni,customer);
 		// Get the new position that the new client will fill in the array: to retrieve the name and last name
-		customerIndex <- findById(cliente,customerDni);
-=======
-		escribir "Customer not found ";
-		//Llamamis a l subproceso que carga un nuevo cliente
-		cargarNuevoCliente(dniCliente,cliente);
-		//obtenemos la posicion que ocupa este nuevo cliente en la matriz: para recuperar el nombre y apellido
-		indiceCliente <- busquedaPorId(cliente,dniCliente);
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+		customerIndex <- findById(customer,customerDni);
 	FinSi
 	
 	
 	// Pick the car for rental
-	Escribir '_____________________________________________________________________';
-<<<<<<< HEAD
-	Escribir Sin Saltar "Ingrese el id del auto: ";
+	
+	
 	Leer idCar;   
-=======
-	escribir sin saltar "Enter the car id: ";
-	leer idAuto;   
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	
 	// Flag that controls if the car picked it's enable
 	enableCar <- 'true';
 	// Obtain the position that the requested car occupies in the array/list
-	carIndex <- findById(auto, idCar);
+	carIndex <- findById(car, idCar);
 	
 	Si carIndex <> -1 Entonces
-		enableCar <- auto[carIndex, 7];
+		enableCar <- car[carIndex, 7];
 	FinSi
 	
 	answ  <- '1';
 	
-<<<<<<< HEAD
 	Mientras carIndex = -1 o (enableCar = 'false' y answ = '1') Hacer
 		Si enableCar = 'false' y carIndex <> -1 Entonces
-			Escribir 'Auto no disponible';
+			
 		FinSI
 		Si carIndex = -1  O answ = '1' Entonces
-			Escribir Sin Saltar 'Vuelva a intentarlo. Ingrese el id del auto: ';
+			
 			Leer idCar;
-			carIndex <- findById(auto, idCar);
+			carIndex <- findById(car, idCar);
 			Si carIndex <> -1 Entonces
-				enableCar <- auto[carIndex, 7];
-=======
-	Mientras indiceAuto = -1 o (autoDisponible = 'false' y rta = '1') Hacer
-		Si autoDisponible = 'false' y indiceAuto <> -1 Entonces
-			Escribir 'Car not available';
-		FinSI
-		sI indiceAuto = -1  o rta = '1' Entonces
-			Escribir Sin Saltar 'Please try again. Enter the car id: ';
-			leer idAuto;
-			indiceAuto <- busquedaPorId(auto, idAuto);
-			si indiceAuto <> -1 Entonces
-				autoDisponible <- auto[indiceAuto, 7];
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+				enableCar <- car[carIndex, 7];
 			FinSi
 		FinSi
 		Repetir
-			Escribir 'Wants to find another car?';
-			Escribir '1. Yes';
-			Escribir '2. No';
-<<<<<<< HEAD
-			Escribir Sin Saltar 'Ingrese opcion: ';
+			
+			
+			
+
 			Leer answ;
 		Hasta Que answ = '1' o answ = '2'
-=======
-			Escribir sin saltar 'Enter option: ';
-			Leer rta;
-		Hasta Que rta = '1' o rta = '2'
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	FinMientras
 	
 	//	Load the employee	
 	
 	
-	Escribir '_____________________________________________________________________';
-<<<<<<< HEAD
-	Escribir Sin Saltar "Ingrese su número de legajo : ";
-	leer fileNum;
+	
+	
+	Leer fileNum;
 	// Obtain the position that the requested employee occupies in the list/array, if it doesn't find it, it returns -1.
-	employeeIndex <- findById(empleado, fileNum);
+	employeeIndex <- findById(employee, fileNum);
 	Mientras employeeIndex = -1 Hacer
-		Escribir 'Empleado no encontrado. Vuelva a intentarlo.';
-		Escribir Sin Saltar "Ingrese su número de legajo: ";
+		
+		
 		Leer fileNum;   
-		employeeIndex <- findById(empleado,fileNum);
+		employeeIndex <- findById(employee,fileNum);
 	FinMientras	
-=======
-	escribir sin saltar "Enter your file number : ";
-	leer numLegajo;
-	//Obtenemos la posicion que ocupa el empleado en la matriz, si no lo encuentra retorna -1.
-	indiceEmpleado <- busquedaPorId(empleado, numLegajo);
-	Mientras indiceEmpleado = -1 Hacer
-		Escribir 'Employee not found. Please try again.';
-		escribir sin saltar "Enter your file number: ";
-		leer numLegajo;   
-		indiceEmpleado <- busquedaPorId(empleado,numLegajo);
-	FinMientras
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	
 	
 	//	Current date
-	Escribir '_____________________________________________________________________';
-<<<<<<< HEAD
-	Escribir Sin Saltar "Ingrese fecha actual: ";
-	Leer currentDare;
-=======
-	escribir sin saltar "Enter current date: ";
-	leer fechaActual;
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+	
+	
+	Leer currentDate;
 	
 	// We get the price per hour of the requested car
-	pricePerHour <- auto[carIndex, 6];
+	pricePerHour <- car[carIndex, 6];
 	
 	
 	// Change the status of the car to false / not available
-	auto[carIndex,7] <- 'false';	
+	car[carIndex,7] <- 'false';	
 	
 	
-	barra('Alquiler');	
+	bar('Alquiler');	
 	
 	
-	Escribir '_____________________________________________________________________';
-	Escribir '| Salesperson |  Car Id |    ID CARD   | Hourly Rate |  Withdrawal Date  | ';
-	Escribir '_____________________________________________________________________';
-	Escribir '|    ', fileNum , '   |  ', idCar , '   |  ', customerDni ,' |      $', pricePerHour , '       |   ', currentDare, '   |';  
-	Escribir '_____________________________________________________________________';
+	
+	
+	
+	Escribir '|    ', fileNum , '   |  ', idCar , '   |  ', customerDni ,' |      $', pricePerHour , '       |   ', currentDate, '   |';  
+	
 	
 	
 	Esperar Tecla;	
@@ -362,82 +243,55 @@ SubProceso serviceRental(cliente, auto, empleado)
 	
 FinSubProceso
 
-SubProceso loadDataMenu(auto,empleado,repuestos,cliente,paymentsPlan) //3
+SubProceso loadDataMenu(car,employee,spares,customer,paymentOfPlan) //3
 	Definir option Como Entero;
 	Definir dni Como Cadena; 
 	Repetir 
 		Limpiar Pantalla;
-		Escribir '      CARRY OUT LOADING';
-		Escribir '_______________________________';
-<<<<<<< HEAD
-		Escribir "1- Empleados.";
-		Escribir "2- Repuestos.";
-		Escribir "3- Nuevo Cliente.";
-		Escribir "4- Cargar nuevo plan de pago.";
-		Escribir "5- Cargar Auto";
-		Escribir "6- Salír.";
+		
+		
+		
+		
+		
+		
+		
+		
 		Leer option;
-=======
-		escribir "1- Employees.";
-		escribir "2- Spare parts.";
-		escribir "3- New Customer.";
-		escribir "4- Load new payment plan.";
-		escribir "5- Load Car";
-		escribir "6- Exit.";
-		leer option;
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		Segun option Hacer
 			0:
-				setCar(auto); 
+				setCar(car); 
 			1:
-				setEmployees(empleado); 
+				setEmployees(employee); 
 			2:
-				setSpares(repuestos); 
+				setSpares(spares); 
 			3:
-				setCustomer(cliente); 
+				setCustomer(customer); 
 			4: 
-				setNewPaymentPlan(paymentsPlan); 
+				setNewPaymentPlan(paymentOfPlan); 
 			5:	
-				setCar(auto);
+				setCar(car);
 			6:
 			De Otro Modo:
-<<<<<<< HEAD
-				Escribir "Dato no válido, intente nuevamente.";
-=======
-				escribir "Invalid data, please try again.";
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+				
 		FinSegun
 	Hasta Que option = 6;
 FinSubProceso
 
 
-<<<<<<< HEAD
-SubProceso doBuyout(cliente, auto) //4
+SubProceso doBuyout(customer, car) //4
 	//To make a purchase we need a client/supplier from whom we are going to buy
 	//and the information of the car we bought
 	Definir ok Como Cadena;
 	//We load the client, if it exists we take its data
-	setCustomer(cliente);
+	setCustomer(customer);
 	//We load a new car
-	setCar(auto);
-	Escribir "Compra registrada con éxito.";
+	setCar(car);
+	
 	Leer ok;
-=======
-subproceso realizarCompra(cliente, auto) //4
-	//Para realizar una compra necesitamos un cliente/proveedor al que le vamos a comprar
-	//y la informacion del auto que compramos 
-	definir ok como cadena;
-	//Cargamos el cliente, si existe tomamos sus datos
-	cargaCliente(cliente);
-	//Cargamos un nuevo auto
-	cargaAuto(auto);
-	escribir "Purchase successfully registered.";
-	leer ok;
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 FinSubProceso
 
 
-SubProceso carByBrand(auto)
+SubProceso carByBrand(car)
 	
 	Definir brand, brandCar,results Como Cadena;
 	Definir i,j , count, index Como Entero;
@@ -448,25 +302,19 @@ SubProceso carByBrand(auto)
 	
 	Limpiar Pantalla;
 	
-<<<<<<< HEAD
-	Escribir Sin Saltar'Ingrese marca a buscar: ';
+	
 	Leer brand;
 	brand <- Minusculas(brand);
-=======
-	Escribir Sin Saltar'Enter brand to search: ';
-	Leer marca;
-	marca <- Minusculas(marca);
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	
 	Para i<-0 Hasta 99 Hacer
 		
-		brandCar <- auto[i,2];
+		brandCar <- car[i,2];
 		brandCar <- Minusculas(brandCar);
 		
-		Si auto[i,2] <> '0' Y brandCar = brand Entonces
+		Si car[i,2] <> '0' Y brandCar = brand Entonces
 			
 			Para j <- 0 Hasta 7 Hacer
-				results[count, j] <- auto[i,j];
+				results[count, j] <- car[i,j];
 			FinPara
 			count <- count + 1;
 		FinSi
@@ -474,19 +322,11 @@ SubProceso carByBrand(auto)
 	FinPara
 	Si count <> 0 Entonces
 		Limpiar Pantalla;
-<<<<<<< HEAD
-		Escribir 'Resultados encontrados: ', count, '.';
-=======
-		Escribir 'Results found: ', contador, '.';
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
-		Escribir '-----------------------------------------------------------------------------------------';
-		mostrarAutos(results);
+		
+		
+		printCars(results);
 	SiNo
-<<<<<<< HEAD
-		Escribir 'No se encontraron resultados con marca: ' , brand;
-=======
-		Escribir 'No results were found with brand: ' , marca;
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+		
 	FinSi
 	
 	Leer brand;
@@ -494,12 +334,12 @@ SubProceso carByBrand(auto)
 FinSubProceso
 
 
-SubProceso paymentPlan(paymentsPlan)
+SubProceso paymentsPlan(paymentOfPlan)
 	Limpiar Pantalla;
-	printPaymentsPlan(paymentsPlan);
+	printPaymentsPlan(paymentOfPlan);
 FinSubProceso
 
-SubProceso finishSale(cliente, auto, empleado, venta, paymentsPlan)
+SubProceso finishSale(customer, car, employee, sale, paymentOfPlan)
 	
 	// To make a sale we need:
 	
@@ -513,7 +353,7 @@ SubProceso finishSale(cliente, auto, empleado, venta, paymentsPlan)
 	
 	
 	Definir customerDni, fileNum, carId, currentDate, answPlan, answConfirmation, idPlan, carStatus,dni Como Cadena;
-	Definir customerIndex, carIndex, employeeIndex, lastSale, planPago Como Entero;
+	Definir customerIndex, carIndex, employeeIndex, lastSale, paymentPlan Como Entero;
 	
 	
 	//Flags
@@ -525,80 +365,44 @@ SubProceso finishSale(cliente, auto, empleado, venta, paymentsPlan)
 	
 	// Load the client
 	Repetir
-		Escribir '_____________________________________________';
-<<<<<<< HEAD
-		Escribir "Ingrese el DNI del cliente: ";
+		
+		
 		Leer customerDni;     
-		customerIndex <- findById(cliente,customerDni);
+		customerIndex <- findById(customer,customerDni);
 		Si customerIndex <> -1 Entonces
-			customerExist <- Verdadero;
-			Escribir 'Se encontro el cliente con id: ', customerDni;
-=======
-		escribir "Enter the customer´s ID number: ";
-		leer dniCliente;     
-		indiceCliente <- busquedaPorId(cliente,dniCliente);
-		si indiceCliente <> -1 entonces
-			existeCliente <- verdadero;
-			Escribir 'Customer found with id: ', dniCliente;
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+			customerExist <- Verdadero;			
+			
 		FinSi
 	Hasta Que customerIndex = -1 O customerExist;
 	
 	// If it does not find the client entered, we load a new client.
 	Si No customerExist Entonces
-		Escribir '_____________________________________________';
-<<<<<<< HEAD
-		Escribir "No se encontro al Cliente ";
-		loadNewCustomer(customerDni,cliente);
-		customerIndex <- findById(cliente,customerDni);
-=======
-		escribir "Customer not found ";
-		cargarNuevoCliente(dniCliente,cliente);
-		indiceCliente <- busquedaPorId(cliente,dniCliente);
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+		
+		
+		loadNewCustomer(customerDni,customer);
+		customerIndex <- findById(customer,customerDni);
 	FinSi
 	
 	// Load the car
-	Escribir '_____________________________________________';
-<<<<<<< HEAD
-	Escribir Sin Saltar "Ingrese el id del auto: ";
+	
+	
 	Leer carId;     
-	carIndex <- findById(auto, carId);
+	carIndex <- findById(car, carId);
 	carEnable <- Falso;
 	Mientras carIndex = -1 O No(carEnable) Hacer
 		Si carIndex = -1 Entonces
-			Escribir 'Auto no encontrado. Vuelva a intentarlo.';
-			Escribir Sin Saltar "Ingrese el id del auto: ";
+			
+			
 			Leer carId;
-			carIndex <- findById(auto, carId);
+			carIndex <- findById(car, carId);
 		FinSi
 		Si carIndex <> -1 Entonces
-			carStatus <- auto[carIndex,7];
+			carStatus <- car[carIndex,7];
 			// A status equal to 'false' means that the car has been sold or is rented
 			Si carStatus = 'false' Entonces
-				Escribir  Sin Saltar'El auto no esta disponible. Ingrese Otro.';
+				
 				Leer carId;  
-				carIndex <- findById(auto, carId);
-=======
-	escribir sin saltar "Enter the car´s id: ";
-	leer idAuto;     
-	indiceAuto <- busquedaPorId(auto, idAuto);
-	autoDisponible <- falso;
-	Mientras indiceAuto = -1 o no(autoDisponible) Hacer
-		sI indiceAuto = -1 Entonces
-			Escribir 'Car not found. Please try again.';
-			escribir sin saltar "Enter the car´s id: ";
-			leer idAuto;
-			indiceAuto <- busquedaPorId(auto, idAuto);
-		FinSi
-		sI indiceAuto <> -1 Entonces
-			estadoAuto <- auto[indiceAuto,7];
-			// Un estado igual a 'false' quiere decir que el auto se vendio o esta alquilado
-			si estadoAuto = 'false' Entonces
-				Escribir  Sin Saltar'The car is not available. Enter Other.';
-				leer idAuto;  
-				indiceAuto <- busquedaPorId(auto, idAuto);
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+				carIndex <- findById(car, carId);
 			SiNo
 				carEnable <- Verdadero;
 			FinSi
@@ -606,216 +410,142 @@ SubProceso finishSale(cliente, auto, empleado, venta, paymentsPlan)
 	FinMientras
 	
 	// Load employee file
-	Escribir '_____________________________________________';
-<<<<<<< HEAD
-	Escribir Sin Saltar "Ingrese su número de legajo: ";
+	
+	
 	Leer fileNum;     
-	employeeIndex <- findById(empleado, fileNum);
+	employeeIndex <- findById(employee, fileNum);
 	Mientras employeeIndex = -1 Hacer
-		Escribir 'Empleado no encontrado. Vuelva a intentarlo.';
-		Escribir Sin Saltar "Ingrese su número de legajo: ";
+		
+		
 		Leer fileNum;   
-		employeeIndex <- findById(empleado,fileNum);
+		employeeIndex <- findById(employee,fileNum);
 	FinMientras
 	
-	Escribir '_____________________________________________';
-	Escribir Sin Saltar "Ingrese fecha actual: ";
+	
+	
 	Leer currentDate;
-=======
-	escribir sin saltar "Enter your file number: ";
-	leer numLegajo;     
-	indiceEmpleado <- busquedaPorId(empleado, numLegajo);
-	Mientras indiceEmpleado = -1 Hacer
-		Escribir 'Employee not found. Please try again.';
-		escribir sin saltar "Enter your file number: ";
-		leer numLegajo;   
-		indiceEmpleado <- busquedaPorId(empleado,numLegajo);
-	FinMientras
 	
-	Escribir '_____________________________________________';
-	escribir sin saltar "Enter current date: ";
-	leer fechaActual;
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
-	Escribir '_____________________________________________';
 	
 	// Plan de Pago
 	
 	answPlan <- '0';
 	Repetir
-		Escribir '¿Do you want to include a payment plan? yes/no';
-		Escribir '1 . Yes';
-		Escribir '2 . No';
+		
+		
+		
 		Leer answPlan;
 		answPlan <- Minusculas(answPlan);
 	Hasta Que answPlan = '1' O answPlan = '0'
 	
 	idPlan<-'0';
 	Si answPlan = '1' Entonces
-		planPago <- addPlan(paymentsPlan);
-		idPlan <- paymentsPlan[planPago,0];
+		paymentPlan <- addPlan(paymentOfPlan);
+		idPlan <- paymentOfPlan[paymentPlan,0];
 	FinSi
-	Escribir '---------------------------------------';
-	Escribir '¿Confirm the Sale?';
-	Escribir  '1. Yes';
-	Escribir  '2. No';
+	
+	
+	
+	
 	Leer answConfirmation;
 	
 	Si answConfirmation = '1' Entonces
 		// We look for the index after the last sale made in order to enter the new sale.
-		lastSale <- getLastIndex(venta);
-		Si no (lastSale = -1) Entonces
+		lastSale <- getLastIndex(sale);
+		Si No (lastSale = -1) Entonces
 			// We save the sale: File No., Dni, Name and Last name, date, Id (Car), payment plan.
-			setSale(auto, venta,cliente,lastSale, fileNum,customerDni, customerIndex,currentDate,carIndex, planId);
-			Escribir '_____________________________________________';
-<<<<<<< HEAD
-			Escribir 'Venta Realizada con exito.... ';
-			printSaleById(venta, cliente, paymentsPlan, lastSale);
-=======
-			Escribir 'Successful sale.... ';
-			mostrarVentaporId(venta, cliente, planesDePago, ultimaVenta);
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+			setSale(car, sale,customer,lastSale, fileNum,customerDni, customerIndex,currentDate,carIndex, idPlan);
+			
+			
+			printSaleById(sale, customer, paymentOfPlan, lastSale);
 		SiNo
-			Escribir 'The sale could not be completed, the Sale array is full.';
+			
 		FinSi
 		
 	SiNo
-<<<<<<< HEAD
-		Escribir 'Venta cancelada. Presione cualquier tecla para salir ... ';
+		
 		Leer answConfirmation;
-=======
-		Escribir 'Sale cancelled. Press any key to exit ... ';
-		Leer rtaConfirmacion;
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	FinSi
 FinSubProceso
 
-SubProceso sellSpare(repuesto, cliente, empleado)
+SubProceso sellSpare(spare, customer, employee)
 	
 	Limpiar Pantalla;
 	Definir customerDni, fileNum, currentDate, dni, idSpare, stock, nameAndLastName Como Cadena;
 	Definir customerIndex, employeeIndex, spareIndex, spareQuantity, numberStock Como Entero;
 	Definir unitPrice, total Como Real;
-	Definir existeRepuesto, customerExist Como Logico;
+	Definir spareExist, customerExist Como Logico;
 	
 	customerExist <- falso;
 	
 	// Load customer
 	
-	Escribir '';
-	Escribir '       SPARE PARTS SALES:';
-	Escribir '';
-	Escribir '';
+	
+	
+	
+	
 	
 	
 	Repetir
-		Escribir '_____________________________________________';
-<<<<<<< HEAD
-		Escribir  Sin Saltar"Ingrese el DNI del cliente: ";
+		
+		
 		Leer customerDni;     
-		customerIndex <- findById(cliente,customerDni);
+		customerIndex <- findById(customer,customerDni);
 		Si customerIndex <> -1 Entonces
 			customerExist <- Verdadero;
-			Escribir 'Se encontro el cliente con id: ', customerDni;
-=======
-		escribir  Sin Saltar"Enter the customer´s ID number: ";
-		leer dniCliente;     
-		indiceCliente <- busquedaPorId(cliente,dniCliente);
-		si indiceCliente <> -1 entonces
-			existeCliente <- verdadero;
-			Escribir 'Customer found with id: ', dniCliente;
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+			
 		FinSi
 	Hasta Que customerIndex = -1 o customerExist;
 	
 	// If it does not find the client entered, we load a new client..
 	Si No customerExist Entonces
-		Escribir '_____________________________________________';
-<<<<<<< HEAD
-		Escribir "No se encontro al Cliente ";
-		loadNewCustomer(customerDni,cliente);
-		customerIndex <- findById(cliente,customerDni);
-=======
-		escribir "Customer not found ";
-		cargarNuevoCliente(dniCliente,cliente);
-		indiceCliente <- busquedaPorId(cliente,dniCliente);
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+		
+		
+		loadNewCustomer(customerDni,customer);
+		customerIndex <- findById(customer,customerDni);
 	FinSi
 	
-	nameAndLastName <- cliente[customerIndex, 1];
+	nameAndLastName <- customer[customerIndex, 1];
 	
 	
 	// Choose spare
-	Escribir '_____________________________________________';
-<<<<<<< HEAD
-	Escribir Sin Saltar'Ingrese Id repuesto: ';
+	
+	
 	Leer idSpare;  
-=======
-	Escribir Sin Saltar'Enter Spare part Id: ';
-	leer IdRepuesto;  
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	
-	spareIndex <- findById(repuesto, idSpare);
+	spareIndex <- findById(spare, idSpare);
 	
-<<<<<<< HEAD
 	Mientras spareIndex = -1 Hacer
-		Escribir 'Repuesto no encontrado. Vuelva a intentarlo.';
-		escribir sin saltar "Ingrese Id repuesto: ";
+		
+		
 		leer idSpare;   
-		spareIndex <- findById(repuesto,idSpare);
-=======
-	Mientras indiceRepuesto = -1 Hacer
-		Escribir 'Spare part not found. Please try again.';
-		escribir sin saltar "Enter Spare part Id: ";
-		leer IdRepuesto;   
-		indiceRepuesto <- busquedaPorId(repuesto,IdRepuesto);
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+		spareIndex <- findById(spare,idSpare);
 	FinMientras
 	
-	printSpareById(repuesto,idSpare);
+	printSpareById(spare,idSpare);
 	
 	// Enter the spare quantity..
 	
-<<<<<<< HEAD
-	Escribir Sin Saltar'Ingrese unidades de repuestos: '; 
-	Leer spareQuantity; 
-=======
-	Escribir Sin Saltar'Enter spare parts units: '; 
-	Leer cantidadRepuesto; 
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	
-	stock <- repuesto[spareIndex, 5]; 
+	Leer spareQuantity; 
+	
+	stock <- spare[spareIndex, 5]; 
 	numberStock <- ConvertirANumero(stock); 
 	numberStock <- numberStock - spareQuantity;
 	
-	unitPrice <- ConvertirANumero(repuesto[spareIndex, 4]);
+	unitPrice <- ConvertirANumero(spare[spareIndex, 4]);
 	
-<<<<<<< HEAD
 	Si numberStock < 0 Entonces
-		Escribir 'No hay stock.';
-		Escribir 'Stock actual: ', repuesto[spareIndex, 5]; 
+		
+		
 	FinSi
 	Mientras numberStock < 0 Hacer
-		Escribir 'Ingrese unidades de repuestos: '; 
+		
 		Leer spareQuantity;   
 		numberStock <- numberStock - spareQuantity; 
 	FinMientras
 	
-	repuesto[spareIndex, 5] <- ConvertirATexto(numberStock); 
-	Escribir 'Stock restante: ', repuesto[spareIndex, 5]; 
-=======
-	Si stockNumero < 0 Entonces
-		Escribir 'No stock.';
-		Escribir 'Current stock: ', repuesto[indiceRepuesto, 5]; 
-	FinSi
-	Mientras stockNumero < 0 Hacer
-		Escribir 'Enter spare parts units: '; 
-		Leer cantidadRepuesto;   
-		stockNumero <- stockNumero - cantidadRepuesto; 
-	FinMientras
+	spare[spareIndex, 5] <- ConvertirATexto(numberStock); 
 	
-	repuesto[indiceRepuesto, 5] <- ConvertirATexto(stockNumero); 
-	Escribir 'Remaining stock: ', repuesto[indiceRepuesto, 5]; 
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	
 	
 	
@@ -823,45 +553,29 @@ SubProceso sellSpare(repuesto, cliente, empleado)
 	
 	// Load vendor file
 	
-	Escribir '_____________________________________________';
-<<<<<<< HEAD
-	Escribir Sin Saltar "Ingrese su número de legajo: ";
+	
+	
 	Leer fileNum;     
-	employeeIndex <- findById(empleado, fileNum);
+	employeeIndex <- findById(employee, fileNum);
 	Mientras employeeIndex = -1 Hacer
-		Escribir 'Empleado no encontrado. Vuelva a intentarlo.';
-		Escribir Sin Saltar "Ingrese su número de legajo: ";
+		
+		
 		Leer fileNum;   
-		employeeIndex <- findById(empleado,fileNum);
+		employeeIndex <- findById(employee,fileNum);
 	FinMientras
 	
-	Escribir '_____________________________________________';
-	Escribir Sin Saltar "Ingrese fecha actual: ";
+	
+	
 	Leer currentDate;
-=======
-	escribir sin saltar "Enter your file number: ";
-	leer numLegajo;     
-	indiceEmpleado <- busquedaPorId(empleado, numLegajo);
-	Mientras indiceEmpleado = -1 Hacer
-		Escribir 'Employee not found. Please try again.';
-		escribir sin saltar "Enter your file number: ";
-		leer numLegajo;   
-		indiceEmpleado <- busquedaPorId(empleado,numLegajo);
-	FinMientras
-	
-	Escribir '_____________________________________________';
-	escribir sin saltar "Enter current date: ";
-	leer fechaActual;
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	
 	total <- unitPrice * spareQuantity;
 	
-	Escribir '______________________________________________________________________________________________________________________';
 	
-	Escribir ' | Num File |     ID CARD    | First and last name |  Id Spare part  | Unit Price | Amount |     Date     |  Total  |';
-	Escribir '_______________________________________________________________________________________________________________________';
+	
+	
+	
 	Escribir '|     ', fileNum , '     |  ', customerDni, '  |   ', nameAndLastName, '    |   ' ,idSpare , '   |      $',unitPrice, '      |     ', spareQuantity, '    |   ', currentDate, '  |  $', total, '  |' ;
-	Escribir '_______________________________________________________________________________________________________________________';
+	
 	Leer fileNum;
 	
 FinSubProceso
@@ -902,62 +616,46 @@ FinSubProceso
 // ___________________________________________________________________________________________________
 
 
-SubProceso planPosition <- addPlan(paymentsPlan)
+SubProceso planPosition <- addPlan(paymentOfPlan)
 	Definir planPosition Como Entero;
 	Definir idPlan Como Cadena;
 	
-	printPaymentsPlan(paymentsPlan);
+	printPaymentsPlan(paymentOfPlan);
 	
-	Escribir Sin Saltar'Enter Payment Plan: ';
+	
 	Leer idPlan;
-	planPosition <- findById(paymentsPlan, idPlan);
+	planPosition <- findById(paymentOfPlan, idPlan);
 	Mientras planPosition = -1 Hacer
-		Escribir '____________________________________________'; 
-		Escribir 'Plan not found.try again. ';
-		Escribir Sin Saltar'Enter Payment Plan: ';
+		
+		
+		
 		Leer idPlan;
-		planPosition <- findById(paymentsPlan, idPlan);
+		planPosition <- findById(paymentOfPlan, idPlan);
 	FinMientras
 	
-<<<<<<< HEAD
-	Escribir 'Plan encontrado con id: ', idPlan;
-	Escribir 'Descripcion plan, Entrega: ', paymentsPlan[planPosition,1], ' , Cuotas: ',paymentsPlan[planPosition,2]; 
-=======
-	Escribir 'Plan found with id: ', idPlan;
-	Escribir 'Plan description, Delivery: ', planesDePago[posicionPlan,1], ' , Dues: ',planesDePago[posicionPlan,2]; 
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+	
+	
 FinSubProceso
 
-SubProceso findByEmployee(empleado)
+SubProceso searchEmployeeMenu(employee)
 	Definir option Como Entero;
 	Limpiar Pantalla;
-	Escribir '           SEARCH EMPLOYEES';
-	Escribir '_______________________________________';
+	
+	
 	Repetir 
-<<<<<<< HEAD
-		Escribir "0-Mostrar todos los empleados.";
-		Escribir "1-Buscar empleados por n° de legajo.";
-		Escribir "2-Salír.";
+		
+		
+		
 		Leer option;
-=======
-		escribir "0-Show all employees.";
-		escribir "1-Search for employees by file number.";
-		escribir "2-Exit.";
-		leer option;
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		Segun option Hacer
 			0:
-				printAllEmployees(empleado);
+				printAllEmployees(employee);
 			1:
-				findEmployeeFile(empleado);
+				findEmployeeFile(employee);
 			2:
 				
 			De Otro Modo:
-<<<<<<< HEAD
-				Escribir "Dato no válido, intente nuevamente.";
-=======
-				escribir "Invalid data, please try again.";
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+				
 		FinSegun
 	Hasta Que option = 2;
 	Limpiar Pantalla;
@@ -965,713 +663,516 @@ FinSubProceso
 
 // Search by ID___________________________________________________________________________________________________
 
-SubProceso findSpareById(repuestos)
+SubProceso findSpareById(spares)
 	Definir idSpare Como Cadena;
 	Definir position Como Entero;
 	Limpiar Pantalla;
-<<<<<<< HEAD
-	Escribir "Ingrese el id de repuesto que desea buscar.";
+	
 	Leer idSpare;
-	position <- findById(repuestos,idSpare );
-	Escribir '__________________________________________________________________________';
-	Escribir '| Id de repuesto | Categoría |     Marca     |   Modelo | Precio | Stock |';
-=======
-	escribir "Enter the spare part id you wish to search for.";
-	leer idRepuesto;
-	posicion <- busquedaPorId(repuestos,idRepuesto );
-	Escribir '__________________________________________________________________________';
-	escribir '| Spare part ID | Category |     Brand     |   Model | Price | Stock |';
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
-	Escribir '__________________________________________________________________________';
+	position <- findById(spares,idSpare );
+	
+	
+	
 	Si position <> -1 Entonces 
-		Escribir '|   ',repuestos[position,0], '    |    ', repuestos[position,1] ,'   |      ',repuestos[position,2],'     |   ',repuestos[position,3],'  |  ',repuestos[position,4], '  |   ',repuestos[position,5],'  | ';
+		Escribir '|   ',spares[position,0], '    |    ', spares[position,1] ,'   |      ',spares[position,2],'     |   ',spares[position,3],'  |  ',spares[position,4], '  |   ',spares[position,5],'  | ';
 	SiNo
-		Escribir 'Spare part not found';
+		
 	FinSi
 	Leer position;
 FinSubProceso
 
-SubProceso findCarById(auto)
+SubProceso findCarById(car)
 	Definir idCar Como Cadena;
 	Definir position Como Entero;
 	Limpiar Pantalla;
-<<<<<<< HEAD
-	Escribir "Ingrese el id del vehiculo que desea buscar.";
+	
 	Leer idCar;
-	position <- findById(auto,idCar );
-=======
-	escribir "Enter the id of the vehicle you wish to search for.";
-	leer idVehiculo;
-	posicion <- busquedaPorId(auto,idVehiculo );
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
-	Escribir '---------------------------------------------------------------------------------------';
-	Escribir '|   Id   |   Year  |  Brand  |  Model  |   Km   |  Price  | Rental Price | Status |'; 
-	Escribir '---------------------------------------------------------------------------------------';
+	position <- findById(car,idCar );
+	
+	
+	
 	Si position <> -1 Entonces 
-		Escribir '|  ',auto[position,0], ' |  ',auto[position,1], '  |  ', auto[position,2], '  |   ', auto[position,3], '  |  ', auto[position,4], ' |  ', auto[position,5], ' |       $', auto[position,6], '      |  ' , auto[position,7],'  |' ; 
-		Escribir '---------------------------------------------------------------------------------------';
+		Escribir '|  ',car[position,0], ' |  ',car[position,1], '  |  ', car[position,2], '  |   ', car[position,3], '  |  ', car[position,4], ' |  ', car[position,5], ' |       $', car[position,6], '      |  ' , car[position,7],'  |' ; 
+		
 	SiNo
 		
-		Escribir 'Vehicle not found';
-		Escribir '---------------------------------------------------------------------------------------';
+		
+		
 	FinSi
 	Leer position;
 FinSubProceso
 
-SubProceso findSaleByEmployee(venta, empleado, paymentsPlan)
+SubProceso findSaleByEmployee(sale, employee, paymentOfPlan)
 	
 	Definir i, j, posPaymentPlan, position Como Entero;
-	Definir idPlan, delivery, dues, idEmployee,  employeeName, name, lastName Como Cadena;
+	Definir idPlan, delivery, dues, idEmployee, employeeName, name, lastName Como Cadena;
 	Limpiar Pantalla;
 	
-<<<<<<< HEAD
-	Escribir sin saltar 'Ingrese Id Vendedor: ';
+	
 	Leer idEmployee;
-	position <- findById(empleado, idEmployee);
-=======
-	Escribir sin saltar 'Enter Seller Id: ';
-	Leer idVendedor;
-	posicion <- busquedaPorId(empleado, idVendedor);
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+	position <- findById(employee, idEmployee);
 	
-	name <- Concatenar(empleado[position,1], ' ');
+	name <- Concatenar(employee[position,1], ' ');
 	
-	lastName <- empleado[position,3];
+	lastName <- employee[position,3];
 	
 	employeeName <- Concatenar(name,lastName);
 	
 	Si position <> -1 Entonces
-		Escribir '_______________________________';
-		Escribir '| File Number | Seller´s Name |';
-		Escribir '-------------------------------';
+		
+		
+		
 		Escribir  '|    ', idEmployee,  '    |   ',  employeeName, '  |';
-		Escribir '-------------------------------';
-		Escribir '_____________________________________________________________________________';
-		Escribir '|    ID CARD   |  First and Last Name |     Date    | Id Auto | Delivery | Dues |';
+		
+		
+				
 		Para i<-0 Hasta 99 Hacer
 			
-			Si No(venta[i,0] = '0')  y venta[i, 0] = idEmployee Entonces
-				idPlan <- venta[i,5];
+			Si No(sale[i,0] = '0')  y sale[i, 0] = idEmployee Entonces
+				idPlan <- sale[i,5];
 				Si idPlan <> '0' Entonces
-					posPaymentPlan <- findById(paymentsPlan, idPlan);
-					delivery <- paymentsPlan[posPaymentPlan, 1];
-					dues <- paymentsPlan[posPaymentPlan, 2];
-					Escribir '_____________________________________________________________________________';
-					Escribir  '| ', venta[i,1] , ' |     ', venta[i,2] , '    |   ', venta[i,3], ' |  ', venta[i,4] , '  | ', delivery, '   |   ', dues, '   |';
+					posPaymentPlan <- findById(paymentOfPlan, idPlan);
+					delivery <- paymentOfPlan[posPaymentPlan, 1];
+					dues <- paymentOfPlan[posPaymentPlan, 2];
+					
+					Escribir  '| ', sale[i,1] , ' |     ', sale[i,2] , '    |   ', sale[i,3], ' |  ', sale[i,4] , '  | ', delivery, '   |   ', dues, '   |';
 				SiNo
-					Escribir '_____________________________________________________________________________';
-					Escribir  '| ', venta[i,1] , ' |   ', venta[i,2] , '      |  ', venta[i,3], ' |  ', venta[i,4] , '  | No Plan';
+					
+					Escribir  '| ', sale[i,1] , ' |   ', sale[i,2] , '      |  ', sale[i,3], ' |  ', sale[i,4] , '  | Sin Plan';
 				FinSi
 				
 			FinSi
 		FinPara
-		Escribir '_____________________________________________________________________________';
+		
 	SiNo
-		Escribir 'Seller not found';
+		
 	FinSi
 	leer i;
 	
 FinSubProceso
 
-SubProceso findEmployeeFile(empleado)
+SubProceso findEmployeeFile(employee)
 	Definir fileNum Como Cadena;
 	Definir position Como Entero;
 	Limpiar Pantalla;
-<<<<<<< HEAD
-	Escribir Sin Saltar"Ingrese el n° de legajo que desea buscar.";
+	
 	Leer filenum;
-	position <- findById(empleado, fileNum);
-	Escribir '______________________________________________________________________________________';
-	Escribir "| N° de legajo | Nombre | Nombre 2 | Apellido |    Dirección   | Edad | Nacionalidad |";
-=======
-	escribir Sin Saltar"Enter the file number you wish to search for.";
-	leer numlegajo;
-	posicion <- busquedaPorId(empleado, numLegajo);
-	Escribir '______________________________________________________________________________________';
-	escribir "| File number | Name | Name 2 | Last name |    Address   | Age | Nationality |";
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
-	Escribir '______________________________________________________________________________________';
+	position <- findById(employee, fileNum);
+	
+	
+	
 	Si position <> -1 Entonces 
-		Si empleado[position,2]  = '' Entonces
-			Escribir '|      ',empleado[position,0], '     |  ', empleado[position,1] ,' |  ------- |  ',empleado[position,3],'  | ',empleado[position,4], ' |  ',empleado[position,5],'  |   ',empleado[position,6], '  |';
+		Si employee[position,2]  = '' Entonces
+			Escribir '|      ',employee[position,0], '     |  ', employee[position,1] ,' |  ------- |  ',employee[position,3],'  | ',employee[position,4], ' |  ',employee[position,5],'  |   ',employee[position,6], '  |';
 		SiNo
-			Escribir '|      ',empleado[position,0], '     |  ', empleado[position,1] ,' |  ',empleado[position,2],'  | ',empleado[position,3],' | ',empleado[position,4], ' | ',empleado[position,5],' | ',empleado[position,6], ' |';
+			Escribir '|      ',employee[position,0], '     |  ', employee[position,1] ,' |  ',employee[position,2],'  | ',employee[position,3],' | ',employee[position,4], ' | ',employee[position,5],' | ',employee[position,6], ' |';
 		FinSi
-		Escribir '______________________________________________________________________________________';
+		
 	Sino
-		Escribir 'Employee not found';
+		
 	FinSi
 	Leer filenum;
 FinSubProceso
 
-SubProceso serviceCar(auto)
+SubProceso carMenu(car)
 	Definir option Como Entero;
 	Repetir
 		Limpiar Pantalla;
-		Escribir '         SEARCH VEHICLE';
-		Escribir '___________________________________';
-<<<<<<< HEAD
-		Escribir "0-Ver vehiculos disponibles.";
-		Escribir "1-Buscar vehiculo por id.";
-		Escribir "2-Salir.";
+		
+		
+		
+		
+		
 		Leer option;
-=======
-		escribir "0-See available vehicles.";
-		escribir "1-Search vehicle by id.";
-		escribir "2-Exit.";
-		leer option;
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		Segun option Hacer
 			0:
-				availableCar(auto);
+				availableCar(car);
 			1:
-				findCarById(auto);
+				findCarById(car);
 			2:
 				
 			De Otro Modo:
-<<<<<<< HEAD
-				Escribir "Dato no válido, intente nuevamente.";
-=======
-				escribir "Invalid data, please try again.";
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+				
 		FinSegun
 		Hasta Que	option = 2;
 		Limpiar Pantalla;
 		
 FinSubProceso
 
-SubProceso servicesSpare(repuestos)
+SubProceso sparesMenu(spares)
 	Definir option Como Entero;
 	Repetir
 		Limpiar Pantalla;
-		Escribir '         SEARCH FOR SPARE PARTS';
-		Escribir '___________________________________';
-<<<<<<< HEAD
-		Escribir "0-Ver todos los repuestos.";
-		Escribir "1-Buscar repuestos por id.";
-		Escribir "2-Salir.";
+		
+		
+		
+		
+				
 		Leer option;
-=======
-		escribir "0-See all the spare parts.";
-		escribir "1-Search for spare parts by id.";
-		escribir "2-Exit.";
-		leer option;
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		Segun option Hacer
 			0:
-				printSpareList(repuestos);
+				printSpareList(spares);
 			1:
-				findSpareById(repuestos); // READY
+				findSpareById(spares); // READY
 			2:
 				
 			De Otro Modo:
-<<<<<<< HEAD
-				Escribir "Dato no válido, intente nuevamente.";
-=======
-				escribir "Invalid data, please try again.";
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+				
 		FinSegun
 		Hasta Que	option = 2;
 		Limpiar Pantalla;
 FinSubProceso
 
 
-SubProceso serviceSales(venta, planes, empleado)
+SubProceso salesMenu(sale, plans, employee)
 	Definir option Como Entero;
 	Repetir
 		Limpiar Pantalla;
-		Escribir '         SEARCH FOR SALE';
-		Escribir '___________________________________';
-<<<<<<< HEAD
-		Escribir "0-Ver todas las ventas.";
-		Escribir "1-Buscar venta por vendedor.";
-		Escribir "2-Salir.";
+		
+		
+		
+		
+		
 		Leer option;
-=======
-		escribir "0-See all sales.";
-		escribir "1-Search for sale by seller.";
-		escribir "2-Exit.";
-		leer option;
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 		Segun option Hacer
 			0:
-				printSalesList(venta,planes);
+				printSalesList(sale,plans);
 			1:
-				findSaleByEmployee(venta, empleado, planes);
+				findSaleByEmployee(sale, employee, plans);
 			2:
 				
 			De Otro Modo:
-<<<<<<< HEAD
-				Escribir "Dato no válido, intente nuevamente.";
-=======
-				escribir "Invalid data, please try again.";
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+				
 		FinSegun
 		Hasta Que	option = 2;
 		Limpiar Pantalla;
 FinSubProceso
 
 
-SubProceso findCustomer(cliente)
+SubProceso searchCustomer(customer)
 	
 	Definir idCustomer Como Cadena;
 	Definir position Como Entero;
 	
 	Limpiar Pantalla;
-<<<<<<< HEAD
-	Escribir "Ingrese el id de cliente que desea buscar.";
+	
 	Leer idCustomer;
-	position <- findById(cliente,idCustomer );
+	position <- findById(customer,idCustomer );
 	Si position <> -1 Entonces 
-=======
-	escribir "Enter the customer id you wish to search for.";
-	leer idCliente;
-	posicion <- busquedaPorId(cliente,idCliente );
-	si posicion <> -1 entonces 
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
-		Escribir "___________________________";
-		Escribir "| ID CARD | First and Last Name |";
-		Escribir "___________________________";
-		Escribir '| ',cliente[position,0], ' |  ', cliente[position,1] ,' | ';
+		
+		
+		
+		Escribir '| ',customer[position,0], ' |  ', customer[position,1] ,' | ';
 	SiNo
-		Escribir 'Customer not found';
+		
 	FinSi
 	Leer position;
 FinSubProceso
 
 // Single load___________________________________________________________________________________________________
 
-SubProceso setCar(auto)
+SubProceso setCar(car)
 	Definir id, year, brand, model, km, price, pricePerHour Como Cadena;
 	Definir index Como Entero;
 	Limpiar Pantalla;
-	Escribir '      New Car Registration';
-	Escribir '________________________________';
-<<<<<<< HEAD
-	Escribir Sin Saltar"Ingrese id de auto: ";
-	Leer id;
-	Escribir Sin Saltar"Ingrese año de fabricación: ";
-	Leer year;
-	Escribir Sin Saltar"Ingrese marca: ";
-	Leer brand;
-	Escribir Sin Saltar"Ingrese modelo: ";
-	Leer model;
-	Escribir Sin Saltar"Ingrese km: ";
-	Leer km;
-	Escribir Sin Saltar"Ingrese precio: ";
-	Leer price;
-	Escribir Sin Saltar"Ingrese precio de alquiler por hora: ";
-	Leer pricePerHour;
-=======
-	escribir sin saltar"Enter car id: ";
-	leer id;
-	escribir sin saltar"Enter year of manufacture: ";
-	leer year;
-	escribir sin saltar"Enter brand: ";
-	leer marca;
-	escribir sin saltar"Enter model: ";
-	leer modelo;
-	escribir sin saltar"Enter km: ";
-	leer km;
-	escribir sin saltar"Enter price: ";
-	leer precio;
-	escribir sin saltar"Enter hourly rental rate: ";
-	leer precioHora;
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
 	
-	index <- getLastIndex(auto);
-	auto[index,0] <- id;
-	auto[index,1] <- year;
-	auto[index,2] <- brand;
-	auto[index,3] <- model;
-	auto[index,4] <- km;
-	auto[index,5] <- price;
-	auto[index,6] <- pricePerHour;
-	// Te ponemeos la disponibilidad a true / disponible 
-<<<<<<< HEAD
-	auto[index,7] <- "true";
-	Escribir "Se agregó un nuevo auto.";
+	
+	
 	Leer id;
-=======
-	auto[indice,7] <- "true";
-	escribir "A new car was added.";
-	leer id;
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+	
+	Leer year;
+	
+	Leer brand;
+	
+	Leer model;
+	
+	Leer km;
+	
+	Leer price;
+	
+	Leer pricePerHour;
+	
+	index <- getLastIndex(car);
+	car[index,0] <- id;
+	car[index,1] <- year;
+	car[index,2] <- brand;
+	car[index,3] <- model;
+	car[index,4] <- km;
+	car[index,5] <- price;
+	car[index,6] <- pricePerHour;
+	// Set the availability to true / available
+	car[index,7] <- "true";
+	
+	Leer id;
 FinSubProceso
 
-SubProceso  setCustomer(cliente Por Referencia)
+SubProceso  setCustomer(customer Por Referencia)
 	Definir j,i,index,position Como Entero;
 	Definir nameAndLastName, dni Como Cadena;
 	Limpiar Pantalla;
-<<<<<<< HEAD
-	Escribir "Ingrese dni del nuevo cliente: ";
-	Leer dni;
-	position <- findById(cliente, dni);
-	Si position = -1  Entonces
-		index <- getLastIndex(cliente);
-		Escribir "Ingrese nombre y apellido del nuevo Cliente: ";
-		Leer nameAndLastName;
-		cliente[index,0] <- dni;
-		cliente[index,1] <- nameAndLastName;
-		printCustomerById(cliente, dni);
-	SiNo
-		Escribir "El cliente ya existente.";	
-=======
-	escribir "Enter new customer´s ID: ";
-	leer dni;
-	posicion <- busquedaPorId(cliente, dni);
-	Si posicion = -1  entonces
-		indice <- obtenerUltimoIndice(cliente);
-		escribir "Enter first and last name of new Customer: ";
-		leer nombreYapellido;
-		cliente[indice,0] <- dni;
-		cliente[indice,1] <- nombreYapellido;
-		mostrarClientePorId(cliente, dni);
-	sino
-		escribir "The customer already exists.";	
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
-	FinSi
 	
 	Leer dni;
+	position <- findById(customer, dni);
+	Si position = -1  Entonces
+		index <- getLastIndex(customer);
+		
+		Leer nameAndLastName;
+		customer[index,0] <- dni;
+		customer[index,1] <- nameAndLastName;
+		printCustomerById(customer, dni);
+	SiNo
+		
+	FinSi
+	
+	leer dni;
 FinSubProceso
 
-subproceso setSale(auto,venta,cliente, lastSale, fileNum,customerDni,customerIndex, currentDate,carIndex, planPago)
-	definir nameAndLastName, carId como cadena;
-	//Cambiamnos el estado del auto vendido a 'false' -- Vendido
-	auto[carIndex, 7] <- 'false';
-	nameAndLastName <- cliente[customerIndex,1];
-	venta[lastSale,0] <- fileNum;
-	venta[lastSale,1] <- customerDni;
-	venta[lastSale,2] <- nameAndLastName;
-	venta[lastSale,3] <- currentDate;
-	carId <- auto[carIndex,0];
-	venta[lastSale,4] <- carId;
-	venta[lastSale,5] <- planPago;
+SubProceso setSale(car, sale, customer, lastSale, fileNum, customerDni, customerIndex, currentDate, carIndex, paymentPlan)
+	Definir nameAndLastName, carId Como Cadena;
+	//Change the status of the sold car to 'false' -- Sold
+	car[carIndex, 7] <- 'false';
+	nameAndLastName <- customer[customerIndex,1];
+	sale[lastSale,0] <- fileNum;
+	sale[lastSale,1] <- customerDni;
+	sale[lastSale,2] <- nameAndLastName;
+	sale[lastSale,3] <- currentDate;
+	carId <- car[carIndex,0];
+	sale[lastSale,4] <- carId;
+	sale[lastSale,5] <- paymentPlan;
 FinSubProceso
 
-subproceso loadNewCustomer(customerDni,cliente)
-	definir j,i,index como entero;
-	definir nameAndLastName como cadena;
+SubProceso loadNewCustomer(customerDni,customer)
+	Definir j,i,index Como Entero;
+	Definir nameAndLastName Como Cadena;
 	Limpiar Pantalla;
-<<<<<<< HEAD
-	index <- getLastIndex(cliente);
-	escribir "Ingrese nombre y apellido del nuevo Cliente: ";
-	leer nameAndLastName;
-	cliente[index,0] <- customerDni;
-	cliente[index,1] <- nameAndLastName;
-	printCustomerById(cliente, customerDni);
-=======
-	indice <- obtenerUltimoIndice(cliente);
-	escribir "Enter first and last name of new Customer: ";
-	leer nombreYapellido;
-	cliente[indice,0] <- dniCliente;
-	cliente[indice,1] <- nombreYapellido;
-	mostrarClientePorId(cliente, dniCliente);
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+	index <- getLastIndex(customer);
+	
+	Leer nameAndLastName;
+	customer[index,0] <- customerDni;
+	customer[index,1] <- nameAndLastName;
+	printCustomerById(customer, customerDni);
 FinSubProceso
 
-subproceso setEmployees(empleado)
-	definir index como entero;
-	limpiar pantalla;
-<<<<<<< HEAD
-	definir legajo,name,name2,lastName,direccion,edad,nacionalidad como cadena;
-	Escribir '           CARGA EMPLEADO';
-=======
-	definir legajo,nombre,nombre2,apellido,direccion,edad,nacionalidad como cadena;
-	Escribir '           LOAD EMPLOYEE';
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
-	Escribir '___________________________________';
-	escribir "Enter the file number: ";
-	leer legajo;
-<<<<<<< HEAD
-	escribir "Ingrese el nombre: ";
-	leer name;
-	escribir "Ingrese el segundo numbre: ";
-	leer name2;
-	escribir "Ingrese el apellido: ";
-	leer lastName;
-	escribir "Ingrese domicilio: ";
-=======
-	escribir "Enter the name: ";
-	leer nombre;
-	escribir "Enter the middle name: ";
-	leer nombre2;
-	escribir "Enter last name: ";
-	leer apellido;
-	escribir "Enter your address: ";
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
-	leer direccion;
-	escribir "Enter age: ";
-	leer edad;
-	escribir "Enter your nationality: ";
-	leer nacionalidad;
-<<<<<<< HEAD
-	index <- getLastIndex(empleado);
-	empleado[index,0] <- legajo;
-	empleado[index,1] <- name;
-	empleado[index,2] <- name2;
-	empleado[index,3] <- lastName;
-	empleado[index,4] <- direccion;
-	empleado[index,5] <- edad;
-	empleado[index,6] <- nacionalidad;
-	escribir "Un nuevo empleado ha sido cargado con éxito.";
-=======
-	indice <- obtenerUltimoIndice(empleado);
-	empleado[indice,0] <- legajo;
-	empleado[indice,1] <- nombre;
-	empleado[indice,2] <- nombre2;
-	empleado[indice,3] <- apellido;
-	empleado[indice,4] <- direccion;
-	empleado[indice,5] <- edad;
-	empleado[indice,6] <- nacionalidad;
-	escribir "A new employee has been successfully uploaded.";
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
-	leer legajo;
-FinSubProceso
-
-SubProceso setSpares(repuestos)
-	Definir id, categoria, brand, model, price, stock Como Cadena;
+SubProceso setEmployees(employee)
 	Definir index Como Entero;
 	Limpiar Pantalla;
-	Escribir Sin Saltar "Enter id: ";
+	Definir file,name,name2,lastName,address,age,nationality Como Cadena;
+	
+	
+	
+	Leer file;
+	
+	Leer name;
+	
+	Leer name2;
+	
+	Leer lastName;
+	
+	Leer address;
+	
+	Leer age;
+	
+	Leer nationality;
+	index <- getLastIndex(employee);
+	employee[index,0] <- file;
+	employee[index,1] <- name;
+	employee[index,2] <- name2;
+	employee[index,3] <- lastName;
+	employee[index,4] <- address;
+	employee[index,5] <- age;
+	employee[index,6] <- nationality;
+	
+	Leer file;
+FinSubProceso
+
+SubProceso setSpares(spares)
+	Definir id, category, brand, model, price, stock Como Cadena;
+	Definir index Como Entero;
+	Limpiar Pantalla;
+	
 	Leer id;
-	Escribir Sin Saltar "Enter category: ";
-	Leer categoria;
-	Escribir Sin Saltar "Enter brand: ";
-	Leer marca;
-<<<<<<< HEAD
-	Escribir Sin Saltar "Ingrese modelo: ";
+	
+	Leer category;
+	
+	Leer brand;
+	
 	Leer model;
-	Escribir Sin Saltar "Ingrese precio: ";
+	
 	Leer price;
-	Escribir Sin Saltar "Ingrese stock: ";
-	Leer stock;
-	index <- getLastIndex(repuestos);
-	repuestos[index,0] <- id;
-	repuestos[index,1] <- categoria;
-	repuestos[index,2] <- marca;
-	repuestos[index,3] <- model;
-	repuestos[index,4] <- price;
-	repuestos[index,5] <- stock;
-	escribir "Un nuevo repuesto ha sido cargado con éxito.";
-=======
-	Escribir Sin Saltar "Enter model: ";
-	Leer modelo;
-	Escribir Sin Saltar "Enter price: ";
-	Leer precio;
-	Escribir Sin Saltar "Enter stock: ";
-	Leer stock;
-	indice <- obtenerUltimoIndice(repuestos);
-	repuestos[indice,0] <- id;
-	repuestos[indice,1] <- categoria;
-	repuestos[indice,2] <- marca;
-	repuestos[indice,3] <- modelo;
-	repuestos[indice,4] <- precio;
-	repuestos[indice,5] <- stock;
-	escribir "A new spare part has been successfully loaded.";
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
-	leer id;
-FinSubProceso
-
-Subproceso setNewPaymentPlan(paymentsPlan)
-	definir idPlan,delivery,dues como cadena;
-	definir index como entero;
-	Limpiar Pantalla;
-	Escribir '          LOAD NEW PLAN ';
-	Escribir '_____________________________________';
-	escribir sin saltar "Enter new plan id: ";
-	leer idPlan;
-<<<<<<< HEAD
-	escribir sin saltar "Ingrese monto de la entrega: $";
-	leer delivery;
-	escribir sin saltar "Ingrese n° de cuotas: ";
-	leer dues;
-	index <- getLastIndex(paymentsPlan);
-	paymentsPlan[index,0] <- idPlan;
-	paymentsPlan[index,1] <- delivery;
-	paymentsPlan[index,2] <- dues;
-	escribir sin saltar "Un nuevo plan fue cargado con éxito.";
-=======
-	escribir sin saltar "Enter amount of delivery: $";
-	leer entrega;
-	escribir sin saltar "enter number of dues: ";
-	leer cuotas;
-	indice <- obtenerUltimoIndice(planesDePago);
-	planesDePago[indice,0] <- idPlan;
-	planesDePago[indice,1] <- entrega;
-	planesDePago[indice,2] <- cuotas;
-	escribir sin saltar "A new plan was successfully uploaded.";
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
-	leer idPlan;
-FinSubProceso
-
-//Mostrar por ID___________________________________________________________________________________________________
-
-
-SubProceso printSaleById(ventas, cliente, paymentsPlan, idVenta)
 	
-	Definir legajo , dni , nameAndLastName , fecha, IdAuto, infoPlan, idPlan, answ Como Cadena;
+	Leer stock;
+	index <- getLastIndex(spares);
+	spares[index,0] <- id;
+	spares[index,1] <- category;
+	spares[index,2] <- brand;
+	spares[index,3] <- model;
+	spares[index,4] <- price;
+	spares[index,5] <- stock;
+	
+	Leer id;
+FinSubProceso
+
+SubProceso setNewPaymentPlan(paymentOfPlan)
+	Definir idPlan,delivery,dues Como Cadena;
+	Definir index Como Entero;
+	Limpiar Pantalla;
+	
+	
+	
+	Leer idPlan;
+	
+	Leer delivery;
+	
+	Leer dues;
+	index <- getLastIndex(paymentOfPlan);
+	paymentOfPlan[index,0] <- idPlan;
+	paymentOfPlan[index,1] <- delivery;
+	paymentOfPlan[index,2] <- dues;
+	
+	Leer idPlan;
+FinSubProceso
+
+//Print by ID___________________________________________________________________________________________________
+
+
+SubProceso printSaleById(sales, customer, paymentOfPlan, idSale)
+	
+	Definir file , dni , nameAndLastName , date, carId, planInfo, idPlan, answ Como Cadena;
 	Definir delivery, dues Como Cadena;
-	Definir posPaymentPlan, posCliente Como Entero;
+	Definir posPaymentPlan, posCustomer Como Entero;
 	
 	Limpiar Pantalla;
 	
-	legajo <- ventas[idVenta,0];
-	dni <- ventas[idVenta,1];
+	file <- sales[idSale,0];
+	dni <- sales[idSale,1];
 	
-	posCliente <- findById(cliente, dni);
-	nameAndLastName <- cliente[posCliente, 1];
+	posCustomer <- findById(customer, dni);
+	nameAndLastName <- customer[posCustomer, 1];
 	
-	fecha <- ventas[idVenta,3];
-	carId <- ventas[idVenta,4];
+	date <- sales[idSale,3];
+	carId <- sales[idSale,4];
 	
-	idPlan <- ventas[idVenta,5];
+	idPlan <- sales[idSale,5];
 	
 	Si idPlan <> '0' Entonces
-		posPaymentPlan <- findById(paymentsPlan, idPlan);
-		delivery <- paymentsPlan[posPaymentPlan, 1];
-		dues <- paymentsPlan[posPaymentPlan, 2];
-		Escribir '________________________________________________________________________________________';
-		Escribir '| File Number |    ID CARD   | First and Last Name |    Date   |  Id Car  | Delivery | Dues |';
+		posPaymentPlan <- findById(paymentOfPlan, idPlan);
+		delivery <- paymentOfPlan[posPaymentPlan, 1];
+		dues <- paymentOfPlan[posPaymentPlan, 2];
 		
-		Escribir '________________________________________________________________________________________';
-		Escribir  '|    ',legajo, '    | ', dni , ' |    ', nameAndLastName , '     | ', fecha, ' |   ', carId , '   |   ', delivery, '  |    ', dues, ' |';
+		
+		
+		
+		Escribir  '|    ',file, '    | ', dni , ' |    ', nameAndLastName , '     | ', date, ' |   ', carId , '   |   ', delivery, '  |    ', dues, ' |';
 	SiNo
-		Escribir '________________________________________________________________________________________';
-		Escribir '| File Number | ID CARD | First and Last Name | Date | Id Car | Id Plan |';
-		Escribir '__________________________________________________________________________________';
-<<<<<<< HEAD
-		Escribir  legajo, ' | ', dni , ' | ', nameAndLastName , ' | ', fecha, ' | ', carId , ' | Sin Plan';
-=======
-		Escribir  legajo, ' | ', dni , ' | ', nombreYapellido , ' | ', fecha, ' | ', idAuto , ' | No Plan';
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+		
+		
+		
+		Escribir  file, ' | ', dni , ' | ', nameAndLastName , ' | ', date, ' | ', carId , ' | Sin Plan';
 	FinSi
-	Escribir '________________________________________________________________________________________';
+	
 	
 	Leer answ;
 FinSubProceso
 
-<<<<<<< HEAD
-SubProceso printCustomerById(cliente, idCustomer)
-	Definir customerIndex  como entero;
-	customerIndex <- findById(cliente, idCustomer);
-	Escribir '|  DNI  | Nombre y Apellido |';
-	Escribir '|',cliente[customerIndex,0],'|',cliente[customerIndex,1],'|';
-=======
-SubProceso mostrarClientePorId(cliente, idCliente)
-	Definir indiceCliente  como entero;
-	indiceCliente <- busquedaPorId(cliente, idCliente);
-	Escribir '|  ID CARD | First and Last Name |';
-	Escribir '|',cliente[indiceCliente,0],'|',cliente[indiceCliente,1],'|';
->>>>>>> a265509ac261716e8247a9cfa14bd6bff675cb80
+SubProceso printCustomerById(customer, idCustomer)
+	Definir customerIndex  Como Entero;
+	customerIndex <- findById(customer, idCustomer);
+	
+	Escribir '|',customer[customerIndex,0],'|',customer[customerIndex,1],'|';
 	
 	Leer customerIndex;
 	
 FinSubProceso
 
-SubProceso printSpareById(repuesto, idSpare)
-	Definir spareIndex  como entero;
-	spareIndex <- findById(repuesto, idSpare);
-	// Id, Categoría, Marca, Modelo, Precio, stock.
-	Escribir '_______________________________________________________________';
-	Escribir '|  Spare part Id | Category | Brand | Model | Price | Stock |';
-	Escribir '_______________________________________________________________';
-	Escribir '|   ',repuesto[spareIndex,0],'   |    ',repuesto[spareIndex,1],'   |  ',repuesto[spareIndex,2],' |  ', repuesto[spareIndex,3],'  |  ', repuesto[spareIndex,4],' |   ',repuesto[spareIndex,5],'  |';
-	Escribir '_______________________________________________________________';	
+SubProceso printSpareById(spare, idSpare)
+	Definir spareIndex  Como Entero;
+	spareIndex <- findById(spare, idSpare);
+	// Id, Category, Brand, Model, Price, stock.
+	
+	
+	
+	Escribir '|   ',spare[spareIndex,0],'   |    ',spare[spareIndex,1],'   |  ',spare[spareIndex,2],' |  ', spare[spareIndex,3],'  |  ', spare[spareIndex,4],' |   ',spare[spareIndex,5],'  |';
+	
 FinSubProceso
 
-//Mostrar Todos___________________________________________________________________________________________________
+//Print all's___________________________________________________________________________________________________
 
-subproceso availableCar(auto)
+SubProceso availableCar(car)
 	Definir i Como Entero;
 	Limpiar Pantalla;
-	Escribir '|   Id   |  Year  |  Brand |  Model |   Km   |  Price  | Rental Price |'; 
-	Escribir '---------------------------------------------------------------------------';
+	
+	
 	Para i<-0 Hasta 99 Hacer
-		Si auto[i,7] = 'true' Entonces
-			Escribir '| ',auto[i,0], ' | ',auto[i,1], ' | ', auto[i,2], ' | ', auto[i,3], ' | ', auto[i,4], ' | ', auto[i,5], ' | ', auto[i,6], ' |'; 
+		Si car[i,7] = 'true' Entonces
+			Escribir '| ',car[i,0], ' | ',car[i,1], ' | ', car[i,2], ' | ', car[i,3], ' | ', car[i,4], ' | ', car[i,5], ' | ', car[i,6], ' |'; 
 		FinSi
 	FinPara
 	Leer i;
 FinSubProceso
 
-subproceso mostrarAutos(auto)
+SubProceso printCars(car)
 	Definir i Como Entero;
-	Escribir '|   Id   |   Year  |  Brand | Model |    Km     | Price  | Rental Price |  Status  |';
-	Escribir '-----------------------------------------------------------------------------------------';
+	
+	
 	Para i<-0 Hasta 99 Hacer
-		Si auto[i,0] <> '0' Entonces
-			Escribir '|  ',auto[i,0], '  | ',auto[i,1], ' |  ', auto[i,2], '  | ', auto[i,3], ' |  ', auto[i,4], '  | ', auto[i,5], '   |      ', auto[i,6], '     | ', auto[i,7], ' |'; 
+		Si car[i,0] <> '0' Entonces
+			Escribir '|  ',car[i,0], '  | ',car[i,1], ' |  ', car[i,2], '  | ', car[i,3], ' |  ', car[i,4], '  | ', car[i,5], '   |      ', car[i,6], '     | ', car[i,7], ' |'; 
 		FinSi
 	FinPara
 FinSubProceso
 
-subproceso printAllEmployees(empleado)
-	definir i,j como entero;
+subproceso printAllEmployees(employee)
+	Definir i,j Como Entero;
 	Limpiar Pantalla;
-	escribir "| File number | Name | Name 2 | Last name | Address | Age | Nationality |";
+	
 	Para i <- 0 Hasta 99 Con Paso 1 Hacer
 		Para j <- 0 Hasta 6 Con Paso 1 Hacer
-			Si no (empleado[i,j]= '0') Entonces
-				escribir sin saltar "| ",empleado[i,j];
+			Si No (employee[i,j]= '0') Entonces
+				Escribir Sin Saltar "| ",employee[i,j];
 			FinSi
 		FinPara
-		Si no (empleado[i,0]= '0') Entonces
-			escribir " |";
+		Si No (employee[i,0]= '0') Entonces
+			Escribir " |";
 		FinSi
 	FinPara
-	Escribir '_____________________________________________________________________________________';
+	
 FinSubProceso
 
-SubProceso printSalesList(venta, paymentsPlan)
+SubProceso printSalesList(sale, paymentOfPlan)
 	
 	Definir i, j, posPaymentPlan Como Entero;
-	Definir idPlan, delivery, dues como cadena;
+	Definir idPlan, delivery, dues Como Cadena;
 	Limpiar Pantalla;
-	Escribir '______________________________________________________________________________________';
-	Escribir '| File number |    ID Card   | Name and Last name |    Date   | Id Car | Delivery | Dues |';
+	
+	
 	
 	Para i<-0 Hasta 99 Hacer
-		Si No(venta[i,0] = '0') Entonces
-			idPlan <- venta[i,5];
-			Escribir '______________________________________________________________________________________';
+		Si No(sale[i,0] = '0') Entonces
+			idPlan <- sale[i,5];
+			
 			Si idPlan <> '0' Entonces
-				posPaymentPlan <- findById(paymentsPlan, idPlan);
-				delivery <- paymentsPlan[posPaymentPlan, 1];
-				dues <- paymentsPlan[posPaymentPlan, 2];
-				Escribir  '|    ',venta[i,0], '    | ', venta[i,1] , ' |    ', venta[i,2] , '    | ', venta[i,3], ' |   ', venta[i,4] , ' |  ', delivery, '  |    ', dues , '  |';
+				posPaymentPlan <- findById(paymentOfPlan, idPlan);
+				delivery <- paymentOfPlan[posPaymentPlan, 1];
+				dues <- paymentOfPlan[posPaymentPlan, 2];
+				Escribir  '|    ',sale[i,0], '    | ', sale[i,1] , ' |    ', sale[i,2] , '    | ', sale[i,3], ' |   ', sale[i,4] , ' |  ', delivery, '  |    ', dues , '  |';
 			SiNo
-				Escribir  '|    ',venta[i,0], '    | ', venta[i,1] , ' |    ', venta[i,2] , '     | ', venta[i,3], ' |   ', venta[i,4] , ' | Sin Plan         |';
+				Escribir  '|    ',sale[i,0], '    | ', sale[i,1] , ' |    ', sale[i,2] , '     | ', sale[i,3], ' |   ', sale[i,4] , ' | Sin Plan         |';
 			FinSi
 			
 		FinSi
 	FinPara
-	Escribir '______________________________________________________________________________________';
-	leer i;
+	
+	Leer i;
 	
 FinSubProceso
 
-SubProceso printSpareList(repuestos)
+SubProceso printSpareList(spares)
 	Definir i, j Como Entero;
-	Escribir '|  Id  | Category | Brand | Model | Price | Stock';
+	
 	Para i<-0 Hasta 99 Hacer
-		Si No(repuestos[i,0] = '0') Entonces
+		Si No(spares[i,0] = '0') Entonces
 			Para j<-0 Hasta 5 Hacer
-				Escribir Sin Saltar '| ', repuestos[i,j], ' ';
-			FinPara
-			Escribir '|';
-		FinSi
-	FinPara
-	leer i;
-FinSubProceso
-
-SubProceso mostrarClientes(cliente)
-	Definir i,j Como Entero;
-	Limpiar Pantalla;
-	Para i<-0 Hasta 99 Hacer
-		Si No(cliente[i,0] = '0') Entonces
-			Para j<-0 Hasta 1 Hacer
-				Escribir Sin Saltar '| ', cliente[i,j], ' ';
+				Escribir Sin Saltar '| ', spares[i,j], ' ';
 			FinPara
 			Escribir '|';
 		FinSi
@@ -1679,29 +1180,43 @@ SubProceso mostrarClientes(cliente)
 	Leer i;
 FinSubProceso
 
-SubProceso printPaymentsPlan(paymentsPlan)
+SubProceso printCustomers(customer)
+	Definir i,j Como Entero;
+	Limpiar Pantalla;
+	Para i<-0 Hasta 99 Hacer
+		Si No(customer[i,0] = '0') Entonces
+			Para j<-0 Hasta 1 Hacer
+				Escribir Sin Saltar '| ', customer[i,j], ' ';
+			FinPara
+			Escribir '|';
+		FinSi
+	FinPara
+	Leer i;
+FinSubProceso
+
+SubProceso printPaymentsPlan(paymentOfPlan)
 	Definir i, j Como Entero;
 	Limpiar Pantalla;
-	Escribir '| IdPlan | Delivery | Dues |';
-	Escribir '______________________________';
+	
+	
 	Para i<-0 Hasta 99 Hacer
-		Si No(paymentsPlan[i,0] = '0') Entonces
+		Si No(paymentOfPlan[i,0] = '0') Entonces
 			Para j<-0 Hasta 2 Hacer
-				Escribir Sin Saltar '|   ', paymentsPlan[i,j], '  ';
+				Escribir Sin Saltar '|   ', paymentOfPlan[i,j], '  ';
 			FinPara
 			Escribir '  |';
 		FinSi
 	FinPara
-	Escribir '______________________________';
+	
 FinSubProceso
 
-subproceso mostrarVentas(venta)
-	definir i, j como entero;
+SubProceso printSales(sale)
+	Definir i, j Como Entero;
 	Limpiar Pantalla;
 	Para i<-0 Hasta 99 Hacer
-		Si No(venta[i,0] = '0') Entonces
+		Si No(sale[i,0] = '0') Entonces
 			Para j<-0 Hasta 4 Hacer
-				Escribir Sin Saltar '| ', venta[i,j], ' ';
+				Escribir Sin Saltar '| ', sale[i,j], ' ';
 			FinPara
 			Escribir '|';
 		FinSi
@@ -1709,26 +1224,26 @@ subproceso mostrarVentas(venta)
 	Leer i;
 FinSubProceso
 
-//Barra de carga______________________________________________________________________________________________
-SubProceso barra(operacion)
+// Loading bar______________________________________________________________________________________________
+SubProceso bar(operation)
 	
-	definir i Como Entero;
-	operacion<- Mayusculas(operacion);
+	Definir i Como Entero;
+	operation<- Mayusculas(operation);
 	
 	Escribir '';	Escribir '';
 	
-	Escribir '                      LOADING ' , operacion ;
-	Escribir '---------------------------------------------------------------------';
+	
+	
 	
 	Para i<- 0 Hasta 69  Hacer 
 		Esperar 2*i Milisegundos;
 		Escribir Sin Saltar '|';
 	FinPara
 	
-	Escribir '';
-	Escribir '---------------------------------------------------------------------';
-	Escribir '';
-	Escribir 'OPERATION COMPLETED';
+	
+	
+	
+	
 	
 FinSubProceso
 
@@ -1736,1010 +1251,1010 @@ FinSubProceso
 
 SubProceso baner()
 	Esperar 1 Segundos;
-	escribir "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXO------------OXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
-	esperar 200 milisegundos;
-	escribir "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|            |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
-	esperar 200 milisegundos;
-	escribir "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|Team pro_Utn|XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
-	esperar 200 milisegundos;
-	escribir "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|            |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
-	esperar 200 milisegundos;
-	escribir "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXO------------OXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+	Escribir "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXO------------OXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+	Esperar 200 Milisegundos;
+	Escribir "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|            |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+	Esperar 200 Milisegundos;
+	Escribir "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|Team pro_Utn|XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+	Esperar 200 Milisegundos;
+	Escribir "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX|            |XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
+	Esperar 200 Milisegundos;
+	Escribir "XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXO------------OXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX";
 	
 	
-	//escribir " ";
-	esperar 100 milisegundos;
+	//Write " ";
+	Esperar 100 Milisegundos;
 	Escribir "         		                                  _._";
-	esperar 100 milisegundos;
+	Esperar 100 Milisegundos;
 	Escribir "           		                           _.-=´´_-         _";
-	esperar 100 milisegundos;
+	Esperar 100 Milisegundos;
 	Escribir "            		                     _.-=´´   _-          | |´´´´´´´---._______     __..";
-	esperar 100 milisegundos;
+	Esperar 100 Milisegundos;
 	Escribir "            		         ___.===¨¨¨¨-.______-,,,,,,,,,,,,`-¨ ¨----´¨¨ ¨¨¨¨       ¨¨¨¨  __¨¨";
-	esperar 100 milisegundos;
+	Esperar 100 Milisegundos;
 	Escribir "            		  _.--¨¨¨     _        ,´                   o \           _        [_]|";
-	esperar 100 milisegundos;
+	Esperar 100 Milisegundos;
 	Escribir "        		 __-´´=======.--¨¨  ¨¨--.=================================.--¨¨  ¨¨--.=======:";
-	esperar 100 milisegundos;
+	Esperar 100 Milisegundos;
 	Escribir "        		]       [w] : /        \ : |========================|    : /        \ :  [w] :";
-	esperar 100 milisegundos;
+	Esperar 100 Milisegundos;
 	Escribir "        		V___________:|          |: |========================|    :|          |:   _-´";
-	esperar 100 milisegundos;
+	Esperar 100 Milisegundos;
 	Escribir "         		V__________: \        / :_|=======================/_____: \        / :__-´";
-	esperar 100 milisegundos;
+	Esperar 100 Milisegundos;
 	Escribir "         		-----------´  ¨¨____¨¨  `-------------------------------´  ¨¨____¨¨";
 FinSubProceso
 
 
-//Pre carga___________________________________________________________________________________________________
-subproceso preSetEmployeeList(empleado)
-	definir i,j como entero;
+//Pre load___________________________________________________________________________________________________
+SubProceso preSetEmployeeList(employee)
+	Definir i,j Como Entero;
 	Para i <- 0 Hasta 99 Hacer
 		Para j<-0 Hasta 6 Hacer
-			empleado[i,j] <- '0';
+			employee[i,j] <- '0';
 		FinPara
 	FinPara
 	
 FinSubProceso
-subproceso preSetCarList(auto)
-	definir i,j como entero;
+SubProceso preSetCarList(car)
+	Definir i,j Como Entero;
 	Para i <- 0 Hasta 99 Hacer
 		Para j <- 0 Hasta 7 Hacer
-			auto[i,j] <- '0';
+			car[i,j] <- '0';
 		FinPara
 	FinPara
 FinSubProceso
 
-subproceso preSetSpareList(repuestos)
-	definir i,j como entero;
+SubProceso preSetSpareList(spares)
+	Definir i,j Como Entero;
 	Para i<-0 Hasta 99 Hacer
 		Para j<-0 Hasta 5 Hacer
-			repuestos[i,j] <- '0';
+			spares[i,j] <- '0';
 		FinPara
 	FinPara
 	
 FinSubProceso
-subproceso presetSalesListList(venta)
-	definir i,j como entero;
+SubProceso preSetSalesList(sale)
+	Definir i,j Como Entero;
 	Para i<-0 Hasta 99 Hacer
 		Para j<-0 Hasta 5 Hacer
-			venta[i,j] <- '0';
+			sale[i,j] <- '0';
 		FinPara
 	FinPara
 	
 FinSubProceso
-subproceso presetCustomersListList(cliente)
-	definir i,j como entero;
+SubProceso preSetCustomersList(customer)
+	Definir i,j Como Entero;
 	Para i <- 0 Hasta 99 Hacer
 		Para j <- 0 Hasta 1 Hacer
-			cliente[i,j] <- '0';
+			customer[i,j] <- '0';
 		FinPara
 	FinPara
 	
 FinSubProceso
 
-subproceso presetPaymentPlanListList(paymentsPlan)
-	definir i,j como entero;
+SubProceso preSetPaymentPlanList(paymentOfPlan)
+	Definir i,j Como Entero;
 	Para i <- 0 Hasta 99 Hacer
 		Para j <- 0 Hasta 2 Hacer
-			paymentsPlan[i,j] <- '0';
+			paymentOfPlan[i,j] <- '0';
 		FinPara
 	FinPara
 	
 FinSubProceso
 
-//fín pre carga
+//End pre load
 
 
-//Carga de matrizes y bases de datos.
+//Load arrays and databases.
 
-// Carga de Matrices
-// Auto
-// Repuestos
-// paymentsPlan
+// Array Load
+// car
+// Spare parts
+// paymentOfPlan
 
 
-SubProceso setSalesList(venta)
+SubProceso setSalesList(sale)
 	
 	Definir i Como Entero;
 	
-	//	0: N° Legajo
+	//	0: N° file
 	//	1: DNI
-	//	2: Nombre y Apellido
-	//	3: Fecha
-	//	4: Id (Auto)
-	//	5: Id(plan).
+	//	2: Name and Last Name
+	//	3: Date
+	//	4: Id (Car)
+	//	5: Id (plan).
 	
 	i<-0;
-	venta[i,0] <- '100'; 
-	venta[i,1] <- '12345678';
-	venta[i,2] <- 'Mateo Russo';
-	venta[i,3] <- '2022-05-04';
-	venta[i,4] <- '38505';
-	venta[i,5] <- '102';
+	sale[i,0] <- '100'; 
+	sale[i,1] <- '12345678';
+	sale[i,2] <- 'Mateo Russo';
+	sale[i,3] <- '2022-05-04';
+	sale[i,4] <- '38505';
+	sale[i,5] <- '102';
 	
 	
 	
 	i<-i + 1;
-	venta[i,0] <- '140'; 
-	venta[i,1] <- '43290210';
-	venta[i,2] <- 'Ana Franco';
-	venta[i,3] <- '2022-07-16';
-	venta[i,4] <- '22894';
-	venta[i,5] <- '0';
+	sale[i,0] <- '140'; 
+	sale[i,1] <- '43290210';
+	sale[i,2] <- 'Ana Franco';
+	sale[i,3] <- '2022-07-16';
+	sale[i,4] <- '22894';
+	sale[i,5] <- '0';
 	
 	
 FinSubProceso
 
-subproceso setCarList(auto)
+SubProceso setCarList(car)
 	
 	
 	Definir i Como Entero;
 	
 	i<-0;
-	auto[i,0] <- '55555'; auto[i,1] <-'2011';auto[i,2] <-'Volkswagen';auto[i,3] <-'Trend';
-	auto[i,4] <-'185664';auto[i,5] <-'1000000';auto[i,6] <-'300'; auto[i,7] <-'true';
+	car[i,0] <- '55555'; car[i,1] <-'2011';car[i,2] <-'Volkswagen';car[i,3] <-'Trend';
+	car[i,4] <-'185664';car[i,5] <-'1000000';car[i,6] <-'300'; car[i,7] <-'true';
 	i<- i + 1;  // i = 1
-	auto[i,0] <- '69125'; auto[i,1] <-'2000';auto[i,2] <-'Toyota';auto[i,3] <-'Corolla';
-	auto[i,4] <-'186298';auto[i,5] <-'1400000';auto[i,6] <-'310'; auto[i,7] <-'true';
+	car[i,0] <- '69125'; car[i,1] <-'2000';car[i,2] <-'Toyota';car[i,3] <-'Corolla';
+	car[i,4] <-'186298';car[i,5] <-'1400000';car[i,6] <-'310'; car[i,7] <-'true';
 	i<- i + 1; // i = 2
-	auto[i,0] <- '22894'; auto[i,1] <-'2017';auto[i,2] <-'Ford';auto[i,3] <-'Escort';
-	auto[i,4] <-'237896';auto[i,5] <-'750000';auto[i,6] <-'310'; auto[i,7] <-'false';
+	car[i,0] <- '22894'; car[i,1] <-'2017';car[i,2] <-'Ford';car[i,3] <-'Escort';
+	car[i,4] <-'237896';car[i,5] <-'750000';car[i,6] <-'310'; car[i,7] <-'false';
 	i<- i + 1; // i = 3
-	auto[i,0] <- '79927'; auto[i,1] <-'2004';auto[i,2] <-'Fiat';auto[i,3] <-'Escort';
-	auto[i,4] <-'207669';auto[i,5] <-'800000';auto[i,6] <-'310'; auto[i,7] <-'false';
+	car[i,0] <- '79927'; car[i,1] <-'2004';car[i,2] <-'Fiat';car[i,3] <-'Escort';
+	car[i,4] <-'207669';car[i,5] <-'800000';car[i,6] <-'310'; car[i,7] <-'false';
 	i<- i + 1; // i = 4
-	auto[i,0] <- '25021'; auto[i,1] <-'2011';auto[i,2] <-'Volkswagen';auto[i,3] <-'Suram';
-	auto[i,4] <-'163390';auto[i,5] <-'1000000';auto[i,6] <-'310'; auto[i,7] <-'false';
+	car[i,0] <- '25021'; car[i,1] <-'2011';car[i,2] <-'Volkswagen';car[i,3] <-'Suram';
+	car[i,4] <-'163390';car[i,5] <-'1000000';car[i,6] <-'310'; car[i,7] <-'false';
 	i<- i + 1; // i = 5
-	auto[i,0] <- '907401'; auto[i,1] <-'2007';auto[i,2] <-'Toyota';auto[i,3] <-'Hillux';
-	auto[i,4] <-'171491';auto[i,5] <-'900000';auto[i,6] <-'310'; auto[i,7] <-'false';
+	car[i,0] <- '907401'; car[i,1] <-'2007';car[i,2] <-'Toyota';car[i,3] <-'Hillux';
+	car[i,4] <-'171491';car[i,5] <-'900000';car[i,6] <-'310'; car[i,7] <-'false';
 	i<- i + 1; // i = 6	
-	auto[i,0] <- '40799'; auto[i,1] <-'2017';auto[i,2] <-'Ford';auto[i,3] <-'Fiesta';
-	auto[i,4] <-'47341';auto[i,5] <-'1400000';auto[i,6] <-'310'; auto[i,7] <-'true';
+	car[i,0] <- '40799'; car[i,1] <-'2017';car[i,2] <-'Ford';car[i,3] <-'Fiesta';
+	car[i,4] <-'47341';car[i,5] <-'1400000';car[i,6] <-'310'; car[i,7] <-'true';
 	i<- i + 1; // i = 7	
-	auto[i,0] <- '38505'; auto[i,1] <-'2014';auto[i,2] <-'Fiat';auto[i,3] <-'Palio';
-	auto[i,4] <-'182198';auto[i,5] <-'1000000';auto[i,6] <-'310'; auto[i,7] <-'false';
+	car[i,0] <- '38505'; car[i,1] <-'2014';car[i,2] <-'Fiat';car[i,3] <-'Palio';
+	car[i,4] <-'182198';car[i,5] <-'1000000';car[i,6] <-'310'; car[i,7] <-'false';
 	i<- i + 1; // i = 8	
-	auto[i,0] <- '47151'; auto[i,1] <-'2018';auto[i,2] <-'Chevrolet';auto[i,3] <-'Onix';
-	auto[i,4] <-'205269';auto[i,5] <-'1600000';auto[i,6] <-'290'; auto[i,7] <-'false';
+	car[i,0] <- '47151'; car[i,1] <-'2018';car[i,2] <-'Chevrolet';car[i,3] <-'Onix';
+	car[i,4] <-'205269';car[i,5] <-'1600000';car[i,6] <-'290'; car[i,7] <-'false';
 	i<- i + 1; // i = 9	
-	auto[i,0] <- '97852'; auto[i,1] <-'2017';auto[i,2] <-'Volkswagen';auto[i,3] <-'Polo';
-	auto[i,4] <-'133969';auto[i,5] <-'1400000';auto[i,6] <-'290'; auto[i,7] <-'false';
+	car[i,0] <- '97852'; car[i,1] <-'2017';car[i,2] <-'Volkswagen';car[i,3] <-'Polo';
+	car[i,4] <-'133969';car[i,5] <-'1400000';car[i,6] <-'290'; car[i,7] <-'false';
 	i<- i + 1; // i = 10	
-	auto[i,0] <- '33757'; auto[i,1] <-'2008';auto[i,2] <-'Toyota';auto[i,3] <-'Corolla';
-	auto[i,4] <-'267319';auto[i,5] <-'900000';auto[i,6] <-'290'; auto[i,7] <-'false';
+	car[i,0] <- '33757'; car[i,1] <-'2008';car[i,2] <-'Toyota';car[i,3] <-'Corolla';
+	car[i,4] <-'267319';car[i,5] <-'900000';car[i,6] <-'290'; car[i,7] <-'false';
 	i<- i + 1; // i = 11
-	auto[i,0] <- '39335'; auto[i,1] <-'2001';auto[i,2] <-'Chevrolet';auto[i,3] <-'Corsa';
-	auto[i,4] <-'99685';auto[i,5] <-'750000';auto[i,6] <-'290'; auto[i,7] <-'false';
+	car[i,0] <- '39335'; car[i,1] <-'2001';car[i,2] <-'Chevrolet';car[i,3] <-'Corsa';
+	car[i,4] <-'99685';car[i,5] <-'750000';car[i,6] <-'290'; car[i,7] <-'false';
 	i<- i + 1; // i = 12
-	auto[i,0] <- '39335'; auto[i,1] <-'2001';auto[i,2] <-'Chevrolet';auto[i,3] <-'Corsa';
-	auto[i,4] <-'99685';auto[i,5] <-'750000';auto[i,6] <-'290'; auto[i,7] <-'false';
+	car[i,0] <- '39335'; car[i,1] <-'2001';car[i,2] <-'Chevrolet';car[i,3] <-'Corsa';
+	car[i,4] <-'99685';car[i,5] <-'750000';car[i,6] <-'290'; car[i,7] <-'false';
 	i<- i + 1; // i = 13
-	auto[i,0] <- '20854'; auto[i,1] <-'2016';auto[i,2] <-'Volkswagen';auto[i,3] <-'Trend';
-	auto[i,4] <-'156950';auto[i,5] <-'1200000';auto[i,6] <-'290'; auto[i,7] <-'false';
+	car[i,0] <- '20854'; car[i,1] <-'2016';car[i,2] <-'Volkswagen';car[i,3] <-'Trend';
+	car[i,4] <-'156950';car[i,5] <-'1200000';car[i,6] <-'290'; car[i,7] <-'false';
 	i<- i + 1; // i = 14
-	auto[i,0] <- '77152'; auto[i,1] <-'2012';auto[i,2] <-'Toyota';auto[i,3] <-'Corolla';
-	auto[i,4] <-'135710';auto[i,5] <-'1000000';auto[i,6] <-'290'; auto[i,7] <-'false';
+	car[i,0] <- '77152'; car[i,1] <-'2012';car[i,2] <-'Toyota';car[i,3] <-'Corolla';
+	car[i,4] <-'135710';car[i,5] <-'1000000';car[i,6] <-'290'; car[i,7] <-'false';
 	i<- i + 1; // i = 15
-	auto[i,0] <- '59949'; auto[i,1] <-'2010';auto[i,2] <-'Chevrolet';auto[i,3] <-'Corsa';
-	auto[i,4] <-'212238';auto[i,5] <-'1000000';auto[i,6] <-'290'; auto[i,7] <-'true';
+	car[i,0] <- '59949'; car[i,1] <-'2010';car[i,2] <-'Chevrolet';car[i,3] <-'Corsa';
+	car[i,4] <-'212238';car[i,5] <-'1000000';car[i,6] <-'290'; car[i,7] <-'true';
 	i<- i + 1; // i = 16
-	auto[i,0] <- '20135'; auto[i,1] <-'2015';auto[i,2] <-'Ford';auto[i,3] <-'Ranger';
-	auto[i,4] <-'173874';auto[i,5] <-'1100000';auto[i,6] <-'290'; auto[i,7] <-'true';
+	car[i,0] <- '20135'; car[i,1] <-'2015';car[i,2] <-'Ford';car[i,3] <-'Ranger';
+	car[i,4] <-'173874';car[i,5] <-'1100000';car[i,6] <-'290'; car[i,7] <-'true';
 	i<- i + 1; // i = 17
-	auto[i,0] <- '74221'; auto[i,1] <-'2009';auto[i,2] <-'Fiat';auto[i,3] <-'Palio';
-	auto[i,4] <-'195244';auto[i,5] <-'900000';auto[i,6] <-'290'; auto[i,7] <-'true';
+	car[i,0] <- '74221'; car[i,1] <-'2009';car[i,2] <-'Fiat';car[i,3] <-'Palio';
+	car[i,4] <-'195244';car[i,5] <-'900000';car[i,6] <-'290'; car[i,7] <-'true';
 	i<- i + 1; // i = 18
-	auto[i,0] <- '10879'; auto[i,1] <-'2000';auto[i,2] <-'Chevrolet';auto[i,3] <-'Corsa';
-	auto[i,4] <-'296022';auto[i,5] <-'750000';auto[i,6] <-'310'; auto[i,7] <-'false';
+	car[i,0] <- '10879'; car[i,1] <-'2000';car[i,2] <-'Chevrolet';car[i,3] <-'Corsa';
+	car[i,4] <-'296022';car[i,5] <-'750000';car[i,6] <-'310'; car[i,7] <-'false';
 	i<- i + 1; // i = 19
-	auto[i,0] <- '10607'; auto[i,1] <-'2005';auto[i,2] <-'Volkswagen';auto[i,3] <-'Trend';
-	auto[i,4] <-'55350';auto[i,5] <-'800000';auto[i,6] <-'310'; auto[i,7] <-'false';
+	car[i,0] <- '10607'; car[i,1] <-'2005';car[i,2] <-'Volkswagen';car[i,3] <-'Trend';
+	car[i,4] <-'55350';car[i,5] <-'800000';car[i,6] <-'310'; car[i,7] <-'false';
 	i<- i + 1; // i = 20
-	auto[i,0] <- '39052'; auto[i,1] <-'2001';auto[i,2] <-'Toyota';auto[i,3] <-'Corolla';
-	auto[i,4] <-'197730';auto[i,5] <-'750000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '39052'; car[i,1] <-'2001';car[i,2] <-'Toyota';car[i,3] <-'Corolla';
+	car[i,4] <-'197730';car[i,5] <-'750000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 21
-	auto[i,0] <- '90838'; auto[i,1] <-'2001';auto[i,2] <-'Ford';auto[i,3] <-'Ka';
-	auto[i,4] <-'227082';auto[i,5] <-'750000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '90838'; car[i,1] <-'2001';car[i,2] <-'Ford';car[i,3] <-'Ka';
+	car[i,4] <-'227082';car[i,5] <-'750000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 22
-	auto[i,0] <- '32862'; auto[i,1] <-'2009';auto[i,2] <-'Fiat';auto[i,3] <-'Palio';
-	auto[i,4] <-'22206';auto[i,5] <-'900000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '32862'; car[i,1] <-'2009';car[i,2] <-'Fiat';car[i,3] <-'Palio';
+	car[i,4] <-'22206';car[i,5] <-'900000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 23
-	auto[i,0] <- '59105'; auto[i,1] <-'2005';auto[i,2] <-'Chevrolet';auto[i,3] <-'Corsa';
-	auto[i,4] <-'175897';auto[i,5] <-'800000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '59105'; car[i,1] <-'2005';car[i,2] <-'Chevrolet';car[i,3] <-'Corsa';
+	car[i,4] <-'175897';car[i,5] <-'800000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 24
-	auto[i,0] <- '31279'; auto[i,1] <-'2011';auto[i,2] <-'Renault';auto[i,3] <-'Clio';
-	auto[i,4] <-'73578';auto[i,5] <-'1000000';auto[i,6] <-'310'; auto[i,7] <-'false';
+	car[i,0] <- '31279'; car[i,1] <-'2011';car[i,2] <-'Renault';car[i,3] <-'Clio';
+	car[i,4] <-'73578';car[i,5] <-'1000000';car[i,6] <-'310'; car[i,7] <-'false';
 	i<- i + 1; // i = 25
-	auto[i,0] <- '31804'; auto[i,1] <-'2009';auto[i,2] <-'Ford';auto[i,3] <-'Ka';
-	auto[i,4] <-'259413';auto[i,5] <-'900000';auto[i,6] <-'310'; auto[i,7] <-'false';
+	car[i,0] <- '31804'; car[i,1] <-'2009';car[i,2] <-'Ford';car[i,3] <-'Ka';
+	car[i,4] <-'259413';car[i,5] <-'900000';car[i,6] <-'310'; car[i,7] <-'false';
 	i<- i + 1; // i = 26
-	auto[i,0] <- '64158'; auto[i,1] <-'2002';auto[i,2] <-'Fiat';auto[i,3] <-'Uno';
-	auto[i,4] <-'166585';auto[i,5] <-'750000';auto[i,6] <-'310'; auto[i,7] <-'true';
+	car[i,0] <- '64158'; car[i,1] <-'2002';car[i,2] <-'Fiat';car[i,3] <-'Uno';
+	car[i,4] <-'166585';car[i,5] <-'750000';car[i,6] <-'310'; car[i,7] <-'true';
 	i<- i + 1; // i = 27
-	auto[i,0] <- '93059'; auto[i,1] <-'2001';auto[i,2] <-'Chevrolet';auto[i,3] <-'Aveo';
-	auto[i,4] <-'20574';auto[i,5] <-'750000';auto[i,6] <-'300'; auto[i,7] <-'true';
+	car[i,0] <- '93059'; car[i,1] <-'2001';car[i,2] <-'Chevrolet';car[i,3] <-'Aveo';
+	car[i,4] <-'20574';car[i,5] <-'750000';car[i,6] <-'300'; car[i,7] <-'true';
 	i<- i + 1; // i = 28
-	auto[i,0] <- '34695'; auto[i,1] <-'2014';auto[i,2] <-'Renault';auto[i,3] <-'Sandero';
-	auto[i,4] <-'225457';auto[i,5] <-'1000000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '34695'; car[i,1] <-'2014';car[i,2] <-'Renault';car[i,3] <-'Sandero';
+	car[i,4] <-'225457';car[i,5] <-'1000000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 29
-	auto[i,0] <- '36179'; auto[i,1] <-'2012';auto[i,2] <-'Peugeot';auto[i,3] <-'206';
-	auto[i,4] <-'292098';auto[i,5] <-'800000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '36179'; car[i,1] <-'2012';car[i,2] <-'Peugeot';car[i,3] <-'206';
+	car[i,4] <-'292098';car[i,5] <-'800000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 30
-	auto[i,0] <- '82071'; auto[i,1] <-'2004';auto[i,2] <-'Ford';auto[i,3] <-'Fiesta';
-	auto[i,4] <-'10696';auto[i,5] <-'1000000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '82071'; car[i,1] <-'2004';car[i,2] <-'Ford';car[i,3] <-'Fiesta';
+	car[i,4] <-'10696';car[i,5] <-'1000000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 31
-	auto[i,0] <- '95244'; auto[i,1] <-'2003';auto[i,2] <-'Citroen';auto[i,3] <-'C3';
-	auto[i,4] <-'255092';auto[i,5] <-'800000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '95244'; car[i,1] <-'2003';car[i,2] <-'Citroen';car[i,3] <-'C3';
+	car[i,4] <-'255092';car[i,5] <-'800000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 32
-	auto[i,0] <- '43914'; auto[i,1] <-'2013';auto[i,2] <-'Renault';auto[i,3] <-'Sandero';
-	auto[i,4] <-'54346';auto[i,5] <-'1000000';auto[i,6] <-'310'; auto[i,7] <-'false';
+	car[i,0] <- '43914'; car[i,1] <-'2013';car[i,2] <-'Renault';car[i,3] <-'Sandero';
+	car[i,4] <-'54346';car[i,5] <-'1000000';car[i,6] <-'310'; car[i,7] <-'false';
 	i<- i + 1; // i = 33
-	auto[i,0] <- '36624'; auto[i,1] <-'2017';auto[i,2] <-'Peugeot';auto[i,3] <-'307';
-	auto[i,4] <-'210908';auto[i,5] <-'900000';auto[i,6] <-'300'; auto[i,7] <-'true';
+	car[i,0] <- '36624'; car[i,1] <-'2017';car[i,2] <-'Peugeot';car[i,3] <-'307';
+	car[i,4] <-'210908';car[i,5] <-'900000';car[i,6] <-'300'; car[i,7] <-'true';
 	i<- i + 1; // i = 34
-	auto[i,0] <- '18349'; auto[i,1] <-'2009';auto[i,2] <-'Ford';auto[i,3] <-'Ranger';
-	auto[i,4] <-'295379';auto[i,5] <-'1400000';auto[i,6] <-'300'; auto[i,7] <-'true';
+	car[i,0] <- '18349'; car[i,1] <-'2009';car[i,2] <-'Ford';car[i,3] <-'Ranger';
+	car[i,4] <-'295379';car[i,5] <-'1400000';car[i,6] <-'300'; car[i,7] <-'true';
 	i<- i + 1; // i = 35
-	auto[i,0] <- '90858'; auto[i,1] <-'2009';auto[i,2] <-'Citroen';auto[i,3] <-'C4';
-	auto[i,4] <-'200926';auto[i,5] <-'900000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '90858'; car[i,1] <-'2009';car[i,2] <-'Citroen';car[i,3] <-'C4';
+	car[i,4] <-'200926';car[i,5] <-'900000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 36
-	auto[i,0] <- '87377'; auto[i,1] <-'2017';auto[i,2] <-'Toyota';auto[i,3] <-'Hillux';
-	auto[i,4] <-'34942';auto[i,5] <-'1400000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '87377'; car[i,1] <-'2017';car[i,2] <-'Toyota';car[i,3] <-'Hillux';
+	car[i,4] <-'34942';car[i,5] <-'1400000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 37
-	auto[i,0] <- '66375'; auto[i,1] <-'2017';auto[i,2] <-'Ford';auto[i,3] <-'Ranger';
-	auto[i,4] <-'57459';auto[i,5] <-'1400000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '66375'; car[i,1] <-'2017';car[i,2] <-'Ford';car[i,3] <-'Ranger';
+	car[i,4] <-'57459';car[i,5] <-'1400000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 38
-	auto[i,0] <- '24056'; auto[i,1] <-'2021';auto[i,2] <-'Fiat';auto[i,3] <-'Cronos';
-	auto[i,4] <-'65000';auto[i,5] <-'2500000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '24056'; car[i,1] <-'2021';car[i,2] <-'Fiat';car[i,3] <-'Cronos';
+	car[i,4] <-'65000';car[i,5] <-'2500000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 39
-	auto[i,0] <- '82155'; auto[i,1] <-'2011';auto[i,2] <-'Chevrolet';auto[i,3] <-'Celta';
-	auto[i,4] <-'88250';auto[i,5] <-'1000000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '82155'; car[i,1] <-'2011';car[i,2] <-'Chevrolet';car[i,3] <-'Celta';
+	car[i,4] <-'88250';car[i,5] <-'1000000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 40
-	auto[i,0] <- '92865'; auto[i,1] <-'2022';auto[i,2] <-'Renault';auto[i,3] <-'Koleos';
-	auto[i,4] <-'0';auto[i,5] <-'3000000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '92865'; car[i,1] <-'2022';car[i,2] <-'Renault';car[i,3] <-'Koleos';
+	car[i,4] <-'0';car[i,5] <-'3000000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 41
-	auto[i,0] <- '28525'; auto[i,1] <-'2004';auto[i,2] <-'Ford';auto[i,3] <-'Ka';
-	auto[i,4] <-'238771';auto[i,5] <-'800000';auto[i,6] <-'290'; auto[i,7] <-'false';
+	car[i,0] <- '28525'; car[i,1] <-'2004';car[i,2] <-'Ford';car[i,3] <-'Ka';
+	car[i,4] <-'238771';car[i,5] <-'800000';car[i,6] <-'290'; car[i,7] <-'false';
 	i<- i + 1; // i = 42
-	auto[i,0] <- '95062'; auto[i,1] <-'2007';auto[i,2] <-'Fiat';auto[i,3] <-'Uno';
-	auto[i,4] <-'2168';auto[i,5] <-'900000';auto[i,6] <-'290'; auto[i,7] <-'false';
+	car[i,0] <- '95062'; car[i,1] <-'2007';car[i,2] <-'Fiat';car[i,3] <-'Uno';
+	car[i,4] <-'2168';car[i,5] <-'900000';car[i,6] <-'290'; car[i,7] <-'false';
 	i<- i + 1; // i = 43	
-	auto[i,0] <- '84885'; auto[i,1] <-'2002';auto[i,2] <-'Chevrolet';auto[i,3] <-'Aveo';
-	auto[i,4] <-'68598';auto[i,5] <-'760000';auto[i,6] <-'290'; auto[i,7] <-'false';
+	car[i,0] <- '84885'; car[i,1] <-'2002';car[i,2] <-'Chevrolet';car[i,3] <-'Aveo';
+	car[i,4] <-'68598';car[i,5] <-'760000';car[i,6] <-'290'; car[i,7] <-'false';
 	i<- i + 1; // i = 44
-	auto[i,0] <- '61556'; auto[i,1] <-'2004';auto[i,2] <-'Renault';auto[i,3] <-'Clio';
-	auto[i,4] <-'218679';auto[i,5] <-'800000';auto[i,6] <-'290'; auto[i,7] <-'false';
+	car[i,0] <- '61556'; car[i,1] <-'2004';car[i,2] <-'Renault';car[i,3] <-'Clio';
+	car[i,4] <-'218679';car[i,5] <-'800000';car[i,6] <-'290'; car[i,7] <-'false';
 	i<- i + 1; // i = 45
-	auto[i,0] <- '48078'; auto[i,1] <-'2009';auto[i,2] <-'Ford	';auto[i,3] <-'Focus';
-	auto[i,4] <-'0';auto[i,5] <-'6000000';auto[i,6] <-'310'; auto[i,7] <-'true';
+	car[i,0] <- '48078'; car[i,1] <-'2009';car[i,2] <-'Ford	';car[i,3] <-'Focus';
+	car[i,4] <-'0';car[i,5] <-'6000000';car[i,6] <-'310'; car[i,7] <-'true';
 	i<- i + 1; // i = 46	
-	auto[i,0] <- '81821'; auto[i,1] <-'2004';auto[i,2] <-'Peugeot';auto[i,3] <-'307';
-	auto[i,4] <-'0';auto[i,5] <-'5000000';auto[i,6] <-'310'; auto[i,7] <-'true';
+	car[i,0] <- '81821'; car[i,1] <-'2004';car[i,2] <-'Peugeot';car[i,3] <-'307';
+	car[i,4] <-'0';car[i,5] <-'5000000';car[i,6] <-'310'; car[i,7] <-'true';
 	i<- i + 1; // i = 47
-	auto[i,0] <- '45835'; auto[i,1] <-'2017';auto[i,2] <-'Citroen';auto[i,3] <-'C4';
-	auto[i,4] <-'295795';auto[i,5] <-'1400000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '45835'; car[i,1] <-'2017';car[i,2] <-'Citroen';car[i,3] <-'C4';
+	car[i,4] <-'295795';car[i,5] <-'1400000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 48
-	auto[i,0] <- '59579'; auto[i,1] <-'2011';auto[i,2] <-'BMW';auto[i,3] <-'Serie 1';
-	auto[i,4] <-'21052';auto[i,5] <-'1000000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '59579'; car[i,1] <-'2011';car[i,2] <-'BMW';car[i,3] <-'Serie 1';
+	car[i,4] <-'21052';car[i,5] <-'1000000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 49
-	auto[i,0] <- '32104'; auto[i,1] <-'2004';auto[i,2] <-'Ford';auto[i,3] <-'Ecosport';
-	auto[i,4] <-'0';auto[i,5] <-'800000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '32104'; car[i,1] <-'2004';car[i,2] <-'Ford';car[i,3] <-'Ecosport';
+	car[i,4] <-'0';car[i,5] <-'800000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 50
-	auto[i,0] <- '20815'; auto[i,1] <-'2001';auto[i,2] <-'Peugeot';auto[i,3] <-'406';
-	auto[i,4] <-'25275';auto[i,5] <-'900000';auto[i,6] <-'300'; auto[i,7] <-'true';
+	car[i,0] <- '20815'; car[i,1] <-'2001';car[i,2] <-'Peugeot';car[i,3] <-'406';
+	car[i,4] <-'25275';car[i,5] <-'900000';car[i,6] <-'300'; car[i,7] <-'true';
 	i<- i + 1; // i = 51	
-	auto[i,0] <- '20815'; auto[i,1] <-'2020';auto[i,2] <-'Citroen';auto[i,3] <-'C4';
-	auto[i,4] <-'70000';auto[i,5] <-'2000000';auto[i,6] <-'300'; auto[i,7] <-'true';
+	car[i,0] <- '20815'; car[i,1] <-'2020';car[i,2] <-'Citroen';car[i,3] <-'C4';
+	car[i,4] <-'70000';car[i,5] <-'2000000';car[i,6] <-'300'; car[i,7] <-'true';
 	i<- i + 1; // i = 52	
-	auto[i,0] <- '82792'; auto[i,1] <-'2005';auto[i,2] <-'BMW';auto[i,3] <-'Serie 1';
-	auto[i,4] <-'34232';auto[i,5] <-'800000';auto[i,6] <-'300'; auto[i,7] <-'true';
+	car[i,0] <- '82792'; car[i,1] <-'2005';car[i,2] <-'BMW';car[i,3] <-'Serie 1';
+	car[i,4] <-'34232';car[i,5] <-'800000';car[i,6] <-'300'; car[i,7] <-'true';
 	i<- i + 1; // i = 53
-	auto[i,0] <- '29883'; auto[i,1] <-'2022';auto[i,2] <-'Ford';auto[i,3] <-'Focus';
-	auto[i,4] <-'0';auto[i,5] <-'3000000';auto[i,6] <-'310'; auto[i,7] <-'true';
+	car[i,0] <- '29883'; car[i,1] <-'2022';car[i,2] <-'Ford';car[i,3] <-'Focus';
+	car[i,4] <-'0';car[i,5] <-'3000000';car[i,6] <-'310'; car[i,7] <-'true';
 	i<- i + 1; // i = 54
-	auto[i,0] <- '79185'; auto[i,1] <-'2004';auto[i,2] <-'Peugeot';auto[i,3] <-'206';
-	auto[i,4] <-'11737';auto[i,5] <-'800000';auto[i,6] <-'310'; auto[i,7] <-'true';
+	car[i,0] <- '79185'; car[i,1] <-'2004';car[i,2] <-'Peugeot';car[i,3] <-'206';
+	car[i,4] <-'11737';car[i,5] <-'800000';car[i,6] <-'310'; car[i,7] <-'true';
 	i<- i + 1; // i = 55
-	auto[i,0] <- '45294'; auto[i,1] <-'2002';auto[i,2] <-'Mercedes Benz';auto[i,3] <-'Clase C';
-	auto[i,4] <-'212365';auto[i,5] <-'750000';auto[i,6] <-'310'; auto[i,7] <-'true';
+	car[i,0] <- '45294'; car[i,1] <-'2002';car[i,2] <-'Mercedes Benz';car[i,3] <-'Clase C';
+	car[i,4] <-'212365';car[i,5] <-'750000';car[i,6] <-'310'; car[i,7] <-'true';
 	i<- i + 1; // i = 56
-	auto[i,0] <- '44666'; auto[i,1] <-'2016';auto[i,2] <-'Honda';auto[i,3] <-'Civic';
-	auto[i,4] <-'59215';auto[i,5] <-'1200000';auto[i,6] <-'300'; auto[i,7] <-'true';
+	car[i,0] <- '44666'; car[i,1] <-'2016';car[i,2] <-'Honda';car[i,3] <-'Civic';
+	car[i,4] <-'59215';car[i,5] <-'1200000';car[i,6] <-'300'; car[i,7] <-'true';
 	i<- i + 1; // i = 57
-	auto[i,0] <- '74992'; auto[i,1] <-'2000';auto[i,2] <-'Hiundai';auto[i,3] <-'Accent';
-	auto[i,4] <-'76590';auto[i,5] <-'750000';auto[i,6] <-'310'; auto[i,7] <-'true';
+	car[i,0] <- '74992'; car[i,1] <-'2000';car[i,2] <-'Hiundai';car[i,3] <-'Accent';
+	car[i,4] <-'76590';car[i,5] <-'750000';car[i,6] <-'310'; car[i,7] <-'true';
 	i<- i + 1; // i = 58	
-	auto[i,0] <- '36023'; auto[i,1] <-'2005';auto[i,2] <-'Peugeot';auto[i,3] <-'307';
-	auto[i,4] <-'84930';auto[i,5] <-'800000';auto[i,6] <-'310'; auto[i,7] <-'true';
+	car[i,0] <- '36023'; car[i,1] <-'2005';car[i,2] <-'Peugeot';car[i,3] <-'307';
+	car[i,4] <-'84930';car[i,5] <-'800000';car[i,6] <-'310'; car[i,7] <-'true';
 	i<- i + 1; // i = 59	
-	auto[i,0] <- '95382'; auto[i,1] <-'2002';auto[i,2] <-'Mercedes Benz';auto[i,3] <-'Clase 1';
-	auto[i,4] <-'161533';auto[i,5] <-'750000';auto[i,6] <-'310'; auto[i,7] <-'true';
+	car[i,0] <- '95382'; car[i,1] <-'2002';car[i,2] <-'Mercedes Benz';car[i,3] <-'Clase 1';
+	car[i,4] <-'161533';car[i,5] <-'750000';car[i,6] <-'310'; car[i,7] <-'true';
 	i<- i + 1; // i = 60	
-	auto[i,0] <- '55079'; auto[i,1] <-'2019';auto[i,2] <-'Honda';auto[i,3] <-'Fit';
-	auto[i,4] <-'247693';auto[i,5] <-'1800000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '55079'; car[i,1] <-'2019';car[i,2] <-'Honda';car[i,3] <-'Fit';
+	car[i,4] <-'247693';car[i,5] <-'1800000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 61
-	auto[i,0] <- '90078'; auto[i,1] <-'2006';auto[i,2] <-'Hiundai';auto[i,3] <-'Tucson';
-	auto[i,4] <-'74024';auto[i,5] <-'900000';auto[i,6] <-'300'; auto[i,7] <-'true';
+	car[i,0] <- '90078'; car[i,1] <-'2006';car[i,2] <-'Hiundai';car[i,3] <-'Tucson';
+	car[i,4] <-'74024';car[i,5] <-'900000';car[i,6] <-'300'; car[i,7] <-'true';
 	i<- i + 1; // i = 62
-	auto[i,0] <- '17179'; auto[i,1] <-'2022';auto[i,2] <-'Renault';auto[i,3] <-'Sandero';
-	auto[i,4] <-'0';auto[i,5] <-'300000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '17179'; car[i,1] <-'2022';car[i,2] <-'Renault';car[i,3] <-'Sandero';
+	car[i,4] <-'0';car[i,5] <-'300000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 63
-	auto[i,0] <- '99202'; auto[i,1] <-'2014';auto[i,2] <-'Ford';auto[i,3] <-'Fiesta';
-	auto[i,4] <-'17571';auto[i,5] <-'100000';auto[i,6] <-'300'; auto[i,7] <-'true';
+	car[i,0] <- '99202'; car[i,1] <-'2014';car[i,2] <-'Ford';car[i,3] <-'Fiesta';
+	car[i,4] <-'17571';car[i,5] <-'100000';car[i,6] <-'300'; car[i,7] <-'true';
 	i<- i + 1; // i = 64
-	auto[i,0] <- '88142'; auto[i,1] <-'2007';auto[i,2] <-'Peugeot';auto[i,3] <-'207';
-	auto[i,4] <-'32178';auto[i,5] <-'900000';auto[i,6] <-'290'; auto[i,7] <-'true';
+	car[i,0] <- '88142'; car[i,1] <-'2007';car[i,2] <-'Peugeot';car[i,3] <-'207';
+	car[i,4] <-'32178';car[i,5] <-'900000';car[i,6] <-'290'; car[i,7] <-'true';
 	i<- i + 1; // i = 65
-	auto[i,0] <- '33001'; auto[i,1] <-'2009';auto[i,2] <-'Citroen';auto[i,3] <-'C3';
-	auto[i,4] <-'199763';auto[i,5] <-'900000';auto[i,6] <-'290'; auto[i,7] <-'false';
+	car[i,0] <- '33001'; car[i,1] <-'2009';car[i,2] <-'Citroen';car[i,3] <-'C3';
+	car[i,4] <-'199763';car[i,5] <-'900000';car[i,6] <-'290'; car[i,7] <-'false';
 	i<- i + 1; // i = 66
-	auto[i,0] <- '36954'; auto[i,1] <-'2022';auto[i,2] <-'BMW';auto[i,3] <-'Serie 4';
-	auto[i,4] <-'0';auto[i,5] <-'2600000';auto[i,6] <-'290'; auto[i,7] <-'false';
+	car[i,0] <- '36954'; car[i,1] <-'2022';car[i,2] <-'BMW';car[i,3] <-'Serie 4';
+	car[i,4] <-'0';car[i,5] <-'2600000';car[i,6] <-'290'; car[i,7] <-'false';
 	i<- i + 1; // i = 67
-	auto[i,0] <- '37964'; auto[i,1] <-'2000';auto[i,2] <-'Ford';auto[i,3] <-'Escort';
-	auto[i,4] <-'84709';auto[i,5] <-'750000';auto[i,6] <-'300'; auto[i,7] <-'true';
+	car[i,0] <- '37964'; car[i,1] <-'2000';car[i,2] <-'Ford';car[i,3] <-'Escort';
+	car[i,4] <-'84709';car[i,5] <-'750000';car[i,6] <-'300'; car[i,7] <-'true';
 	i<- i + 1; // i = 68
-	auto[i,0] <- '46095'; auto[i,1] <-'2002';auto[i,2] <-'Citroen';auto[i,3] <-'C3';
-	auto[i,4] <-'221309';auto[i,5] <-'750000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '46095'; car[i,1] <-'2002';car[i,2] <-'Citroen';car[i,3] <-'C3';
+	car[i,4] <-'221309';car[i,5] <-'750000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 69
-	auto[i,0] <- '61093'; auto[i,1] <-'2018';auto[i,2] <-'Peugeot';auto[i,3] <-'208';
-	auto[i,4] <-'137223';auto[i,5] <-'1600000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '61093'; car[i,1] <-'2018';car[i,2] <-'Peugeot';car[i,3] <-'208';
+	car[i,4] <-'137223';car[i,5] <-'1600000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 70
-	auto[i,0] <- '12671'; auto[i,1] <-'2001';auto[i,2] <-'BMW';auto[i,3] <-'Serie 1';
-	auto[i,4] <-'261278';auto[i,5] <-'750000';auto[i,6] <-'310'; auto[i,7] <-'true';
+	car[i,0] <- '12671'; car[i,1] <-'2001';car[i,2] <-'BMW';car[i,3] <-'Serie 1';
+	car[i,4] <-'261278';car[i,5] <-'750000';car[i,6] <-'310'; car[i,7] <-'true';
 	i<- i + 1; // i = 71
-	auto[i,0] <- '53953'; auto[i,1] <-'2015';auto[i,2] <-'Ford';auto[i,3] <-'Ecosport';
-	auto[i,4] <-'181816';auto[i,5] <-'1100000';auto[i,6] <-'310'; auto[i,7] <-'true';
+	car[i,0] <- '53953'; car[i,1] <-'2015';car[i,2] <-'Ford';car[i,3] <-'Ecosport';
+	car[i,4] <-'181816';car[i,5] <-'1100000';car[i,6] <-'310'; car[i,7] <-'true';
 	i<- i + 1; // i = 72
-	auto[i,0] <- '32243'; auto[i,1] <-'2020';auto[i,2] <-'Peugeot';auto[i,3] <-'208';
-	auto[i,4] <-'100000';auto[i,5] <-'2000000';auto[i,6] <-'310'; auto[i,7] <-'false';
+	car[i,0] <- '32243'; car[i,1] <-'2020';car[i,2] <-'Peugeot';car[i,3] <-'208';
+	car[i,4] <-'100000';car[i,5] <-'2000000';car[i,6] <-'310'; car[i,7] <-'false';
 	i<- i + 1; // i = 73
-	auto[i,0] <- '14143'; auto[i,1] <-'2019';auto[i,2] <-'Mercedes Benz';auto[i,3] <-'Clase 4';
-	auto[i,4] <-'3692';auto[i,5] <-'1800000';auto[i,6] <-'310'; auto[i,7] <-'false';
+	car[i,0] <- '14143'; car[i,1] <-'2019';car[i,2] <-'Mercedes Benz';car[i,3] <-'Clase 4';
+	car[i,4] <-'3692';car[i,5] <-'1800000';car[i,6] <-'310'; car[i,7] <-'false';
 	i<- i + 1; // i = 74
-	auto[i,0] <- '69799'; auto[i,1] <-'2017';auto[i,2] <-'Honda';auto[i,3] <-'Civic';
-	auto[i,4] <-'91365';auto[i,5] <-'1400000';auto[i,6] <-'310'; auto[i,7] <-'true';
+	car[i,0] <- '69799'; car[i,1] <-'2017';car[i,2] <-'Honda';car[i,3] <-'Civic';
+	car[i,4] <-'91365';car[i,5] <-'1400000';car[i,6] <-'310'; car[i,7] <-'true';
 	i<- i + 1; // i = 75
-	auto[i,0] <- '38539'; auto[i,1] <-'2021';auto[i,2] <-'Hiundai';auto[i,3] <-'Genesis';
-	auto[i,4] <-'35000';auto[i,5] <-'2500000';auto[i,6] <-'300'; auto[i,7] <-'true';
+	car[i,0] <- '38539'; car[i,1] <-'2021';car[i,2] <-'Hiundai';car[i,3] <-'Genesis';
+	car[i,4] <-'35000';car[i,5] <-'2500000';car[i,6] <-'300'; car[i,7] <-'true';
 	i<- i + 1; // i = 76
-	auto[i,0] <- '54077'; auto[i,1] <-'2020';auto[i,2] <-'Peugeot';auto[i,3] <-'308';
-	auto[i,4] <-'85000';auto[i,5] <-'2000000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '54077'; car[i,1] <-'2020';car[i,2] <-'Peugeot';car[i,3] <-'308';
+	car[i,4] <-'85000';car[i,5] <-'2000000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 77
-	auto[i,0] <- '29535'; auto[i,1] <-'2022';auto[i,2] <-'Honda';auto[i,3] <-'Tucson';
-	auto[i,4] <-'16919';auto[i,5] <-'1100000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '29535'; car[i,1] <-'2022';car[i,2] <-'Honda';car[i,3] <-'Tucson';
+	car[i,4] <-'16919';car[i,5] <-'1100000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 78
-	auto[i,0] <- '62223'; auto[i,1] <-'2015';auto[i,2] <-'Mercedes Benz';auto[i,3] <-'Clase 4';
-	auto[i,4] <-'0';auto[i,5] <-'2600000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '62223'; car[i,1] <-'2015';car[i,2] <-'Mercedes Benz';car[i,3] <-'Clase 4';
+	car[i,4] <-'0';car[i,5] <-'2600000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 79
-	auto[i,0] <- '33287'; auto[i,1] <-'2006';auto[i,2] <-'Hiundai';auto[i,3] <-'Veloster';
-	auto[i,4] <-'249825';auto[i,5] <-'900000';auto[i,6] <-'310'; auto[i,7] <-'true';
+	car[i,0] <- '33287'; car[i,1] <-'2006';car[i,2] <-'Hiundai';car[i,3] <-'Veloster';
+	car[i,4] <-'249825';car[i,5] <-'900000';car[i,6] <-'310'; car[i,7] <-'true';
 	i<- i + 1; // i = 80
-	auto[i,0] <- '31031'; auto[i,1] <-'2005';auto[i,2] <-'Peugeot';auto[i,3] <-'206';
-	auto[i,4] <-'265718';auto[i,5] <-'800000';auto[i,6] <-'310'; auto[i,7] <-'true';
+	car[i,0] <- '31031'; car[i,1] <-'2005';car[i,2] <-'Peugeot';car[i,3] <-'206';
+	car[i,4] <-'265718';car[i,5] <-'800000';car[i,6] <-'310'; car[i,7] <-'true';
 	i<- i + 1; // i = 81
-	auto[i,0] <- '61646'; auto[i,1] <-'2022';auto[i,2] <-'Citroen';auto[i,3] <-'C4';
-	auto[i,4] <-'0';auto[i,5] <-'300000';auto[i,6] <-'310'; auto[i,7] <-'true';
+	car[i,0] <- '61646'; car[i,1] <-'2022';car[i,2] <-'Citroen';car[i,3] <-'C4';
+	car[i,4] <-'0';car[i,5] <-'300000';car[i,6] <-'310'; car[i,7] <-'true';
 	i<- i + 1; // i = 82
-	auto[i,0] <- '11680'; auto[i,1] <-'2000';auto[i,2] <-'Toyota';auto[i,3] <-'Corolla';
-	auto[i,4] <-'23128';auto[i,5] <-'750000';auto[i,6] <-'290'; auto[i,7] <-'false';
+	car[i,0] <- '11680'; car[i,1] <-'2000';car[i,2] <-'Toyota';car[i,3] <-'Corolla';
+	car[i,4] <-'23128';car[i,5] <-'750000';car[i,6] <-'290'; car[i,7] <-'false';
 	i<- i + 1; // i = 83
-	auto[i,0] <- '11812'; auto[i,1] <-'2016';auto[i,2] <-'Ford';auto[i,3] <-'Ranger';
-	auto[i,4] <-'227480';auto[i,5] <-'1200000';auto[i,6] <-'290'; auto[i,7] <-'true';
+	car[i,0] <- '11812'; car[i,1] <-'2016';car[i,2] <-'Ford';car[i,3] <-'Ranger';
+	car[i,4] <-'227480';car[i,5] <-'1200000';car[i,6] <-'290'; car[i,7] <-'true';
 	i<- i + 1; // i = 84
-	auto[i,0] <- '53661'; auto[i,1] <-'2020';auto[i,2] <-'Fiat';auto[i,3] <-'Argo';
-	auto[i,4] <-'120000';auto[i,5] <-'2000000';auto[i,6] <-'290'; auto[i,7] <-'false';
+	car[i,0] <- '53661'; car[i,1] <-'2020';car[i,2] <-'Fiat';car[i,3] <-'Argo';
+	car[i,4] <-'120000';car[i,5] <-'2000000';car[i,6] <-'290'; car[i,7] <-'false';
 	i<- i + 1; // i = 85
-	auto[i,0] <- '58928'; auto[i,1] <-'2014';auto[i,2] <-'Chevrolet';auto[i,3] <-'Cruze';
-	auto[i,4] <-'139131';auto[i,5] <-'1000000';auto[i,6] <-'290'; auto[i,7] <-'true';
+	car[i,0] <- '58928'; car[i,1] <-'2014';car[i,2] <-'Chevrolet';car[i,3] <-'Cruze';
+	car[i,4] <-'139131';car[i,5] <-'1000000';car[i,6] <-'290'; car[i,7] <-'true';
 	i<- i + 1; // i = 86
-	auto[i,0] <- '91877'; auto[i,1] <-'2022';auto[i,2] <-'Renault';auto[i,3] <-'Sandero';
-	auto[i,4] <-'0';auto[i,5] <-'3000000';auto[i,6] <-'290'; auto[i,7] <-'false';
+	car[i,0] <- '91877'; car[i,1] <-'2022';car[i,2] <-'Renault';car[i,3] <-'Sandero';
+	car[i,4] <-'0';car[i,5] <-'3000000';car[i,6] <-'290'; car[i,7] <-'false';
 	i<- i + 1; // i = 87
-	auto[i,0] <- '55367'; auto[i,1] <-'2007';auto[i,2] <-'Ford';auto[i,3] <-'Ecosport';
-	auto[i,4] <-'24092';auto[i,5] <-'900000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '55367'; car[i,1] <-'2007';car[i,2] <-'Ford';car[i,3] <-'Ecosport';
+	car[i,4] <-'24092';car[i,5] <-'900000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 88
-	auto[i,0] <- '21620'; auto[i,1] <-'2002';auto[i,2] <-'Fiat';auto[i,3] <-'Uno';
-	auto[i,4] <-'153338';auto[i,5] <-'750000';auto[i,6] <-'300'; auto[i,7] <-'false';
+	car[i,0] <- '21620'; car[i,1] <-'2002';car[i,2] <-'Fiat';car[i,3] <-'Uno';
+	car[i,4] <-'153338';car[i,5] <-'750000';car[i,6] <-'300'; car[i,7] <-'false';
 	i<- i + 1; // i = 89
-	auto[i,0] <- '50554'; auto[i,1] <-'2020';auto[i,2] <-'Chevrolet';auto[i,3] <-'Uno';
-	auto[i,4] <-'153338';auto[i,5] <-'750000';auto[i,6] <-'300'; auto[i,7] <-'true';
+	car[i,0] <- '50554'; car[i,1] <-'2020';car[i,2] <-'Chevrolet';car[i,3] <-'Uno';
+	car[i,4] <-'153338';car[i,5] <-'750000';car[i,6] <-'300'; car[i,7] <-'true';
 	
 FinSubProceso
 
 
-subproceso setEmployeeList(empleado)
+SubProceso setEmployeeList(employee)
 	Definir i Como Entero;
 	
 	i<-0;        // i = 0
-	empleado[i,0] <- '100'; empleado[i,1] <-'Pablo';empleado[i,2] <-'';empleado[i,3] <-'Novara';
-	empleado[i,4] <-'San Martín 132';empleado[i,5] <-'49';empleado[i,6] <-'Argentina';
+	employee[i,0] <- '100'; employee[i,1] <-'Pablo';employee[i,2] <-'';employee[i,3] <-'Novara';
+	employee[i,4] <-'San Martín 132';employee[i,5] <-'49';employee[i,6] <-'Argentina';
 	i<- i + 1; // i = 1
-	empleado[i,0] <- '101'; empleado[i,1] <-'Charles';empleado[i,2] <-'';empleado[i,3] <-'Babbage';
-	empleado[i,4] <-'España 131';empleado[i,5] <-'32';empleado[i,6] <-'Británica';
+	employee[i,0] <- '101'; employee[i,1] <-'Charles';employee[i,2] <-'';employee[i,3] <-'Babbage';
+	employee[i,4] <-'España 131';employee[i,5] <-'32';employee[i,6] <-'Británica';
 	i<- i + 1; // i = 2
-	empleado[i,0] <- '102'; empleado[i,1] <-'Ángela';empleado[i,2] <-'';empleado[i,3] <-'Ruiz Robles';
-	empleado[i,4] <-'';empleado[i,5] <-'54';empleado[i,6] <-'Española';
+	employee[i,0] <- '102'; employee[i,1] <-'Ángela';employee[i,2] <-'';employee[i,3] <-'Ruiz Robles';
+	employee[i,4] <-'';employee[i,5] <-'54';employee[i,6] <-'Española';
 	i<- i + 1; // i = 3
-	empleado[i,0] <- '103'; empleado[i,1] <-'Grace';empleado[i,2] <-'';empleado[i,3] <-'Murray Hopper';
-	empleado[i,4] <-'Catamarca 6585';empleado[i,5] <-'65';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '103'; employee[i,1] <-'Grace';employee[i,2] <-'';employee[i,3] <-'Murray Hopper';
+	employee[i,4] <-'Catamarca 6585';employee[i,5] <-'65';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 4
-	empleado[i,0] <- '104'; empleado[i,1] <-'Niklaus';empleado[i,2] <-'';empleado[i,3] <-'Wirth Emil';
-	empleado[i,4] <-'Carcarañá 328';empleado[i,5] <-'54';empleado[i,6] <-'Suiza';
+	employee[i,0] <- '104'; employee[i,1] <-'Niklaus';employee[i,2] <-'';employee[i,3] <-'Wirth Emil';
+	employee[i,4] <-'Carcarañá 328';employee[i,5] <-'54';employee[i,6] <-'Suiza';
 	i<- i + 1; // i = 5
-	empleado[i,0] <- '105'; empleado[i,1] <-'James';empleado[i,2] <-'Arthur';empleado[i,3] <-'Gosling';
-	empleado[i,4] <-'Canadá 6754';empleado[i,5] <-'50';empleado[i,6] <-'Canadiense';
+	employee[i,0] <- '105'; employee[i,1] <-'James';employee[i,2] <-'Arthur';employee[i,3] <-'Gosling';
+	employee[i,4] <-'Canadá 6754';employee[i,5] <-'50';employee[i,6] <-'Canadiense';
 	i<- i + 1; // i = 6
-	empleado[i,0] <- '106'; empleado[i,1] <-'Guido';empleado[i,2] <-'';empleado[i,3] <-'Van Rossum';
-	empleado[i,4] <-'Sarmiento 185';empleado[i,5] <-'54';empleado[i,6] <-'Holandesa';
+	employee[i,0] <- '106'; employee[i,1] <-'Guido';employee[i,2] <-'';employee[i,3] <-'Van Rossum';
+	employee[i,4] <-'Sarmiento 185';employee[i,5] <-'54';employee[i,6] <-'Holandesa';
 	i<- i + 1; // i = 7
-	empleado[i,0] <- '107'; empleado[i,1] <-'Kenneth';empleado[i,2] <-'Lane';empleado[i,3] <-'Thompson';
-	empleado[i,4] <-'Córdoba 927';empleado[i,5] <-'32';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '107'; employee[i,1] <-'Kenneth';employee[i,2] <-'Lane';employee[i,3] <-'Thompson';
+	employee[i,4] <-'Córdoba 927';employee[i,5] <-'32';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 8
-	empleado[i,0] <- '108'; empleado[i,1] <-'William';empleado[i,2] <-'Henry';empleado[i,3] <-'Gates III';
-	empleado[i,4] <-'Rivadavia 932';empleado[i,5] <-'54';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '108'; employee[i,1] <-'William';employee[i,2] <-'Henry';employee[i,3] <-'Gates III';
+	employee[i,4] <-'Rivadavia 932';employee[i,5] <-'54';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 9
-	empleado[i,0] <- '109'; empleado[i,1] <-'Stephen';empleado[i,2] <-'Gary';empleado[i,3] <-'Wozniak';
-	empleado[i,4] <-'Chubut 594';empleado[i,5] <-'32';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '109'; employee[i,1] <-'Stephen';employee[i,2] <-'Gary';employee[i,3] <-'Wozniak';
+	employee[i,4] <-'Chubut 594';employee[i,5] <-'32';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 10
-	empleado[i,0] <- '110'; empleado[i,1] <-'Margaret';empleado[i,2] <-'';empleado[i,3] <-'Hamilton';
-	empleado[i,4] <-'Jujuy 385';empleado[i,5] <-'54';empleado[i,6] <-'Británica';
+	employee[i,0] <- '110'; employee[i,1] <-'Margaret';employee[i,2] <-'';employee[i,3] <-'Hamilton';
+	employee[i,4] <-'Jujuy 385';employee[i,5] <-'54';employee[i,6] <-'Británica';
 	i<- i + 1; // i = 11
-	empleado[i,0] <- '111'; empleado[i,1] <-'Mark';empleado[i,2] <-'Elliot';empleado[i,3] <-'Zuckerberg';
-	empleado[i,4] <-'Perú 674';empleado[i,5] <-'32';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '111'; employee[i,1] <-'Mark';employee[i,2] <-'Elliot';employee[i,3] <-'Zuckerberg';
+	employee[i,4] <-'Perú 674';employee[i,5] <-'32';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 12
-	empleado[i,0] <- '112'; empleado[i,1] <-'Louis';empleado[i,2] <-'';empleado[i,3] <-'Pouzin';
-	empleado[i,4] <-'Rioja 376';empleado[i,5] <-'60';empleado[i,6] <-'Francesa';
+	employee[i,0] <- '112'; employee[i,1] <-'Louis';employee[i,2] <-'';employee[i,3] <-'Pouzin';
+	employee[i,4] <-'Rioja 376';employee[i,5] <-'60';employee[i,6] <-'Francesa';
 	i<- i + 1; // i = 13
-	empleado[i,0] <- '113'; empleado[i,1] <-'Isis';empleado[i,2] <-'';empleado[i,3] <-'Anchalee';
-	empleado[i,4] <-'Patagonia 931';empleado[i,5] <-'32';empleado[i,6] <-'Canadiense';
+	employee[i,0] <- '113'; employee[i,1] <-'Isis';employee[i,2] <-'';employee[i,3] <-'Anchalee';
+	employee[i,4] <-'Patagonia 931';employee[i,5] <-'32';employee[i,6] <-'Canadiense';
 	i<- i + 1; // i = 14
-	empleado[i,0] <- '114'; empleado[i,1] <-'Lawrence';empleado[i,2] <-'Edward';empleado[i,3] <-'Page';
-	empleado[i,4] <-'Tierra del Fuego 317';empleado[i,5] <-'49';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '114'; employee[i,1] <-'Lawrence';employee[i,2] <-'Edward';employee[i,3] <-'Page';
+	employee[i,4] <-'Tierra del Fuego 317';employee[i,5] <-'49';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 15
-	empleado[i,0] <- '115'; empleado[i,1] <-'Serguéi';empleado[i,2] <-'';empleado[i,3] <-'Brin';
-	empleado[i,4] <-'';empleado[i,5] <-'32';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '115'; employee[i,1] <-'Serguéi';employee[i,2] <-'';employee[i,3] <-'Brin';
+	employee[i,4] <-'';employee[i,5] <-'32';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 16
-	empleado[i,0] <- '116'; empleado[i,1] <-'Karen';empleado[i,2] <-'';empleado[i,3] <-'Jones';
-	empleado[i,4] <-'Santa Fe 971';empleado[i,5] <-'54';empleado[i,6] <-'Británica';
+	employee[i,0] <- '116'; employee[i,1] <-'Karen';employee[i,2] <-'';employee[i,3] <-'Jones';
+	employee[i,4] <-'Santa Fe 971';employee[i,5] <-'54';employee[i,6] <-'Británica';
 	i<- i + 1; // i = 17
-	empleado[i,0] <- '117'; empleado[i,1] <-'Hedwig';empleado[i,2] <-'Eva Maria';empleado[i,3] <-'Kiesler';
-	empleado[i,4] <-'Paraguay 1975';empleado[i,5] <-'32';empleado[i,6] <-'Austríaca';
+	employee[i,0] <- '117'; employee[i,1] <-'Hedwig';employee[i,2] <-'Eva Maria';employee[i,3] <-'Kiesler';
+	employee[i,4] <-'Paraguay 1975';employee[i,5] <-'32';employee[i,6] <-'Austríaca';
 	i<- i + 1; // i = 18
-	empleado[i,0] <- '118'; empleado[i,1] <-'George';empleado[i,2] <-'Carl Johann';empleado[i,3] <-'Antheil';
-	empleado[i,4] <-'Río Negro 495';empleado[i,5] <-'54';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '118'; employee[i,1] <-'George';employee[i,2] <-'Carl Johann';employee[i,3] <-'Antheil';
+	employee[i,4] <-'Río Negro 495';employee[i,5] <-'54';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 19
-	empleado[i,0] <- '119'; empleado[i,1] <-'Creola';empleado[i,2] <-'Katherine';empleado[i,3] <-'Johnson';
-	empleado[i,4] <-'Croacia 674';empleado[i,5] <-'32';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '119'; employee[i,1] <-'Creola';employee[i,2] <-'Katherine';employee[i,3] <-'Johnson';
+	employee[i,4] <-'Croacia 674';employee[i,5] <-'32';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 20
-	empleado[i,0] <- '120'; empleado[i,1] <-'Evelyn';empleado[i,2] <-'';empleado[i,3] <-'Berezin';
-	empleado[i,4] <-'Corrientes 674';empleado[i,5] <-'54';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '120'; employee[i,1] <-'Evelyn';employee[i,2] <-'';employee[i,3] <-'Berezin';
+	employee[i,4] <-'Corrientes 674';employee[i,5] <-'54';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 21
-	empleado[i,0] <- '121'; empleado[i,1] <-'Stephanie';empleado[i,2] <-'Steve';empleado[i,3] <-'Shirley';
-	empleado[i,4] <-'Formosa 3846';empleado[i,5] <-'32';empleado[i,6] <-'Británica';
+	employee[i,0] <- '121'; employee[i,1] <-'Stephanie';employee[i,2] <-'Steve';employee[i,3] <-'Shirley';
+	employee[i,4] <-'Formosa 3846';employee[i,5] <-'32';employee[i,6] <-'Británica';
 	i<- i + 1; // i = 22
-	empleado[i,0] <- '122'; empleado[i,1] <-'Mary';empleado[i,2] <-'Allen';empleado[i,3] <-'Wilkes';
-	empleado[i,4] <-'San Lorenzo 495';empleado[i,5] <-'62';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '122'; employee[i,1] <-'Mary';employee[i,2] <-'Allen';employee[i,3] <-'Wilkes';
+	employee[i,4] <-'San Lorenzo 495';employee[i,5] <-'62';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 23
-	empleado[i,0] <- '123'; empleado[i,1] <-'Alan';empleado[i,2] <-'Mathison';empleado[i,3] <-'Turing';
-	empleado[i,4] <-'Santa Fe 685';empleado[i,5] <-'32';empleado[i,6] <-'Británica';
+	employee[i,0] <- '123'; employee[i,1] <-'Alan';employee[i,2] <-'Mathison';employee[i,3] <-'Turing';
+	employee[i,4] <-'Santa Fe 685';employee[i,5] <-'32';employee[i,6] <-'Británica';
 	i<- i + 1; // i = 24
-	empleado[i,0] <- '124'; empleado[i,1] <-'James';empleado[i,2] <-'';empleado[i,3] <-'Gosling';
-	empleado[i,4] <-'Venezuela 576';empleado[i,5] <-'54';empleado[i,6] <-'Canadiense';
+	employee[i,0] <- '124'; employee[i,1] <-'James';employee[i,2] <-'';employee[i,3] <-'Gosling';
+	employee[i,4] <-'Venezuela 576';employee[i,5] <-'54';employee[i,6] <-'Canadiense';
 	i<- i + 1; // i = 25
-	empleado[i,0] <- '125'; empleado[i,1] <-'Al';empleado[i,2] <-'-';empleado[i,3] <-'Juarismi';
-	empleado[i,4] <-'Santa Fe 825';empleado[i,5] <-'32';empleado[i,6] <-'Iraquí';
+	employee[i,0] <- '125'; employee[i,1] <-'Al';employee[i,2] <-'-';employee[i,3] <-'Juarismi';
+	employee[i,4] <-'Santa Fe 825';employee[i,5] <-'32';employee[i,6] <-'Iraquí';
 	i<- i + 1; // i = 26
-	empleado[i,0] <- '126'; empleado[i,1] <-'Gearge';empleado[i,2] <-'';empleado[i,3] <-'Boole';
-	empleado[i,4] <-'Sarmiento 685';empleado[i,5] <-'49';empleado[i,6] <-'Británica';
+	employee[i,0] <- '126'; employee[i,1] <-'Gearge';employee[i,2] <-'';employee[i,3] <-'Boole';
+	employee[i,4] <-'Sarmiento 685';employee[i,5] <-'49';employee[i,6] <-'Británica';
 	i<- i + 1; // i = 27
-	empleado[i,0] <- '127'; empleado[i,1] <-'Maurice';empleado[i,2] <-'Vincent';empleado[i,3] <-'Wilkes';
-	empleado[i,4] <-'Salta 586';empleado[i,5] <-'48';empleado[i,6] <-'Británica';
+	employee[i,0] <- '127'; employee[i,1] <-'Maurice';employee[i,2] <-'Vincent';employee[i,3] <-'Wilkes';
+	employee[i,4] <-'Salta 586';employee[i,5] <-'48';employee[i,6] <-'Británica';
 	i<- i + 1; // i = 28
-	empleado[i,0] <- '128'; empleado[i,1] <-'John';empleado[i,2] <-'Warner';empleado[i,3] <-'Backus';
-	empleado[i,4] <-'Salta 3825';empleado[i,5] <-'54';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '128'; employee[i,1] <-'John';employee[i,2] <-'Warner';employee[i,3] <-'Backus';
+	employee[i,4] <-'Salta 3825';employee[i,5] <-'54';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 29
-	empleado[i,0] <- '129'; empleado[i,1] <-'John';empleado[i,2] <-'';empleado[i,3] <-'McCarthy';
-	empleado[i,4] <-'Urquiza 628';empleado[i,5] <-'32';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '129'; employee[i,1] <-'John';employee[i,2] <-'';employee[i,3] <-'McCarthy';
+	employee[i,4] <-'Urquiza 628';employee[i,5] <-'32';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 30
-	empleado[i,0] <- '130'; empleado[i,1] <-'Kenneth';empleado[i,2] <-'Eugene';empleado[i,3] <-'Iverson';
-	empleado[i,4] <-'Rioja 825';empleado[i,5] <-'54';empleado[i,6] <-'Canadiense';
+	employee[i,0] <- '130'; employee[i,1] <-'Kenneth';employee[i,2] <-'Eugene';employee[i,3] <-'Iverson';
+	employee[i,4] <-'Rioja 825';employee[i,5] <-'54';employee[i,6] <-'Canadiense';
 	i<- i + 1; // i = 31
-	empleado[i,0] <- '131'; empleado[i,1] <-'Carol';empleado[i,2] <-'';empleado[i,3] <-'Shaw';
-	empleado[i,4] <-'San Juan 396';empleado[i,5] <-'32';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '131'; employee[i,1] <-'Carol';employee[i,2] <-'';employee[i,3] <-'Shaw';
+	employee[i,4] <-'San Juan 396';employee[i,5] <-'32';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 32
-	empleado[i,0] <- '132'; empleado[i,1] <-'John';empleado[i,2] <-'George';empleado[i,3] <-'Kemeny';
-	empleado[i,4] <-'Santa Fe 935';empleado[i,5] <-'54';empleado[i,6] <-'Húngara';
+	employee[i,0] <- '132'; employee[i,1] <-'John';employee[i,2] <-'George';employee[i,3] <-'Kemeny';
+	employee[i,4] <-'Santa Fe 935';employee[i,5] <-'54';employee[i,6] <-'Húngara';
 	i<- i + 1; // i = 33
-	empleado[i,0] <- '133'; empleado[i,1] <-'Thomas';empleado[i,2] <-'Eugene';empleado[i,3] <-'Kurtz';
-	empleado[i,4] <-'La Pampa 4682';empleado[i,5] <-'33';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '133'; employee[i,1] <-'Thomas';employee[i,2] <-'Eugene';employee[i,3] <-'Kurtz';
+	employee[i,4] <-'La Pampa 4682';employee[i,5] <-'33';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 34
-	empleado[i,0] <- '134'; empleado[i,1] <-'Seymour';empleado[i,2] <-'';empleado[i,3] <-'Papert';
-	empleado[i,4] <-'Salta  546';empleado[i,5] <-'54';empleado[i,6] <-'Sudafricana';
+	employee[i,0] <- '134'; employee[i,1] <-'Seymour';employee[i,2] <-'';employee[i,3] <-'Papert';
+	employee[i,4] <-'Salta  546';employee[i,5] <-'54';employee[i,6] <-'Sudafricana';
 	i<- i + 1; // i = 35
-	empleado[i,0] <- '135'; empleado[i,1] <-'Niklaus';empleado[i,2] <-'Emil';empleado[i,3] <-'Wirth';
-	empleado[i,4] <-'San Martín 1649';empleado[i,5] <-'32';empleado[i,6] <-'Suiza';
+	employee[i,0] <- '135'; employee[i,1] <-'Niklaus';employee[i,2] <-'Emil';employee[i,3] <-'Wirth';
+	employee[i,4] <-'San Martín 1649';employee[i,5] <-'32';employee[i,6] <-'Suiza';
 	i<- i + 1; // i = 36
-	empleado[i,0] <- '136'; empleado[i,1] <-'Dennis';empleado[i,2] <-'Ritchie';empleado[i,3] <-'MacAlistair';
-	empleado[i,4] <-'San Juan 825';empleado[i,5] <-'54';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '136'; employee[i,1] <-'Dennis';employee[i,2] <-'Ritchie';employee[i,3] <-'MacAlistair';
+	employee[i,4] <-'San Juan 825';employee[i,5] <-'54';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 37
-	empleado[i,0] <- '137'; empleado[i,1] <-'Alan';empleado[i,2] <-'Curtis';empleado[i,3] <-'Kay';
-	empleado[i,4] <-'Jujuy 246';empleado[i,5] <-'81';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '137'; employee[i,1] <-'Alan';employee[i,2] <-'Curtis';employee[i,3] <-'Kay';
+	employee[i,4] <-'Jujuy 246';employee[i,5] <-'81';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 38
-	empleado[i,0] <- '138'; empleado[i,1] <-'Brian';empleado[i,2] <-'Wilson';empleado[i,3] <-'Kernighan';
-	empleado[i,4] <-'Maipú 731';empleado[i,5] <-'54';empleado[i,6] <-'Canadiense';
+	employee[i,0] <- '138'; employee[i,1] <-'Brian';employee[i,2] <-'Wilson';employee[i,3] <-'Kernighan';
+	employee[i,4] <-'Maipú 731';employee[i,5] <-'54';employee[i,6] <-'Canadiense';
 	i<- i + 1; // i = 39
-	empleado[i,0] <- '139'; empleado[i,1] <-'Jean';empleado[i,2] <-'David';empleado[i,3] <-'Ichbiah';
-	empleado[i,4] <-'Francia 1764';empleado[i,5] <-'69';empleado[i,6] <-'Francesa';
+	employee[i,0] <- '139'; employee[i,1] <-'Jean';employee[i,2] <-'David';employee[i,3] <-'Ichbiah';
+	employee[i,4] <-'Francia 1764';employee[i,5] <-'69';employee[i,6] <-'Francesa';
 	i<- i + 1; // i = 40
-	empleado[i,0] <- '140'; empleado[i,1] <-'Bjarne';empleado[i,2] <-'';empleado[i,3] <-'Stroustrup';
-	empleado[i,4] <-'Belgrano 297';empleado[i,5] <-'54';empleado[i,6] <-'Danesa';
+	employee[i,0] <- '140'; employee[i,1] <-'Bjarne';employee[i,2] <-'';employee[i,3] <-'Stroustrup';
+	employee[i,4] <-'Belgrano 297';employee[i,5] <-'54';employee[i,6] <-'Danesa';
 	i<- i + 1; // i = 41
-	empleado[i,0] <- '141'; empleado[i,1] <-'Konrad';empleado[i,2] <-'Ernst Otto';empleado[i,3] <-'Zuse';
-	empleado[i,4] <-'Santa Cruz 4679';empleado[i,5] <-'32';empleado[i,6] <-'Alemana';
+	employee[i,0] <- '141'; employee[i,1] <-'Konrad';employee[i,2] <-'Ernst Otto';employee[i,3] <-'Zuse';
+	employee[i,4] <-'Santa Cruz 4679';employee[i,5] <-'32';employee[i,6] <-'Alemana';
 	i<- i + 1; // i = 42
-	empleado[i,0] <- '142'; empleado[i,1] <-'Jack';empleado[i,2] <-'St. Clair';empleado[i,3] <-'Kilby';
-	empleado[i,4] <-'Río Negro 946';empleado[i,5] <-'54';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '142'; employee[i,1] <-'Jack';employee[i,2] <-'St. Clair';employee[i,3] <-'Kilby';
+	employee[i,4] <-'Río Negro 946';employee[i,5] <-'54';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 43
-	empleado[i,0] <- '143'; empleado[i,1] <-'Claude';empleado[i,2] <-'Elwood';empleado[i,3] <-'Shannon';
-	empleado[i,4] <-'Santa Fe 1679';empleado[i,5] <-'32';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '143'; employee[i,1] <-'Claude';employee[i,2] <-'Elwood';employee[i,3] <-'Shannon';
+	employee[i,4] <-'Santa Fe 1679';employee[i,5] <-'32';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 44
-	empleado[i,0] <- '144'; empleado[i,1] <-'Betty';empleado[i,2] <-'Snyder';empleado[i,3] <-'Holberton';
-	empleado[i,4] <-'Chaco 8256';empleado[i,5] <-'54';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '144'; employee[i,1] <-'Betty';employee[i,2] <-'Snyder';employee[i,3] <-'Holberton';
+	employee[i,4] <-'Chaco 8256';employee[i,5] <-'54';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 45
-	empleado[i,0] <- '145'; empleado[i,1] <-'John';empleado[i,2] <-'William';empleado[i,3] <-'Mauchly';
-	empleado[i,4] <-'Santa Fe 502';empleado[i,5] <-'71';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '145'; employee[i,1] <-'John';employee[i,2] <-'William';employee[i,3] <-'Mauchly';
+	employee[i,4] <-'Santa Fe 502';employee[i,5] <-'71';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 46
-	empleado[i,0] <- '146'; empleado[i,1] <-'Jean';empleado[i,2] <-'Jennings';empleado[i,3] <-'Bartik';
-	empleado[i,4] <-'Catamarca 674';empleado[i,5] <-'54';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '146'; employee[i,1] <-'Jean';employee[i,2] <-'Jennings';employee[i,3] <-'Bartik';
+	employee[i,4] <-'Catamarca 674';employee[i,5] <-'54';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 47
-	empleado[i,0] <- '147'; empleado[i,1] <-'John';empleado[i,2] <-'Presper';empleado[i,3] <-'Eckert ';
-	empleado[i,4] <-'Islas Malvinas 685';empleado[i,5] <-'32';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '147'; employee[i,1] <-'John';employee[i,2] <-'Presper';employee[i,3] <-'Eckert ';
+	employee[i,4] <-'Islas Malvinas 685';employee[i,5] <-'32';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 48
-	empleado[i,0] <- '148'; empleado[i,1] <-'Kathleen';empleado[i,2] <-'Rita';empleado[i,3] <-'McNulty Mauchly Antonelli';
-	empleado[i,4] <-'Mitre 823';empleado[i,5] <-'54';empleado[i,6] <-'Irlandesa';
+	employee[i,0] <- '148'; employee[i,1] <-'Kathleen';employee[i,2] <-'Rita';employee[i,3] <-'McNulty Mauchly Antonelli';
+	employee[i,4] <-'Mitre 823';employee[i,5] <-'54';employee[i,6] <-'Irlandesa';
 	i<- i + 1; // i = 49
-	empleado[i,0] <- '149'; empleado[i,1] <-'William';empleado[i,2] <-'Bradford';empleado[i,3] <-'Shockley';
-	empleado[i,4] <-'Belgrano 7136';empleado[i,5] <-'52';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '149'; employee[i,1] <-'William';employee[i,2] <-'Bradford';employee[i,3] <-'Shockley';
+	employee[i,4] <-'Belgrano 7136';employee[i,5] <-'52';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 50
-	empleado[i,0] <- '150'; empleado[i,1] <-'Marlyn';empleado[i,2] <-'Wescoff';empleado[i,3] <-'Meltzer';
-	empleado[i,4] <-'Roca 645';empleado[i,5] <-'54';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '150'; employee[i,1] <-'Marlyn';employee[i,2] <-'Wescoff';employee[i,3] <-'Meltzer';
+	employee[i,4] <-'Roca 645';employee[i,5] <-'54';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 51
-	empleado[i,0] <- '151'; empleado[i,1] <-'Houser';empleado[i,2] <-'Houser';empleado[i,3] <-'Brattain';
-	empleado[i,4] <-'Av. San Martín';empleado[i,5] <-'42';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '151'; employee[i,1] <-'Houser';employee[i,2] <-'Houser';employee[i,3] <-'Brattain';
+	employee[i,4] <-'Av. San Martín';employee[i,5] <-'42';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 52
-	empleado[i,0] <- '152'; empleado[i,1] <-'Ruth';empleado[i,2] <-'Lichterman';empleado[i,3] <-'Teitelbaum';
-	empleado[i,4] <-'Belgrano 469';empleado[i,5] <-'54';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '152'; employee[i,1] <-'Ruth';employee[i,2] <-'Lichterman';employee[i,3] <-'Teitelbaum';
+	employee[i,4] <-'Belgrano 469';employee[i,5] <-'54';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 53
-	empleado[i,0] <- '153'; empleado[i,1] <-'John';empleado[i,2] <-'';empleado[i,3] <-'Bardeen';
-	empleado[i,4] <-'25 de Mayo 2864';empleado[i,5] <-'61';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '153'; employee[i,1] <-'John';employee[i,2] <-'';employee[i,3] <-'Bardeen';
+	employee[i,4] <-'25 de Mayo 2864';employee[i,5] <-'61';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 54
-	empleado[i,0] <- '154'; empleado[i,1] <-'Frances';empleado[i,2] <-'Bilas';empleado[i,3] <-'Spence';
-	empleado[i,4] <-'9 de Julio 1764';empleado[i,5] <-'54';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '154'; employee[i,1] <-'Frances';employee[i,2] <-'Bilas';employee[i,3] <-'Spence';
+	employee[i,4] <-'9 de Julio 1764';employee[i,5] <-'54';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 55
-	empleado[i,0] <- '155'; empleado[i,1] <-'Tom';empleado[i,2] <-'';empleado[i,3] <-'Kilburn';
-	empleado[i,4] <-'1 de Mayo 367';empleado[i,5] <-'27';empleado[i,6] <-'Británica';
+	employee[i,0] <- '155'; employee[i,1] <-'Tom';employee[i,2] <-'';employee[i,3] <-'Kilburn';
+	employee[i,4] <-'1 de Mayo 367';employee[i,5] <-'27';employee[i,6] <-'Británica';
 	i<- i + 1; // i = 56
-	empleado[i,0] <- '156'; empleado[i,1] <-'William';empleado[i,2] <-'William';empleado[i,3] <-'Mauchly';
-	empleado[i,4] <-'25 de MAyo 546';empleado[i,5] <-'21';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '156'; employee[i,1] <-'William';employee[i,2] <-'William';employee[i,3] <-'Mauchly';
+	employee[i,4] <-'25 de MAyo 546';employee[i,5] <-'21';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 57
-	empleado[i,0] <- '157'; empleado[i,1] <-'Wallace';empleado[i,2] <-'John';empleado[i,3] <-'Eckert';
-	empleado[i,4] <-'9 de Julio 1346';empleado[i,5] <-'79';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '157'; employee[i,1] <-'Wallace';employee[i,2] <-'John';employee[i,3] <-'Eckert';
+	employee[i,4] <-'9 de Julio 1346';employee[i,5] <-'79';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 58
-	empleado[i,0] <- '158'; empleado[i,1] <-'Maurice';empleado[i,2] <-'Vincent';empleado[i,3] <-'Wilkes';
-	empleado[i,4] <-'25 de Mayo 2679';empleado[i,5] <-'54';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '158'; employee[i,1] <-'Maurice';employee[i,2] <-'Vincent';employee[i,3] <-'Wilkes';
+	employee[i,4] <-'25 de Mayo 2679';employee[i,5] <-'54';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 59
-	empleado[i,0] <- '159'; empleado[i,1] <-'Kenneth';empleado[i,2] <-'Harry';empleado[i,3] <-'Olsen';
-	empleado[i,4] <-'San Lorenzo 7631';empleado[i,5] <-'71';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '159'; employee[i,1] <-'Kenneth';employee[i,2] <-'Harry';employee[i,3] <-'Olsen';
+	employee[i,4] <-'San Lorenzo 7631';employee[i,5] <-'71';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 60
-	empleado[i,0] <- '160'; empleado[i,1] <-'Sergei';empleado[i,2] <-'Alexeevich';empleado[i,3] <-'Lebedev';
-	empleado[i,4] <-'1 de Mayo 6479';empleado[i,5] <-'54';empleado[i,6] <-'Ucraniana';
+	employee[i,0] <- '160'; employee[i,1] <-'Sergei';employee[i,2] <-'Alexeevich';employee[i,3] <-'Lebedev';
+	employee[i,4] <-'1 de Mayo 6479';employee[i,5] <-'54';employee[i,6] <-'Ucraniana';
 	i<- i + 1; // i = 61
-	empleado[i,0] <- '161'; empleado[i,1] <-'Eugene';empleado[i,2] <-'Myron';empleado[i,3] <-'Amdahl';
-	empleado[i,4] <-'Salta 5679';empleado[i,5] <-'32';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '161'; employee[i,1] <-'Eugene';employee[i,2] <-'Myron';employee[i,3] <-'Amdahl';
+	employee[i,4] <-'Salta 5679';employee[i,5] <-'32';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 62
-	empleado[i,0] <- '162'; empleado[i,1] <-'Brendan';empleado[i,2] <-'';empleado[i,3] <-'Eich';
-	empleado[i,4] <-'Santa Fe 4698';empleado[i,5] <-'54';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '162'; employee[i,1] <-'Brendan';employee[i,2] <-'';employee[i,3] <-'Eich';
+	employee[i,4] <-'Santa Fe 4698';employee[i,5] <-'54';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 63
-	empleado[i,0] <- '163'; empleado[i,1] <-'Yukihiro';empleado[i,2] <-'';empleado[i,3] <-'Matsumoto';
-	empleado[i,4] <-'Rafael Obligado 648';empleado[i,5] <-'32';empleado[i,6] <-'Japonés';
+	employee[i,0] <- '163'; employee[i,1] <-'Yukihiro';employee[i,2] <-'';employee[i,3] <-'Matsumoto';
+	employee[i,4] <-'Rafael Obligado 648';employee[i,5] <-'32';employee[i,6] <-'Japonés';
 	i<- i + 1; // i = 64
-	empleado[i,0] <- '164'; empleado[i,1] <-'John';empleado[i,2] <-'';empleado[i,3] <-'Blankenbaker';
-	empleado[i,4] <-'Entre Ríos 645';empleado[i,5] <-'54';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '164'; employee[i,1] <-'John';employee[i,2] <-'';employee[i,3] <-'Blankenbaker';
+	employee[i,4] <-'Entre Ríos 645';employee[i,5] <-'54';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 65
-	empleado[i,0] <- '165'; empleado[i,1] <-'Joan';empleado[i,2] <-'Elisabeth';empleado[i,3] <-'Lowther Murray';
-	empleado[i,4] <-'San Martín 764';empleado[i,5] <-'32';empleado[i,6] <-'Británica';
+	employee[i,0] <- '165'; employee[i,1] <-'Joan';employee[i,2] <-'Elisabeth';employee[i,3] <-'Lowther Murray';
+	employee[i,4] <-'San Martín 764';employee[i,5] <-'32';employee[i,6] <-'Británica';
 	i<- i + 1; // i = 66
-	empleado[i,0] <- '166'; empleado[i,1] <-'Pitágoras';empleado[i,2] <-'';empleado[i,3] <-'De Samos';
-	empleado[i,4] <-'Rivadavia 9754';empleado[i,5] <-'54';empleado[i,6] <-'Griega';
+	employee[i,0] <- '166'; employee[i,1] <-'Pitágoras';employee[i,2] <-'';employee[i,3] <-'De Samos';
+	employee[i,4] <-'Rivadavia 9754';employee[i,5] <-'54';employee[i,6] <-'Griega';
 	i<- i + 1; // i = 67
-	empleado[i,0] <- '167'; empleado[i,1] <-'Andrew';empleado[i,2] <-'Johm';empleado[i,3] <-'Wiles';
-	empleado[i,4] <-'Córdoba 925';empleado[i,5] <-'66';empleado[i,6] <-'Británica';
+	employee[i,0] <- '167'; employee[i,1] <-'Andrew';employee[i,2] <-'Johm';employee[i,3] <-'Wiles';
+	employee[i,4] <-'Córdoba 925';employee[i,5] <-'66';employee[i,6] <-'Británica';
 	i<- i + 1; // i = 68
-	empleado[i,0] <- '168'; empleado[i,1] <-'Isaac';empleado[i,2] <-'';empleado[i,3] <-'Newton';
-	empleado[i,4] <-'Salta 582';empleado[i,5] <-'54';empleado[i,6] <-'Británica';
+	employee[i,0] <- '168'; employee[i,1] <-'Isaac';employee[i,2] <-'';employee[i,3] <-'Newton';
+	employee[i,4] <-'Salta 582';employee[i,5] <-'54';employee[i,6] <-'Británica';
 	i<- i + 1; // i = 69
-	empleado[i,0] <- '169'; empleado[i,1] <-'Gottfried';empleado[i,2] <-'Wilhelm';empleado[i,3] <-'Leibniz';
-	empleado[i,4] <-'Urquiza 3164';empleado[i,5] <-'32';empleado[i,6] <-'Alemana';
+	employee[i,0] <- '169'; employee[i,1] <-'Gottfried';employee[i,2] <-'Wilhelm';employee[i,3] <-'Leibniz';
+	employee[i,4] <-'Urquiza 3164';employee[i,5] <-'32';employee[i,6] <-'Alemana';
 	i<- i + 1; // i = 70
-	empleado[i,0] <- '170'; empleado[i,1] <-'Leonardo';empleado[i,2] <-'';empleado[i,3] <-'Pisano Blgollo';
-	empleado[i,4] <-'25 de Mayo 1810';empleado[i,5] <-'54';empleado[i,6] <-'Italiana';
+	employee[i,0] <- '170'; employee[i,1] <-'Leonardo';employee[i,2] <-'';employee[i,3] <-'Pisano Blgollo';
+	employee[i,4] <-'25 de Mayo 1810';employee[i,5] <-'54';employee[i,6] <-'Italiana';
 	i<- i + 1; // i = 71
-	empleado[i,0] <- '171'; empleado[i,1] <-'René';empleado[i,2] <-'';empleado[i,3] <-'Descartes';
-	empleado[i,4] <-'9 de Julio 1816';empleado[i,5] <-'32';empleado[i,6] <-'Francesa';
+	employee[i,0] <- '171'; employee[i,1] <-'René';employee[i,2] <-'';employee[i,3] <-'Descartes';
+	employee[i,4] <-'9 de Julio 1816';employee[i,5] <-'32';employee[i,6] <-'Francesa';
 	i<- i + 1; // i = 72
-	empleado[i,0] <- '172'; empleado[i,1] <-'Euclides';empleado[i,2] <-'';empleado[i,3] <-'Neucrates';
-	empleado[i,4] <-'Santa Fe 1985';empleado[i,5] <-'54';empleado[i,6] <-'Griega';
+	employee[i,0] <- '172'; employee[i,1] <-'Euclides';employee[i,2] <-'';employee[i,3] <-'Neucrates';
+	employee[i,4] <-'Santa Fe 1985';employee[i,5] <-'54';employee[i,6] <-'Griega';
 	i<- i + 1; // i = 73
-	empleado[i,0] <- '173'; empleado[i,1] <-'Georg';empleado[i,2] <-'Friedrich Bernhard';empleado[i,3] <-'Riemann';
-	empleado[i,4] <-'Martín Fierro 574';empleado[i,5] <-'48';empleado[i,6] <-'Alemana';
+	employee[i,0] <- '173'; employee[i,1] <-'Georg';employee[i,2] <-'Friedrich Bernhard';employee[i,3] <-'Riemann';
+	employee[i,4] <-'Martín Fierro 574';employee[i,5] <-'48';employee[i,6] <-'Alemana';
 	i<- i + 1; // i = 74
-	empleado[i,0] <- '174'; empleado[i,1] <-'Carl';empleado[i,2] <-'Friedrich';empleado[i,3] <-'Gauss';
-	empleado[i,4] <-'1 de MAyo 582';empleado[i,5] <-'21';empleado[i,6] <-'Alemana';
+	employee[i,0] <- '174'; employee[i,1] <-'Carl';employee[i,2] <-'Friedrich';employee[i,3] <-'Gauss';
+	employee[i,4] <-'1 de MAyo 582';employee[i,5] <-'21';employee[i,6] <-'Alemana';
 	i<- i + 1; // i = 75
-	empleado[i,0] <- '175'; empleado[i,1] <-'Leonhard';empleado[i,2] <-'Paul';empleado[i,3] <-'Euler';
-	empleado[i,4] <-'Jujuy 485';empleado[i,5] <-'32';empleado[i,6] <-'Suiza';
+	employee[i,0] <- '175'; employee[i,1] <-'Leonhard';employee[i,2] <-'Paul';employee[i,3] <-'Euler';
+	employee[i,4] <-'Jujuy 485';employee[i,5] <-'32';employee[i,6] <-'Suiza';
 	i<- i + 1; // i = 76
-	empleado[i,0] <- '176'; empleado[i,1] <-'Linus';empleado[i,2] <-'Benedict';empleado[i,3] <-'Torvalds';
-	empleado[i,4] <-'Alvear 162';empleado[i,5] <-'59';empleado[i,6] <-'Finlandesa';
+	employee[i,0] <- '176'; employee[i,1] <-'Linus';employee[i,2] <-'Benedict';employee[i,3] <-'Torvalds';
+	employee[i,4] <-'Alvear 162';employee[i,5] <-'59';employee[i,6] <-'Finlandesa';
 	i<- i + 1; // i = 77
-	empleado[i,0] <- '177'; empleado[i,1] <-'Anders';empleado[i,2] <-'';empleado[i,3] <-'Hejlsberg';
-	empleado[i,4] <-'Belgrano 185';empleado[i,5] <-'57';empleado[i,6] <-'Danesa';
+	employee[i,0] <- '177'; employee[i,1] <-'Anders';employee[i,2] <-'';employee[i,3] <-'Hejlsberg';
+	employee[i,4] <-'Belgrano 185';employee[i,5] <-'57';employee[i,6] <-'Danesa';
 	i<- i + 1; // i = 78
-	empleado[i,0] <- '178'; empleado[i,1] <-'Timothy';empleado[i,2] <-'John';empleado[i,3] <-'Berners-Lee';
-	empleado[i,4] <-'Salta 685';empleado[i,5] <-'72';empleado[i,6] <-'Británica';
+	employee[i,0] <- '178'; employee[i,1] <-'Timothy';employee[i,2] <-'John';employee[i,3] <-'Berners-Lee';
+	employee[i,4] <-'Salta 685';employee[i,5] <-'72';employee[i,6] <-'Británica';
 	i<- i + 1; // i = 79
-	empleado[i,0] <- '179'; empleado[i,1] <-'Donald';empleado[i,2] <-'Ervin';empleado[i,3] <-'Knuth';
-	empleado[i,4] <-'Santa Fe 384';empleado[i,5] <-'80';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '179'; employee[i,1] <-'Donald';employee[i,2] <-'Ervin';employee[i,3] <-'Knuth';
+	employee[i,4] <-'Santa Fe 384';employee[i,5] <-'80';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 80
-	empleado[i,0] <- '180'; empleado[i,1] <-'Paul';empleado[i,2] <-'Marie';empleado[i,3] <-'Ghislain Otlet';
-	empleado[i,4] <-'Jacinta del Coro 387';empleado[i,5] <-'82';empleado[i,6] <-'Belga';
+	employee[i,0] <- '180'; employee[i,1] <-'Paul';employee[i,2] <-'Marie';employee[i,3] <-'Ghislain Otlet';
+	employee[i,4] <-'Jacinta del Coro 387';employee[i,5] <-'82';employee[i,6] <-'Belga';
 	i<- i + 1; // i = 81
-	empleado[i,0] <- '181'; empleado[i,1] <-'Leonard';empleado[i,2] <-'';empleado[i,3] <-'Kleinrock';
-	empleado[i,4] <-'San Lorenzo 831';empleado[i,5] <-'75';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '181'; employee[i,1] <-'Leonard';employee[i,2] <-'';employee[i,3] <-'Kleinrock';
+	employee[i,4] <-'San Lorenzo 831';employee[i,5] <-'75';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 82
-	empleado[i,0] <- '182'; empleado[i,1] <-'Joseph';empleado[i,2] <-'Carl';empleado[i,3] <-'Robnett Licklider';
-	empleado[i,4] <-'Mendoza 685';empleado[i,5] <-'64';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '182'; employee[i,1] <-'Joseph';employee[i,2] <-'Carl';employee[i,3] <-'Robnett Licklider';
+	employee[i,4] <-'Mendoza 685';employee[i,5] <-'64';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 83
-	empleado[i,0] <- '183'; empleado[i,1] <-'Robert';empleado[i,2] <-'William';empleado[i,3] <-'Taylor';
-	empleado[i,4] <-'Mendoza 525';empleado[i,5] <-'85';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '183'; employee[i,1] <-'Robert';employee[i,2] <-'William';employee[i,3] <-'Taylor';
+	employee[i,4] <-'Mendoza 525';employee[i,5] <-'85';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 84
-	empleado[i,0] <- '184'; empleado[i,1] <-'Lawrence';empleado[i,2] <-'G.';empleado[i,3] <-'Roberts';
-	empleado[i,4] <-'Catamarca 645';empleado[i,5] <-'54';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '184'; employee[i,1] <-'Lawrence';employee[i,2] <-'G.';employee[i,3] <-'Roberts';
+	employee[i,4] <-'Catamarca 645';employee[i,5] <-'54';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 85
-	empleado[i,0] <- '185'; empleado[i,1] <-'Barry';empleado[i,2] <-'D.';empleado[i,3] <-'Wessler';
-	empleado[i,4] <-'Juana Azurduy 121';empleado[i,5] <-'61';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '185'; employee[i,1] <-'Barry';employee[i,2] <-'D.';employee[i,3] <-'Wessler';
+	employee[i,4] <-'Juana Azurduy 121';employee[i,5] <-'61';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 86
-	empleado[i,0] <- '186'; empleado[i,1] <-'Raymond';empleado[i,2] <-'Samuel';empleado[i,3] <-'Tomlinson';
-	empleado[i,4] <-'';empleado[i,5] <-'54';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '186'; employee[i,1] <-'Raymond';employee[i,2] <-'Samuel';employee[i,3] <-'Tomlinson';
+	employee[i,4] <-'';employee[i,5] <-'54';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 87
-	empleado[i,0] <- '187'; empleado[i,1] <-'Augusta';empleado[i,2] <-'Ada';empleado[i,3] <-'Lovelace';
-	empleado[i,4] <-'Belgrano 1323';empleado[i,5] <-'26';empleado[i,6] <-'Británica';
+	employee[i,0] <- '187'; employee[i,1] <-'Augusta';employee[i,2] <-'Ada';employee[i,3] <-'Lovelace';
+	employee[i,4] <-'Belgrano 1323';employee[i,5] <-'26';employee[i,6] <-'Británica';
 	i<- i + 1; // i = 88
-	empleado[i,0] <- '188'; empleado[i,1] <-'Ronald';empleado[i,2] <-'Lewis';empleado[i,3] <-'Graham';
-	empleado[i,4] <-'Güemes 425';empleado[i,5] <-'54';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '188'; employee[i,1] <-'Ronald';employee[i,2] <-'Lewis';employee[i,3] <-'Graham';
+	employee[i,4] <-'Güemes 425';employee[i,5] <-'54';employee[i,6] <-'Estadounidense';
 	i<- i + 1; // i = 89
-	empleado[i,0] <- '189'; empleado[i,1] <-'Oren';empleado[i,2] <-'';empleado[i,3] <-'Patashnik';
-	empleado[i,4] <-'San MArtín 495';empleado[i,5] <-'62';empleado[i,6] <-'Estadounidense';
+	employee[i,0] <- '189'; employee[i,1] <-'Oren';employee[i,2] <-'';employee[i,3] <-'Patashnik';
+	employee[i,4] <-'San MArtín 495';employee[i,5] <-'62';employee[i,6] <-'Estadounidense';
 	
 FinSubProceso
 
-subproceso setPaymentPlanList(paymentsPlan)
+SubProceso setPaymentsPlanList(paymentOfPlan)
 	
 	Definir i Como Entero;
 	i<-0;
-	paymentsPlan[i,0] <- '101'; paymentsPlan[i,1] <-'5000';paymentsPlan[i,2] <-'18';
+	paymentOfPlan[i,0] <- '101'; paymentOfPlan[i,1] <-'5000';paymentOfPlan[i,2] <-'18';
 	i<-i+1;
-	paymentsPlan[i,0] <- '102'; paymentsPlan[i,1] <-'10000';paymentsPlan[i,2] <-'10';
+	paymentOfPlan[i,0] <- '102'; paymentOfPlan[i,1] <-'10000';paymentOfPlan[i,2] <-'10';
 	i<-i+1;
-	paymentsPlan[i,0] <- '103'; paymentsPlan[i,1] <-'8000';paymentsPlan[i,2] <-'16';
+	paymentOfPlan[i,0] <- '103'; paymentOfPlan[i,1] <-'8000';paymentOfPlan[i,2] <-'16';
 	
 FinSubProceso	
 
-// código grupo 2
+// Group 2 code
 
-SubProceso  setSpareList(repuestos) //Subproceso para cargar los repuestos
-	Definir i como Entero;
+SubProceso  setSparesList(spares) // Subprocess to load spares
+	Definir i Como Entero;
 	i<-0;        // i = 0
-	repuestos[i,0] <- '100123987'; repuestos[i,1] <-'optica';repuestos[i,2] <-'fiat';repuestos[i,3] <-'palio';
-	repuestos[i,4] <-'15000';repuestos[i,5] <-'5';
+	spares[i,0] <- '100123987'; spares[i,1] <-'optica';spares[i,2] <-'fiat';spares[i,3] <-'palio';
+	spares[i,4] <-'15000';spares[i,5] <-'5';
 	i<- i + 1;  // i = 1
-	repuestos[i,0] <- '100034532'; repuestos[i,1] <-'bujia';repuestos[i,2] <-'bosch';repuestos[i,3] <-'bosch';
-	repuestos[i,4] <-'1000';repuestos[i,5] <-'50';
+	spares[i,0] <- '100034532'; spares[i,1] <-'bujia';spares[i,2] <-'bosch';spares[i,3] <-'bosch';
+	spares[i,4] <-'1000';spares[i,5] <-'50';
 	i<- i + 1; // i = 2
-	repuestos[i,0] <- '132453644'; repuestos[i,1] <-'tasa';repuestos[i,2] <-'volkswagen';repuestos[i,3] <-'polo';
-	repuestos[i,4] <-'1500';repuestos[i,5] <-'54';
+	spares[i,0] <- '132453644'; spares[i,1] <-'tasa';spares[i,2] <-'volkswagen';spares[i,3] <-'polo';
+	spares[i,4] <-'1500';spares[i,5] <-'54';
 	i<- i + 1; // i = 3	
-	repuestos[i,0]	<- '132453646'; repuestos[i,1]<-'tasa';repuestos[i,2]<-'ford';repuestos[i,3]<-'focus';
-	repuestos[i,4]	<- '1502'; repuestos[i,5]<-'54';
+	spares[i,0]	<- '132453646'; spares[i,1]<-'tasa';spares[i,2]<-'ford';spares[i,3]<-'focus';
+	spares[i,4]	<- '1502'; spares[i,5]<-'54';
 	i<- i + 1; // i = 4	
-	repuestos[i,0]	<- '132453645'; repuestos[i,1]<-'optica';repuestos[i,2]<-'fiat';repuestos[i,3]<-'uno';
-	repuestos[i,4]	<- '1501'; repuestos[i,5]<-'55';
+	spares[i,0]	<- '132453645'; spares[i,1]<-'optica';spares[i,2]<-'fiat';spares[i,3]<-'uno';
+	spares[i,4]	<- '1501'; spares[i,5]<-'55';
 	i<- i + 1; // i = 5	
-	repuestos[i,0]	<- '132453644'; repuestos[i,1]<-'espejo';repuestos[i,2]<-'volkswagen';repuestos[i,3]<-'polo';
-	repuestos[i,4]	<- '1502'; repuestos[i,5]<-'56';
+	spares[i,0]	<- '132453644'; spares[i,1]<-'espejo';spares[i,2]<-'volkswagen';spares[i,3]<-'polo';
+	spares[i,4]	<- '1502'; spares[i,5]<-'56';
 	i<- i + 1; // i = 6	
-	repuestos[i,0]	<- '132453647'; repuestos[i,1]<-'ruleman';repuestos[i,2]<-'toyota';repuestos[i,3]<-'corolla';
-	repuestos[i,4]	<- '1503'; repuestos[i,5]<-'57'; 
+	spares[i,0]	<- '132453647'; spares[i,1]<-'ruleman';spares[i,2]<-'toyota';spares[i,3]<-'corolla';
+	spares[i,4]	<- '1503'; spares[i,5]<-'57'; 
 	i<- i + 1; // i = 7	
-	repuestos[i,0]	<- '132453648'; repuestos[i,1]<-'radiador';repuestos[i,2]<-'cheery';repuestos[i,3]<-'d2';
-	repuestos[i,4]	<- '1504'; repuestos[i,5]<-'58';
+	spares[i,0]	<- '132453648'; spares[i,1]<-'radiador';spares[i,2]<-'cheery';spares[i,3]<-'d2';
+	spares[i,4]	<- '1504'; spares[i,5]<-'58';
 	i<- i + 1; // i = 8	
-	repuestos[i,0]	<- '132453649'; repuestos[i,1]<-'manguera de aire';repuestos[i,2]<-'renaul';repuestos[i,3]<-'clio';
-	repuestos[i,4]	<- '1505'; repuestos[i,5]<-'59';
+	spares[i,0]	<- '132453649'; spares[i,1]<-'manguera de aire';spares[i,2]<-'renaul';spares[i,3]<-'clio';
+	spares[i,4]	<- '1505'; spares[i,5]<-'59';
 	i<- i + 1; // i = 9	
-	repuestos[i,0]	<- '132453650'; repuestos[i,1]<-'bujia';repuestos[i,2]<-'peugeot';repuestos[i,3]<-'207 gti';
-	repuestos[i,4]	<- '1506'; repuestos[i,5]<-'60';
+	spares[i,0]	<- '132453650'; spares[i,1]<-'bujia';spares[i,2]<-'peugeot';spares[i,3]<-'207 gti';
+	spares[i,4]	<- '1506'; spares[i,5]<-'60';
 	i<- i + 1; // i = 10	
-	repuestos[i,0]	<- '132453651'; repuestos[i,1]<-'catalizador';repuestos[i,2]<-'citroen';repuestos[i,3]<-'13 v';
-	repuestos[i,4]	<- '1507'; repuestos[i,5]<-'61';
+	spares[i,0]	<- '132453651'; spares[i,1]<-'catalizador';spares[i,2]<-'citroen';spares[i,3]<-'13 v';
+	spares[i,4]	<- '1507'; spares[i,5]<-'61';
 	i<- i + 1; // i = 11	
-	repuestos[i,0]	<- '132453652'; repuestos[i,1]<-'bomba de agua';repuestos[i,2]<-'honda';repuestos[i,3]<-'civic';
-	repuestos[i,4]	<- '1508'; repuestos[i,5]<-'62';
+	spares[i,0]	<- '132453652'; spares[i,1]<-'bomba de agua';spares[i,2]<-'honda';spares[i,3]<-'civic';
+	spares[i,4]	<- '1508'; spares[i,5]<-'62';
 	i<- i + 1; // i = 12	
-	repuestos[i,0]	<- '132453653'; repuestos[i,1]<-'embriague';repuestos[i,2]<-'nissan';repuestos[i,3]<-'estrada';
-	repuestos[i,4]	<- '1509'; repuestos[i,5]<-'63';
+	spares[i,0]	<- '132453653'; spares[i,1]<-'embriague';spares[i,2]<-'nissan';spares[i,3]<-'estrada';
+	spares[i,4]	<- '1509'; spares[i,5]<-'63';
 	i<- i + 1; // i = 13	
-	repuestos[i,0]	<- '132453654'; repuestos[i,1]<-'luneta';repuestos[i,2]<-'mercedez benz';repuestos[i,3]<-'c200';
-	repuestos[i,4]	<- '1510'; repuestos[i,5]<-'64';
+	spares[i,0]	<- '132453654'; spares[i,1]<-'luneta';spares[i,2]<-'mercedez benz';spares[i,3]<-'c200';
+	spares[i,4]	<- '1510'; spares[i,5]<-'64';
 	i<- i + 1; // i = 14	
-	repuestos[i,0]	<- '132453655'; repuestos[i,1]<-'amortiguador';repuestos[i,2]<-'suzuki';repuestos[i,3]<-'fan';
-	repuestos[i,4]	<- '1511'; repuestos[i,5]<-'65';
+	spares[i,0]	<- '132453655'; spares[i,1]<-'amortiguador';spares[i,2]<-'suzuki';spares[i,3]<-'fan';
+	spares[i,4]	<- '1511'; spares[i,5]<-'65';
 	i<- i + 1; // i = 15	
-	repuestos[i,0]	<- '132453656'; repuestos[i,1]<-'extremo';repuestos[i,2]<-'audi';repuestos[i,3]<-'a4';
-	repuestos[i,4]	<- '1512'; repuestos[i,5]<-'66';
+	spares[i,0]	<- '132453656'; spares[i,1]<-'extremo';spares[i,2]<-'audi';spares[i,3]<-'a4';
+	spares[i,4]	<- '1512'; spares[i,5]<-'66';
 	i<- i + 1; // i = 16	
-	repuestos[i,0]	<- '132453657'; repuestos[i,1]<-'buje';repuestos[i,2]<-'tata';repuestos[i,3]<-'punch';
-	repuestos[i,4]	<- '1513'; repuestos[i,5]<-'67';
+	spares[i,0]	<- '132453657'; spares[i,1]<-'buje';spares[i,2]<-'tata';spares[i,3]<-'punch';
+	spares[i,4]	<- '1513'; spares[i,5]<-'67';
 	i<- i + 1; // i = 17	
-	repuestos[i,0]	<- '132453658'; repuestos[i,1]<-'cable de bujia';repuestos[i,2]<-'volvo';repuestos[i,3]<-'xc 90';
-	repuestos[i,4]	<- '1514'; repuestos[i,5]<-'68';
+	spares[i,0]	<- '132453658'; spares[i,1]<-'cable de bujia';spares[i,2]<-'volvo';spares[i,3]<-'xc 90';
+	spares[i,4]	<- '1514'; spares[i,5]<-'68';
 	i<- i + 1; // i = 18	
-	repuestos[i,0]	<- '132453659'; repuestos[i,1]<-'alternador';repuestos[i,2]<-'iveco';repuestos[i,3]<-'camion';
-	repuestos[i,4]	<- '1515'; repuestos[i,5]<-'69';
+	spares[i,0]	<- '132453659'; spares[i,1]<-'alternador';spares[i,2]<-'iveco';spares[i,3]<-'camion';
+	spares[i,4]	<- '1515'; spares[i,5]<-'69';
 	i<- i + 1; // i = 19	
-	repuestos[i,0]	<- '132453660'; repuestos[i,1]<-'llanta';repuestos[i,2]<-'bmw';repuestos[i,3]<-'328';
-	repuestos[i,4]	<- '1516'; repuestos[i,5]<-'70';
+	spares[i,0]	<- '132453660'; spares[i,1]<-'llanta';spares[i,2]<-'bmw';spares[i,3]<-'328';
+	spares[i,4]	<- '1516'; spares[i,5]<-'70';
 	i<- i + 1; // i = 20	
-	repuestos[i,0]	<- '132453661'; repuestos[i,1]<-'espiral';repuestos[i,2]<-'daewoo';repuestos[i,3]<-'poli';
-	repuestos[i,4]	<- '1517'; repuestos[i,5]<-'71';
+	spares[i,0]	<- '132453661'; spares[i,1]<-'espiral';spares[i,2]<-'daewoo';spares[i,3]<-'poli';
+	spares[i,4]	<- '1517'; spares[i,5]<-'71';
 	i<- i + 1; // i = 21	
-	repuestos[i,0]	<- '132453662'; repuestos[i,1]<-'casoleta';repuestos[i,2]<-'mazda';repuestos[i,3]<-'centra';
-	repuestos[i,4]	<- '1518'; repuestos[i,5]<-'72';
+	spares[i,0]	<- '132453662'; spares[i,1]<-'casoleta';spares[i,2]<-'mazda';spares[i,3]<-'centra';
+	spares[i,4]	<- '1518'; spares[i,5]<-'72';
 	i<- i + 1; // i = 22	
-	repuestos[i,0]	<- '132453663'; repuestos[i,1]<-'maza';repuestos[i,2]<-'mini cooper';repuestos[i,3]<-'mini cooper';
-	repuestos[i,4]	<- '1519'; repuestos[i,5]<-'73';
+	spares[i,0]	<- '132453663'; spares[i,1]<-'maza';spares[i,2]<-'mini cooper';spares[i,3]<-'mini cooper';
+	spares[i,4]	<- '1519'; spares[i,5]<-'73';
 	i<- i + 1; // i = 23	
-	repuestos[i,0]	<- '132453664'; repuestos[i,1]<-'turbo';repuestos[i,2]<-'mitsubishi';repuestos[i,3]<-'eclipse';
-	repuestos[i,4]	<- '1520'; repuestos[i,5]<-'74';
+	spares[i,0]	<- '132453664'; spares[i,1]<-'turbo';spares[i,2]<-'mitsubishi';spares[i,3]<-'eclipse';
+	spares[i,4]	<- '1520'; spares[i,5]<-'74';
 	i<- i + 1; // i = 24	
-	repuestos[i,0]	<- '132453665'; repuestos[i,1]<-'piston';repuestos[i,2]<-'seat';repuestos[i,3]<-'ibiza';
-	repuestos[i,4]	<- '1521'; repuestos[i,5]<-'75';
+	spares[i,0]	<- '132453665'; spares[i,1]<-'piston';spares[i,2]<-'seat';spares[i,3]<-'ibiza';
+	spares[i,4]	<- '1521'; spares[i,5]<-'75';
 	i<- i + 1; // i = 25	
-	repuestos[i,0]	<- '132453666'; repuestos[i,1]<-'metales';repuestos[i,2]<-'dacia';repuestos[i,3]<-'dacia';
-	repuestos[i,4]	<- '1522'; repuestos[i,5]<-'76';
+	spares[i,0]	<- '132453666'; spares[i,1]<-'metales';spares[i,2]<-'dacia';spares[i,3]<-'dacia';
+	spares[i,4]	<- '1522'; spares[i,5]<-'76';
 	i<- i + 1; // i = 26	
-	repuestos[i,0]	<- '132453667'; repuestos[i,1]<-'block';repuestos[i,2]<-'ferrari';repuestos[i,3]<-'spider';
-	repuestos[i,4]	<- '1523'; repuestos[i,5]<-'77';
+	spares[i,0]	<- '132453667'; spares[i,1]<-'block';spares[i,2]<-'ferrari';spares[i,3]<-'spider';
+	spares[i,4]	<- '1523'; spares[i,5]<-'77';
 	i<- i + 1; // i = 27	
-	repuestos[i,0]	<- '132453668'; repuestos[i,1]<-'tapa de valvula';repuestos[i,2]<-'porche';repuestos[i,3]<-'carrera 911';
-	repuestos[i,4]	<- '1524'; repuestos[i,5]<-'78';
+	spares[i,0]	<- '132453668'; spares[i,1]<-'tapa de valvula';spares[i,2]<-'porche';spares[i,3]<-'carrera 911';
+	spares[i,4]	<- '1524'; spares[i,5]<-'78';
 	i<- i + 1; // i = 28	
-	repuestos[i,0]	<- '132453669'; repuestos[i,1]<-'correa';repuestos[i,2]<-'hummer';repuestos[i,3]<-'c3';
-	repuestos[i,4]	<- '1525'; repuestos[i,5]<-'79';
+	spares[i,0]	<- '132453669'; spares[i,1]<-'correa';spares[i,2]<-'hummer';spares[i,3]<-'c3';
+	spares[i,4]	<- '1525'; spares[i,5]<-'79';
 	i<- i + 1; // i = 29	
-	repuestos[i,0]	<- '132453670'; repuestos[i,1]<-'termostato';repuestos[i,2]<-'jaguar';repuestos[i,3]<-'x3';
-	repuestos[i,4]	<- '1526'; repuestos[i,5]<-'80';
+	spares[i,0]	<- '132453670'; spares[i,1]<-'termostato';spares[i,2]<-'jaguar';spares[i,3]<-'x3';
+	spares[i,4]	<- '1526'; spares[i,5]<-'80';
 	i<- i + 1; // i = 30	
-	repuestos[i,0]	<- '132453671'; repuestos[i,1]<-'fusible';repuestos[i,2]<-'opel';repuestos[i,3]<-'tracker';
-	repuestos[i,4]	<- '1527'; repuestos[i,5]<-'81';
+	spares[i,0]	<- '132453671'; spares[i,1]<-'fusible';spares[i,2]<-'opel';spares[i,3]<-'tracker';
+	spares[i,4]	<- '1527'; spares[i,5]<-'81';
 	i<- i + 1; // i = 31	
-	repuestos[i,0]	<- '132453672'; repuestos[i,1]<-'fusilera';repuestos[i,2]<-'rolls roys';repuestos[i,3]<-'phantom';
-	repuestos[i,4]	<- '1528'; repuestos[i,5]<-'82';
+	spares[i,0]	<- '132453672'; spares[i,1]<-'fusilera';spares[i,2]<-'rolls roys';spares[i,3]<-'phantom';
+	spares[i,4]	<- '1528'; spares[i,5]<-'82';
 	i<- i + 1; // i = 32	
-	repuestos[i,0]	<- '132453673'; repuestos[i,1]<-'disco de freno';repuestos[i,2]<-'scania';repuestos[i,3]<-'x6';
-	repuestos[i,4]	<- '1529'; repuestos[i,5]<-'83';
+	spares[i,0]	<- '132453673'; spares[i,1]<-'disco de freno';spares[i,2]<-'scania';spares[i,3]<-'x6';
+	spares[i,4]	<- '1529'; spares[i,5]<-'83';
 	i<- i + 1; // i = 33	
-	repuestos[i,0]	<- '132453674'; repuestos[i,1]<-'diferencial';repuestos[i,2]<-'chevrolet';repuestos[i,3]<-'camaro';
-	repuestos[i,4]	<- '1530'; repuestos[i,5]<-'84';
+	spares[i,0]	<- '132453674'; spares[i,1]<-'diferencial';spares[i,2]<-'chevrolet';spares[i,3]<-'camaro';
+	spares[i,4]	<- '1530'; spares[i,5]<-'84';
 	i<- i + 1; // i = 34	
-	repuestos[i,0]	<- '132453675'; repuestos[i,1]<-'engranajes';repuestos[i,2]<-'rover';repuestos[i,3]<-'rover';
-	repuestos[i,4]	<- '1531'; repuestos[i,5]<-'85';
+	spares[i,0]	<- '132453675'; spares[i,1]<-'engranajes';spares[i,2]<-'rover';spares[i,3]<-'rover';
+	spares[i,4]	<- '1531'; spares[i,5]<-'85';
 	i<- i + 1; // i = 35	
-	repuestos[i,0]	<- '1324536123'; repuestos[i,1]<-'tasa';repuestos[i,2]<-'ford';repuestos[i,3]<-'focus';
-	repuestos[i,4]	<- '1502'; repuestos[i,5]<-'54';
+	spares[i,0]	<- '1324536123'; spares[i,1]<-'tasa';spares[i,2]<-'ford';spares[i,3]<-'focus';
+	spares[i,4]	<- '1502'; spares[i,5]<-'54';
 	i<- i + 1; // i = 36	
-	repuestos[i,0]	<- '132453645'; repuestos[i,1]<-'optica';repuestos[i,2]<-'fiat';repuestos[i,3]<-'uno';
-	repuestos[i,4]	<- '1502'; repuestos[i,5]<-'87';
+	spares[i,0]	<- '132453645'; spares[i,1]<-'optica';spares[i,2]<-'fiat';spares[i,3]<-'uno';
+	spares[i,4]	<- '1502'; spares[i,5]<-'87';
 	i<- i + 1; // i = 37	
-	repuestos[i,0]	<- '132453647'; repuestos[i,1]<-'espejo';repuestos[i,2]<-'volkswagen';repuestos[i,3]<-'polo';
-	repuestos[i,4]	<- '1503'; repuestos[i,5]<-'88';
+	spares[i,0]	<- '132453647'; spares[i,1]<-'espejo';spares[i,2]<-'volkswagen';spares[i,3]<-'polo';
+	spares[i,4]	<- '1503'; spares[i,5]<-'88';
 	i<- i + 1; // i = 38	
-	repuestos[i,0]	<- '132453648'; repuestos[i,1]<-'ruleman';repuestos[i,2]<-'toyota';repuestos[i,3]<-'corolla';
-	repuestos[i,4]	<- '1504'; repuestos[i,5]<-'89';
+	spares[i,0]	<- '132453648'; spares[i,1]<-'ruleman';spares[i,2]<-'toyota';spares[i,3]<-'corolla';
+	spares[i,4]	<- '1504'; spares[i,5]<-'89';
 	i<- i + 1; // i = 39	
-	repuestos[i,0]	<- '132453649'; repuestos[i,1]<-'radiador';repuestos[i,2]<-'cheery';repuestos[i,3]<-'d3';
-	repuestos[i,4]	<- '1505'; repuestos[i,5]<-'90';
+	spares[i,0]	<- '132453649'; spares[i,1]<-'radiador';spares[i,2]<-'cheery';spares[i,3]<-'d3';
+	spares[i,4]	<- '1505'; spares[i,5]<-'90';
 	i<- i + 1; // i = 40	
-	repuestos[i,0]	<- '132453650'; repuestos[i,1]<-'manguera de aire';repuestos[i,2]<-'renaul';repuestos[i,3]<-'clio';
-	repuestos[i,4]	<- '1506'; repuestos[i,5]<-'91';
+	spares[i,0]	<- '132453650'; spares[i,1]<-'manguera de aire';spares[i,2]<-'renaul';spares[i,3]<-'clio';
+	spares[i,4]	<- '1506'; spares[i,5]<-'91';
 	i<- i + 1; // i = 41	
-	repuestos[i,0]	<- '132453651'; repuestos[i,1]<-'bujia';repuestos[i,2]<-'peugeot';repuestos[i,3]<-'208 gti';
-	repuestos[i,4]	<- '1507'; repuestos[i,5]<-'92';
+	spares[i,0]	<- '132453651'; spares[i,1]<-'bujia';spares[i,2]<-'peugeot';spares[i,3]<-'208 gti';
+	spares[i,4]	<- '1507'; spares[i,5]<-'92';
 	i<- i + 1; // i = 42	
-	repuestos[i,0]	<- '132453652'; repuestos[i,1]<-'catalizador';repuestos[i,2]<-'citroen';repuestos[i,3]<-'14 v';
-	repuestos[i,4]	<- '1508'; repuestos[i,5]<-'93';
+	spares[i,0]	<- '132453652'; spares[i,1]<-'catalizador';spares[i,2]<-'citroen';spares[i,3]<-'14 v';
+	spares[i,4]	<- '1508'; spares[i,5]<-'93';
 	i<- i + 1; // i = 43	
-	repuestos[i,0]	<- '132453653'; repuestos[i,1]<-'bomba de agua';repuestos[i,2]<-'honda';repuestos[i,3]<-'civic';
-	repuestos[i,4]	<- '1509'; repuestos[i,5]<-'94';
+	spares[i,0]	<- '132453653'; spares[i,1]<-'bomba de agua';spares[i,2]<-'honda';spares[i,3]<-'civic';
+	spares[i,4]	<- '1509'; spares[i,5]<-'94';
 	i<- i + 1; // i = 44	
-	repuestos[i,0]	<- '132453654'; repuestos[i,1]<-'embriague';repuestos[i,2]<-'nissan';repuestos[i,3]<-'estrada';
-	repuestos[i,4]	<- '1510'; repuestos[i,5]<-'95';
+	spares[i,0]	<- '132453654'; spares[i,1]<-'embriague';spares[i,2]<-'nissan';spares[i,3]<-'estrada';
+	spares[i,4]	<- '1510'; spares[i,5]<-'95';
 	i<- i + 1; // i = 45	
-	repuestos[i,0]	<- '132453655'; repuestos[i,1]<-'luneta';repuestos[i,2]<-'mercedez benz';repuestos[i,3]<-'c201';
-	repuestos[i,4]	<- '1511'; repuestos[i,5]<-'96';
+	spares[i,0]	<- '132453655'; spares[i,1]<-'luneta';spares[i,2]<-'mercedez benz';spares[i,3]<-'c201';
+	spares[i,4]	<- '1511'; spares[i,5]<-'96';
 	i<- i + 1; // i = 46	
-	repuestos[i,0]	<- '132453656'; repuestos[i,1]<-'amortiguador';repuestos[i,2]<-'suzuki';repuestos[i,3]<-'fan';
-	repuestos[i,4]	<- '1512'; repuestos[i,5]<-'97';
+	spares[i,0]	<- '132453656'; spares[i,1]<-'amortiguador';spares[i,2]<-'suzuki';spares[i,3]<-'fan';
+	spares[i,4]	<- '1512'; spares[i,5]<-'97';
 	i<- i + 1; // i = 47	
-	repuestos[i,0]	<- '132453657'; repuestos[i,1]<-'extremo';repuestos[i,2]<-'audi';repuestos[i,3]<-'a5';
-	repuestos[i,4]	<- '1513'; repuestos[i,5]<-'98';
+	spares[i,0]	<- '132453657'; spares[i,1]<-'extremo';spares[i,2]<-'audi';spares[i,3]<-'a5';
+	spares[i,4]	<- '1513'; spares[i,5]<-'98';
 	i<- i + 1; // i = 48	
-	repuestos[i,0]	<- '132453658'; repuestos[i,1]<-'buje';repuestos[i,2]<-'tata';repuestos[i,3]<-'punch';
-	repuestos[i,4]	<- '1514'; repuestos[i,5]<-'99';
+	spares[i,0]	<- '132453658'; spares[i,1]<-'buje';spares[i,2]<-'tata';spares[i,3]<-'punch';
+	spares[i,4]	<- '1514'; spares[i,5]<-'99';
 	i<- i + 1; // i = 49	
-	repuestos[i,0]	<- '132453659'; repuestos[i,1]<-'cable de bujia';repuestos[i,2]<-'volvo';repuestos[i,3]<-'xc 91';
-	repuestos[i,4]	<- '1515'; repuestos[i,5]<-'100';
+	spares[i,0]	<- '132453659'; spares[i,1]<-'cable de bujia';spares[i,2]<-'volvo';spares[i,3]<-'xc 91';
+	spares[i,4]	<- '1515'; spares[i,5]<-'100';
 	i<- i + 1; // i = 50	
-	repuestos[i,0]	<- '132453660'; repuestos[i,1]<-'alternador';repuestos[i,2]<-'iveco';repuestos[i,3]<-'camion';
-	repuestos[i,4]	<- '1516'; repuestos[i,5]<-'101';
+	spares[i,0]	<- '132453660'; spares[i,1]<-'alternador';spares[i,2]<-'iveco';spares[i,3]<-'camion';
+	spares[i,4]	<- '1516'; spares[i,5]<-'101';
 	i<- i + 1; // i = 51	
-	repuestos[i,0]	<- '132453661'; repuestos[i,1]<-'llanta';repuestos[i,2]<-'bmw';repuestos[i,3]<-'329';
-	repuestos[i,4]	<- '1517'; repuestos[i,5]<-'102';
+	spares[i,0]	<- '132453661'; spares[i,1]<-'llanta';spares[i,2]<-'bmw';spares[i,3]<-'329';
+	spares[i,4]	<- '1517'; spares[i,5]<-'102';
 	i<- i + 1; // i = 52	
-	repuestos[i,0]	<- '132453662'; repuestos[i,1]<-'espiral';repuestos[i,2]<-'daewoo';repuestos[i,3]<-'poli';
-	repuestos[i,4]	<- '1518'; repuestos[i,5]<-'103';
+	spares[i,0]	<- '132453662'; spares[i,1]<-'espiral';spares[i,2]<-'daewoo';spares[i,3]<-'poli';
+	spares[i,4]	<- '1518'; spares[i,5]<-'103';
 	i<- i + 1; // i = 53	
-	repuestos[i,0]	<- '132453663'; repuestos[i,1]<-'casoleta';repuestos[i,2]<-'mazda';repuestos[i,3]<-'centra';
-	repuestos[i,4]	<- '1519'; repuestos[i,5]<-'104';
+	spares[i,0]	<- '132453663'; spares[i,1]<-'casoleta';spares[i,2]<-'mazda';spares[i,3]<-'centra';
+	spares[i,4]	<- '1519'; spares[i,5]<-'104';
 	i<- i + 1; // i = 54	
-	repuestos[i,0]	<- '132453664'; repuestos[i,1]<-'maza';repuestos[i,2]<-'mini cooper';repuestos[i,3]<-'mini cooper';
-	repuestos[i,4]	<- '1520'; repuestos[i,5]<-'105';
+	spares[i,0]	<- '132453664'; spares[i,1]<-'maza';spares[i,2]<-'mini cooper';spares[i,3]<-'mini cooper';
+	spares[i,4]	<- '1520'; spares[i,5]<-'105';
 	i<- i + 1; // i = 55	
-	repuestos[i,0]	<- '132453665'; repuestos[i,1]<-'turbo';repuestos[i,2]<-'mitsubishi';repuestos[i,3]<-'eclipse';
-	repuestos[i,4]	<- '1521'; repuestos[i,5]<-'106';
+	spares[i,0]	<- '132453665'; spares[i,1]<-'turbo';spares[i,2]<-'mitsubishi';spares[i,3]<-'eclipse';
+	spares[i,4]	<- '1521'; spares[i,5]<-'106';
 	i<- i + 1; // i = 56	
-	repuestos[i,0]	<- '132453666'; repuestos[i,1]<-'piston';repuestos[i,2]<-'seat';repuestos[i,3]<-'ibiza';
-	repuestos[i,4]	<- '1522'; repuestos[i,5]<-'107';
+	spares[i,0]	<- '132453666'; spares[i,1]<-'piston';spares[i,2]<-'seat';spares[i,3]<-'ibiza';
+	spares[i,4]	<- '1522'; spares[i,5]<-'107';
 	i<- i + 1; // i = 57	
-	repuestos[i,0]	<- '132453667'; repuestos[i,1]<-'metales';repuestos[i,2]<-'dacia';repuestos[i,3]<-'dacia';
-	repuestos[i,4]	<- '1523'; repuestos[i,5]<-'108';
+	spares[i,0]	<- '132453667'; spares[i,1]<-'metales';spares[i,2]<-'dacia';spares[i,3]<-'dacia';
+	spares[i,4]	<- '1523'; spares[i,5]<-'108';
 	i<- i + 1; // i = 58	
-	repuestos[i,0]	<- '132453668'; repuestos[i,1]<-'block';repuestos[i,2]<-'ferrari';repuestos[i,3]<-'spider';
-	repuestos[i,4]	<- '1524'; repuestos[i,5]<-'109';
+	spares[i,0]	<- '132453668'; spares[i,1]<-'block';spares[i,2]<-'ferrari';spares[i,3]<-'spider';
+	spares[i,4]	<- '1524'; spares[i,5]<-'109';
 	i<- i + 1; // i = 59	
-	repuestos[i,0]	<- '132453669'; repuestos[i,1]<-'tapa de valvula';repuestos[i,2]<-'porche';repuestos[i,3]<-'carrera 912';
-	repuestos[i,4]	<- '1525'; repuestos[i,5]<-'110';
+	spares[i,0]	<- '132453669'; spares[i,1]<-'tapa de valvula';spares[i,2]<-'porche';spares[i,3]<-'carrera 912';
+	spares[i,4]	<- '1525'; spares[i,5]<-'110';
 	i<- i + 1; // i = 60	
-	repuestos[i,0]	<- '132453670'; repuestos[i,1]<-'correa';repuestos[i,2]<-'hummer';repuestos[i,3]<-'c4';
-	repuestos[i,4]	<- '1526'; repuestos[i,5]<-'111';
+	spares[i,0]	<- '132453670'; spares[i,1]<-'correa';spares[i,2]<-'hummer';spares[i,3]<-'c4';
+	spares[i,4]	<- '1526'; spares[i,5]<-'111';
 	i<- i + 1; // i = 61	
-	repuestos[i,0]	<- '132453671'; repuestos[i,1]<-'termostato';repuestos[i,2]<-'jaguar';repuestos[i,3]<-'x4';
-	repuestos[i,4]	<- '1527'; repuestos[i,5]<-'112';
+	spares[i,0]	<- '132453671'; spares[i,1]<-'termostato';spares[i,2]<-'jaguar';spares[i,3]<-'x4';
+	spares[i,4]	<- '1527'; spares[i,5]<-'112';
 	i<- i + 1; // i = 62	
-	repuestos[i,0]	<- '132453672'; repuestos[i,1]<-'fusible';repuestos[i,2]<-'opel';repuestos[i,3]<-'tracker';
-	repuestos[i,4]	<- '1528'; repuestos[i,5]<-'113';
+	spares[i,0]	<- '132453672'; spares[i,1]<-'fusible';spares[i,2]<-'opel';spares[i,3]<-'tracker';
+	spares[i,4]	<- '1528'; spares[i,5]<-'113';
 	i<- i + 1; // i = 63	
-	repuestos[i,0]	<- '132453673'; repuestos[i,1]<-'fusilera';repuestos[i,2]<-'rolls roys';repuestos[i,3]<-'phantom';
-	repuestos[i,4]	<- '1529'; repuestos[i,5]<-'114';
+	spares[i,0]	<- '132453673'; spares[i,1]<-'fusilera';spares[i,2]<-'rolls roys';spares[i,3]<-'phantom';
+	spares[i,4]	<- '1529'; spares[i,5]<-'114';
 	i<- i + 1; // i = 64	
-	repuestos[i,0]	<- '132453674'; repuestos[i,1]<-'disco de freno';repuestos[i,2]<-'scania';repuestos[i,3]<-'x7';
-	repuestos[i,4]	<- '1530'; repuestos[i,5]<-'115';
+	spares[i,0]	<- '132453674'; spares[i,1]<-'disco de freno';spares[i,2]<-'scania';spares[i,3]<-'x7';
+	spares[i,4]	<- '1530'; spares[i,5]<-'115';
 	i<- i + 1; // i = 65	
-	repuestos[i,0]	<- '132453675'; repuestos[i,1]<-'diferencial';repuestos[i,2]<-'chevrolet';repuestos[i,3]<-'camaro';
-	repuestos[i,4]	<- '1531'; repuestos[i,5]<-'116';
+	spares[i,0]	<- '132453675'; spares[i,1]<-'diferencial';spares[i,2]<-'chevrolet';spares[i,3]<-'camaro';
+	spares[i,4]	<- '1531'; spares[i,5]<-'116';
 	i<- i + 1; // i = 66	
-	repuestos[i,0]	<- '132453676'; repuestos[i,1]<-'engranajes';repuestos[i,2]<-'rover';repuestos[i,3]<-'rover';
-	repuestos[i,4]	<- '1532'; repuestos[i,5]<-'117';
+	spares[i,0]	<- '132453676'; spares[i,1]<-'engranajes';spares[i,2]<-'rover';spares[i,3]<-'rover';
+	spares[i,4]	<- '1532'; spares[i,5]<-'117';
 	i<- i + 1; // i = 67	
-	repuestos[i,0]	<- '132453646'; repuestos[i,1]<-'tasa';repuestos[i,2]<-'ford';repuestos[i,3]<-'focus';
-	repuestos[i,4]	<- '1502'; repuestos[i,5]<-'118';
+	spares[i,0]	<- '132453646'; spares[i,1]<-'tasa';spares[i,2]<-'ford';spares[i,3]<-'focus';
+	spares[i,4]	<- '1502'; spares[i,5]<-'118';
 	i<- i + 1; // i = 68	
-	repuestos[i,0]	<- '132453647'; repuestos[i,1]<-'optica';repuestos[i,2]<-'fiat';repuestos[i,3]<-'uno';
-	repuestos[i,4]	<- '1503'; repuestos[i,5]<-'119';
+	spares[i,0]	<- '132453647'; spares[i,1]<-'optica';spares[i,2]<-'fiat';spares[i,3]<-'uno';
+	spares[i,4]	<- '1503'; spares[i,5]<-'119';
 	i<- i + 1; // i = 69	
-	repuestos[i,0]	<- '132453648'; repuestos[i,1]<-'espejo';repuestos[i,2]<-'volkswagen';repuestos[i,3]<-'polo';
-	repuestos[i,4]	<- '1504'; repuestos[i,5]<-'120';
+	spares[i,0]	<- '132453648'; spares[i,1]<-'espejo';spares[i,2]<-'volkswagen';spares[i,3]<-'polo';
+	spares[i,4]	<- '1504'; spares[i,5]<-'120';
 	i<- i + 1; // i = 70	
-	repuestos[i,0]	<- '132453649'; repuestos[i,1]<-'ruleman';repuestos[i,2]<-'toyota';repuestos[i,3]<-'corolla';
-	repuestos[i,4]	<- '1505'; repuestos[i,5]<-'121';
+	spares[i,0]	<- '132453649'; spares[i,1]<-'ruleman';spares[i,2]<-'toyota';spares[i,3]<-'corolla';
+	spares[i,4]	<- '1505'; spares[i,5]<-'121';
 	i<- i + 1; // i = 71	
-	repuestos[i,0]	<- '132453650'; repuestos[i,1]<-'radiador';repuestos[i,2]<-'cheery';repuestos[i,3]<-'d4';
-	repuestos[i,4]	<- '1506'; repuestos[i,5]<-'122';
+	spares[i,0]	<- '132453650'; spares[i,1]<-'radiador';spares[i,2]<-'cheery';spares[i,3]<-'d4';
+	spares[i,4]	<- '1506'; spares[i,5]<-'122';
 	i<- i + 1; // i = 72	
-	repuestos[i,0]	<- '132453651'; repuestos[i,1]<-'manguera de aire';repuestos[i,2]<-'renaul';repuestos[i,3]<-'clio';
-	repuestos[i,4]	<- '1507'; repuestos[i,5]<-'123';
+	spares[i,0]	<- '132453651'; spares[i,1]<-'manguera de aire';spares[i,2]<-'renaul';spares[i,3]<-'clio';
+	spares[i,4]	<- '1507'; spares[i,5]<-'123';
 	i<- i + 1; // i = 73	
-	repuestos[i,0]	<- '132453652'; repuestos[i,1]<-'bujia';repuestos[i,2]<-'peugeot';repuestos[i,3]<-'209 gti';
-	repuestos[i,4]	<- '1508'; repuestos[i,5]<-'124';
+	spares[i,0]	<- '132453652'; spares[i,1]<-'bujia';spares[i,2]<-'peugeot';spares[i,3]<-'209 gti';
+	spares[i,4]	<- '1508'; spares[i,5]<-'124';
 	i<- i + 1; // i = 74	
-	repuestos[i,0]	<- '132453653'; repuestos[i,1]<-'catalizador';repuestos[i,2]<-'citroen';repuestos[i,3]<-'15 v';
-	repuestos[i,4]	<- '1509'; repuestos[i,5]<-'125';
+	spares[i,0]	<- '132453653'; spares[i,1]<-'catalizador';spares[i,2]<-'citroen';spares[i,3]<-'15 v';
+	spares[i,4]	<- '1509'; spares[i,5]<-'125';
 	i<- i + 1; // i = 75	
-	repuestos[i,0]	<- '132453654'; repuestos[i,1]<-'bomba de agua';repuestos[i,2]<-'honda';repuestos[i,3]<-'civic';
-	repuestos[i,4]	<- '1510'; repuestos[i,5]<-'126';
+	spares[i,0]	<- '132453654'; spares[i,1]<-'bomba de agua';spares[i,2]<-'honda';spares[i,3]<-'civic';
+	spares[i,4]	<- '1510'; spares[i,5]<-'126';
 	i<- i + 1; // i = 76	
-	repuestos[i,0]	<- '132453655'; repuestos[i,1]<-'embriague';repuestos[i,2]<-'nissan';repuestos[i,3]<-'estrada';
-	repuestos[i,4]	<- '1511'; repuestos[i,5]<-'127';
+	spares[i,0]	<- '132453655'; spares[i,1]<-'embriague';spares[i,2]<-'nissan';spares[i,3]<-'estrada';
+	spares[i,4]	<- '1511'; spares[i,5]<-'127';
 	i<- i + 1; // i = 77	
-	repuestos[i,0]	<- '132453656'; repuestos[i,1]<-'luneta';repuestos[i,2]<-'mercedez benz';repuestos[i,3]<-'c202';
-	repuestos[i,4]	<- '1512'; repuestos[i,5]<-'128';
+	spares[i,0]	<- '132453656'; spares[i,1]<-'luneta';spares[i,2]<-'mercedez benz';spares[i,3]<-'c202';
+	spares[i,4]	<- '1512'; spares[i,5]<-'128';
 	i<- i + 1; // i = 78	
-	repuestos[i,0]	<- '132453657'; repuestos[i,1]<-'amortiguador';repuestos[i,2]<-'suzuki';repuestos[i,3]<-'fan';
-	repuestos[i,4]	<- '1513'; repuestos[i,5]<-'129';
+	spares[i,0]	<- '132453657'; spares[i,1]<-'amortiguador';spares[i,2]<-'suzuki';spares[i,3]<-'fan';
+	spares[i,4]	<- '1513'; spares[i,5]<-'129';
 	i<- i + 1; // i = 79	
-	repuestos[i,0]	<- '132453658'; repuestos[i,1]<-'extremo';repuestos[i,2]<-'audi';repuestos[i,3]<-'a6';
-	repuestos[i,4]	<- '1514'; repuestos[i,5]<-'130';
+	spares[i,0]	<- '132453658'; spares[i,1]<-'extremo';spares[i,2]<-'audi';spares[i,3]<-'a6';
+	spares[i,4]	<- '1514'; spares[i,5]<-'130';
 	i<- i + 1; // i = 80	
-	repuestos[i,0]	<- '132453659'; repuestos[i,1]<-'buje';repuestos[i,2]<-'tata';repuestos[i,3]<-'punch';
-	repuestos[i,4]	<- '1515'; repuestos[i,5]<-'131';
+	spares[i,0]	<- '132453659'; spares[i,1]<-'buje';spares[i,2]<-'tata';spares[i,3]<-'punch';
+	spares[i,4]	<- '1515'; spares[i,5]<-'131';
 	i<- i + 1; // i = 81	
-	repuestos[i,0]	<- '132453660'; repuestos[i,1]<-'cable de bujia';repuestos[i,2]<-'volvo';repuestos[i,3]<-'xc 92';
-	repuestos[i,4]	<- '1516'; repuestos[i,5]<-'132';
+	spares[i,0]	<- '132453660'; spares[i,1]<-'cable de bujia';spares[i,2]<-'volvo';spares[i,3]<-'xc 92';
+	spares[i,4]	<- '1516'; spares[i,5]<-'132';
 	i<- i + 1; // i = 82	
-	repuestos[i,0]	<- '132453661'; repuestos[i,1]<-'alternador';repuestos[i,2]<-'iveco';repuestos[i,3]<-'camion';
-	repuestos[i,4]	<- '1517'; repuestos[i,5]<-'133';
+	spares[i,0]	<- '132453661'; spares[i,1]<-'alternador';spares[i,2]<-'iveco';spares[i,3]<-'camion';
+	spares[i,4]	<- '1517'; spares[i,5]<-'133';
 	i<- i + 1; // i = 83	
-	repuestos[i,0]	<- '132453662'; repuestos[i,1]<-'llanta';repuestos[i,2]<-'bmw';repuestos[i,3]<-'330';
-	repuestos[i,4]	<- '1518'; repuestos[i,5]<-'134';
+	spares[i,0]	<- '132453662'; spares[i,1]<-'llanta';spares[i,2]<-'bmw';spares[i,3]<-'330';
+	spares[i,4]	<- '1518'; spares[i,5]<-'134';
 	i<- i + 1; // i = 84	
-	repuestos[i,0]	<- '132453663'; repuestos[i,1]<-'espiral';repuestos[i,2]<-'daewoo';repuestos[i,3]<-'poli';
-	repuestos[i,4]	<- '1519'; repuestos[i,5]<-'135';
+	spares[i,0]	<- '132453663'; spares[i,1]<-'espiral';spares[i,2]<-'daewoo';spares[i,3]<-'poli';
+	spares[i,4]	<- '1519'; spares[i,5]<-'135';
 	i<- i + 1; // i = 85	
-	repuestos[i,0]	<- '132453664'; repuestos[i,1]<-'casoleta';repuestos[i,2]<-'mazda';repuestos[i,3]<-'centra';
-	repuestos[i,4]	<- '1520'; repuestos[i,5]<-'136';
+	spares[i,0]	<- '132453664'; spares[i,1]<-'casoleta';spares[i,2]<-'mazda';spares[i,3]<-'centra';
+	spares[i,4]	<- '1520'; spares[i,5]<-'136';
 	i<- i + 1; // i = 86	
-	repuestos[i,0]	<- '132453665'; repuestos[i,1]<-'maza';repuestos[i,2]<-'mini cooper';repuestos[i,3]<-'mini cooper';
-	repuestos[i,4]	<- '1521'; repuestos[i,5]<-'137';
+	spares[i,0]	<- '132453665'; spares[i,1]<-'maza';spares[i,2]<-'mini cooper';spares[i,3]<-'mini cooper';
+	spares[i,4]	<- '1521'; spares[i,5]<-'137';
 	i<- i + 1; // i = 87	
-	repuestos[i,0]	<- '132453666'; repuestos[i,1]<-'turbo';repuestos[i,2]<-'mitsubishi';repuestos[i,3]<-'eclipse';
-	repuestos[i,4]	<- '1522'; repuestos[i,5]<-'138';
+	spares[i,0]	<- '132453666'; spares[i,1]<-'turbo';spares[i,2]<-'mitsubishi';spares[i,3]<-'eclipse';
+	spares[i,4]	<- '1522'; spares[i,5]<-'138';
 	i<- i + 1; // i = 88	
-	repuestos[i,0]	<- '132453667'; repuestos[i,1]<-'piston';repuestos[i,2]<-'seat';repuestos[i,3]<-'ibiza';
-	repuestos[i,4]	<- '1523'; repuestos[i,5]<-'139';
+	spares[i,0]	<- '132453667'; spares[i,1]<-'piston';spares[i,2]<-'seat';spares[i,3]<-'ibiza';
+	spares[i,4]	<- '1523'; spares[i,5]<-'139';
 	i<- i + 1; // i = 89	
-	repuestos[i,0]	<- '132453668'; repuestos[i,1]<-'metales';repuestos[i,2]<-'dacia';repuestos[i,3]<-'dacia';
-	repuestos[i,4]	<- '1524'; repuestos[i,5]<-'140';
+	spares[i,0]	<- '132453668'; spares[i,1]<-'metales';spares[i,2]<-'dacia';spares[i,3]<-'dacia';
+	spares[i,4]	<- '1524'; spares[i,5]<-'140';
 	i<- i + 1; // i = 90	
-	repuestos[i,0]	<- '132453669'; repuestos[i,1]<-'block';repuestos[i,2]<-'ferrari';repuestos[i,3]<-'spider';
-	repuestos[i,4]	<- '1525'; repuestos[i,5]<-'141';
+	spares[i,0]	<- '132453669'; spares[i,1]<-'block';spares[i,2]<-'ferrari';spares[i,3]<-'spider';
+	spares[i,4]	<- '1525'; spares[i,5]<-'141';
 	i<- i + 1; // i = 91	
-	repuestos[i,0]	<- '132453670'; repuestos[i,1]<-'tapa de valvula';repuestos[i,2]<-'porche';repuestos[i,3]<-'carrera 913';
-	repuestos[i,4]	<- '1526'; repuestos[i,5]<-'142';
+	spares[i,0]	<- '132453670'; spares[i,1]<-'tapa de valvula';spares[i,2]<-'porche';spares[i,3]<-'carrera 913';
+	spares[i,4]	<- '1526'; spares[i,5]<-'142';
 	i<- i + 1; // i = 92	
-	repuestos[i,0]	<- '132453671'; repuestos[i,1]<-'correa';repuestos[i,2]<-'hummer';repuestos[i,3]<-'c5';
-	repuestos[i,4]	<- '1527'; repuestos[i,5]<-'143';
+	spares[i,0]	<- '132453671'; spares[i,1]<-'correa';spares[i,2]<-'hummer';spares[i,3]<-'c5';
+	spares[i,4]	<- '1527'; spares[i,5]<-'143';
 	i<- i + 1; // i = 93	
-	repuestos[i,0]	<- '132453672'; repuestos[i,1]<-'termostato';repuestos[i,2]<-'jaguar';repuestos[i,3]<-'x5';
-	repuestos[i,4]	<- '1528'; repuestos[i,5]<-'144';
+	spares[i,0]	<- '132453672'; spares[i,1]<-'termostato';spares[i,2]<-'jaguar';spares[i,3]<-'x5';
+	spares[i,4]	<- '1528'; spares[i,5]<-'144';
 	i<- i + 1; // i = 94	
-	repuestos[i,0]	<- '132453673'; repuestos[i,1]<-'fusible';repuestos[i,2]<-'opel';repuestos[i,3]<-'tracker';
-	repuestos[i,4]	<- '1529'; repuestos[i,5]<-'145';
+	spares[i,0]	<- '132453673'; spares[i,1]<-'fusible';spares[i,2]<-'opel';spares[i,3]<-'tracker';
+	spares[i,4]	<- '1529'; spares[i,5]<-'145';
 FinSubProceso
 
-SubProceso setCustomersList(cliente Por Referencia)
+SubProceso setCustomersList(customer Por Referencia)
 	Definir i como  Entero;
 	
 	i<-0;
-	cliente[i,0]	<- '12345678'; cliente[i,1]<-'Mateo Russo';
+	customer[i,0]	<- '12345678'; customer[i,1]<-'Mateo Russo';
 	
 	i<- i + 1;
-	cliente[i,0]	<- '43290210'; cliente[i,1]<-'Ana Franco';
+	customer[i,0]	<- '43290210'; customer[i,1]<-'Ana Franco';
 	
 	i<- i +1;
-	cliente[i,0]	<- '39854121'; cliente[i,1]<-'Manuel Rosas';
+	customer[i,0]	<- '39854121'; customer[i,1]<-'Manuel Rosas';
 	
 	
 FinSubProceso
